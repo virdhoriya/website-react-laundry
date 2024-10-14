@@ -29,4 +29,9 @@ body {
   --white: #fff;
   --black: #000;
   --grey: #393B43;
+  --heading: #080914;
+
+  --primary: #161F5F;
+  --black: #080914;
+  --red: #FF2E17;
 }

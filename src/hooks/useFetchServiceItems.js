@@ -1,34 +1,39 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const useFetchServiceItems = (category_id, sid) => {
   const [categoryItems, setCategoryItems] = useState([]);
   const baseURL = import.meta.env.VITE_BASE_URL;
-  const token = import.meta.env.VITE_TOKEN;
   const service_id = sid;
 
   useEffect(() => {
     const fetchServiceItems = async () => {
       try {
         const response = await fetch(
-          `${baseURL}/mobile/products?category_id=${category_id}&service_id=${service_id}`,
+          `${baseURL}/web/products?category_id=${category_id}&service_id=${service_id}'`,
           {
             method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
           }
         );
         const data = await response.json();
-        setCategoryItems(data.data);
-        console.log(`calling api - service id ${service_id} category id : ${category_id}`);
-        // console.log("Output : ",data.data);
+        if (response.ok) {
+          setCategoryItems(data?.data);
+          toast.success(
+            `calling api - service id ${service_id} category id : ${category_id}`
+          );
+        }
+        // eslint-disable-next-line no-unused-vars
       } catch (error) {
-        console.log(error);
+        toast.error("Unable to fetch selected category items !", {
+          style: {
+            maxWidth: "400px",
+          },
+        });
       }
     };
 
     fetchServiceItems();
-  }, [baseURL, token, category_id, service_id]);
+  }, [baseURL, category_id, service_id]);
 
   return { categoryItems };
 };

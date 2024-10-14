@@ -5,19 +5,18 @@ const Banner = () => {
   const [activeBanner, setActiveBanner] = useState(0);
   const [activeDot, setActiveDot] = useState(0);
   const { banners } = useGetBanner();
-  // console.log("Banners List : ", banners);
-  // console.log("Total Banner : ", banners.count);
 
   useEffect(() => {
     if (banners.banner) {
       setActiveBanner(banners.banner[0]);
-    } else {
-      // console.log("no data found!");
     }
   }, [banners]);
 
+  if (!banners?.banner) {
+    return <p>No banner found!</p>;
+  }
+
   const handleDot = (index) => {
-    // console.log(index);
     setActiveDot(index);
     setActiveBanner(banners.banner[index]);
   };
@@ -50,7 +49,7 @@ const Banner = () => {
                     <p>no</p>
                   )}
                 </span>
-                <span>0{banners.count}</span>
+                <span>0{banners.banner.length}</span>
               </div>
             </div>
           </div>

@@ -1,28 +1,27 @@
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 const useFetchServices = () => {
-  const [services, setServices] = useState([]);
   const baseURL = import.meta.env.VITE_BASE_URL;
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
-    const fetchServices = async () => {
+    const getServices = async () => {
       try {
-        const response = await fetch(`${baseURL}/admin/services`, {
+        const response = await fetch(`${baseURL}/web/services`, {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InR1c2hhcjFAZ21haWwuY29tIiwidXNlcl9pZCI6MTMsInJvbGVfaWQiOjEsImlhdCI6MTcyNzc5MTg1MSwiZXhwIjoxNzI3Nzk1NDUxfQ.xE8EWtxIU9MpvWvTM8BL_Lx5nOpYrMGsM1hx0ftAtFg",
-          },
         });
         const data = await response.json();
-        setServices(data.data.services);
+        if (response.ok) {
+          setServices(data?.data?.services);
+        }
+        // eslint-disable-next-line no-unused-vars
       } catch (error) {
-        console.log(error);
+        toast.error("Unable to fetch services !");
       }
     };
 
-    fetchServices();
+    getServices();
   }, [baseURL]);
 
   return { services };

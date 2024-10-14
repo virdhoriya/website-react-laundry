@@ -28,16 +28,15 @@ const Cart = () => {
 
       <div className="coupon-container">
         <div className="flex gap-4 items-center">
-            {/* <img src="/discount.png" alt="Discount" className="h-16 w-16"/> */}
-            <RiDiscountPercentFill className="h-20 w-20 fill-[#FF2E17]" />
-            <div className="flex flex-col gap-2">
-                <p className="dis-text">20% off on this Holi</p>
-                <p className="dis-price">Up to INR 20</p>
-            </div>
+          <RiDiscountPercentFill className="h-20 w-20 fill-[#FF2E17]" />
+          <div className="flex flex-col gap-2">
+            <p className="dis-text">20% off on this Holi</p>
+            <p className="dis-price">Up to INR 20</p>
+          </div>
         </div>
         <div className="mt-12 flex gap-6 ">
-            <p className="view-more">View More Offers</p>
-            <IoIosArrowDown className="h-8 w-auto fill-[#161F5F]" />
+          <p className="view-more">View More Offers</p>
+          <IoIosArrowDown className="h-8 w-auto fill-[#161F5F]" />
         </div>
       </div>
     </>

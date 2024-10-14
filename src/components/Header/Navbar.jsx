@@ -1,38 +1,40 @@
-import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
+import { LuShoppingCart } from "react-icons/lu";
 
 const Navbar = () => {
   return (
-    <div className="py-6">
+    <nav className="py-6 bg-transparent">
       <div className="container">
         <div className="flex items-center justify-between">
+
           <div>
             <img src="/logo.png" alt="logo" className="h-16 w-96" />
           </div>
+
           <div className="z-10">
-            <nav>
-              <ul className="navbar">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/services">Our Service</Link></li>
-                <li><Link to="/corporate-services">Corporate Services</Link></li>
-                <li><Link to="/prices">Price List</Link></li>
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/contact">Contact Us</Link></li>
-                <li><Link to="/more">More</Link></li>
-              </ul>
-            </nav>
+            <ul className="navbar">
+              <li><Link to="/" title="Home" aria-label="Home">Home</Link></li>
+              <li><Link to="/services" title="Our Service" aria-label="Our Service">Our Service</Link></li>
+              <li><Link to="/corporate-services" title="Corporate Services" aria-label="Corporate Services">Corporate Services</Link></li>
+              <li><Link to="/prices" title="Price List" aria-label="Price List">Price List</Link></li>
+              <li><Link to="/about" title="About Us" aria-label="About Us">About Us</Link></li>
+              <li><Link to="/contact" title="Contact Us" aria-label="Contact Us">Contact Us</Link></li>
+              <li><Link to="/more" title="More" aria-label="More">More</Link></li>
+            </ul>
           </div>
+
           <div className="flex justify-center items-center gap-8 z-10">
-            <span className="inline-block bg-white h-[4.6rem] w-[4.6rem] rounded-full p-4">
-              <LuShoppingCart className="fill-white h-full w-full" />
+            <span className="inline-block bg-red-500 h-[4.6rem] w-[4.6rem] rounded-full p-4">
+              <LuShoppingCart className="h-full w-full stroke-[var(--black)]" aria-label="Shopping Cart"/>
             </span>
-            <a href="#" className="login">
+            <Link to="/" className="login">
               Login
-            </a>
+            </Link>
           </div>
+          
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

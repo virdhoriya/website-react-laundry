@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
-const useFetchCategories = (selectedSerivceId) => {
+const useFetchCategories = (selectedServiceId) => {
   const baseURL = import.meta.env.VITE_BASE_URL;
-  const token = import.meta.env.VITE_TOKEN;
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const fetchCategories = async (selectedSerivceId) => {
+    const getCategories = async () => {
       try {
         const response = await fetch(
-          `${baseURL}/mobile/categories?service_id=${selectedSerivceId}`,
+          `${baseURL}/web/categories?service_id=${selectedServiceId}`,
           {
             method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
           }
         );
         const data = await response.json();
-        setCategories(data.data);
+        if (response.ok) {
+          setCategories(data?.data);
+        }
+        // eslint-disable-next-line no-unused-vars
       } catch (error) {
-        console.log(error);
+        toast.error("Unable to fetch categories !");
       }
     };
 
-    fetchCategories(selectedSerivceId);
-  }, [baseURL, selectedSerivceId, token]);
+    getCategories();
+  }, [baseURL, selectedServiceId]);
 
   return { categories };
 };

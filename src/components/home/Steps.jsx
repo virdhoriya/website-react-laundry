@@ -1,6 +1,6 @@
 const Steps = () => {
   return (
-    <section className="section-space">
+    <section className="section-easy-steps">
       <div className="secondary-container">
         <p className="section-title">How We Works</p>
         <h2 className="mb-16">Follow 4 Easy Steps</h2>

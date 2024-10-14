@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import useFetchServiceItems from "../../hooks/useFetchServiceItems";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
   const [categoryItemsList, setCategoryItemsList] = useState([]);
   const { categoryItems } = useFetchServiceItems(paramId, sid);
-  const baseURL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     setCategoryItemsList(categoryItems);
@@ -16,30 +16,9 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
   };
 
   const handleBtnClick = async (product_id, service_id) => {
-    console.log(`Category id : ${paramId}`);
-    console.log(`Product Id : ${product_id}`);
-    console.log(`Service Id : ${service_id}`);
-
-    try {
-      const response = await fetch(`${baseURL}/carts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtzbmtzY2IyMDA1QGdtYWlsLmNvbSIsInVzZXJfaWQiOjQ5LCJyb2xlX2lkIjo1LCJpYXQiOjE3Mjg3MjM2ODEsImV4cCI6MTcyODcyNzI4MX0.h-WKCB0z4wlhY8Hz63uB32P61AW6Z82Jb_U4HB51Y0E`,
-        },
-        body: JSON.stringify({
-          category_id: paramId,
-          product_id: product_id,
-          service_id: service_id,
-          quantity: 1,
-        }),
-      });
-
-      const data = await response.json();
-      console.log("Output ------", data);
-    } catch (error) {
-      console.log(`ERROR : ${error}`);
-    }
+    toast.success(
+      `Category id : ${paramId}  Product Id : ${product_id}  Service Id : ${service_id}`
+    );
   };
 
   return (

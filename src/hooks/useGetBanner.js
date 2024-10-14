@@ -1,32 +1,29 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const useGetBanner = () => {
   const [banners, setBanners] = useState([]);
   const baseURL = import.meta.env.VITE_BASE_URL;
-  const token = import.meta.env.VITE_TOKEN;
 
   useEffect(() => {
     const getBanner = async () => {
       try {
-        const response = await fetch(`${baseURL}/admin/banners`, {
+        const response = await fetch(`${baseURL}/web/banners`, {
           method: "GET",
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inp0OHpAZ21haWwuY29tIiwidXNlcl9pZCI6MzAsInJvbGVfaWQiOjEsImlhdCI6MTcyODQ1MjkwOCwiZXhwIjoxNzI4NDU2NTA4fQ.qxpM4TXTVVX2Dv_0TGNFzZogjE4foPrikMQS9oU8qvE`,
-          },
         });
 
         const data = await response.json();
-
-        data.statusCode === 200
-          ? setBanners(data.data)
-          : console.log("Data not found");
+        if (response.ok) {
+          setBanners(data?.data);
+        }
+        // eslint-disable-next-line no-unused-vars
       } catch (error) {
-        console.log(`ERROR : ${error}`);
+        toast("Unable to fecth banners !");
       }
     };
 
     getBanner();
-  }, [baseURL, token]);
+  }, [baseURL]);
 
   return { banners };
 };

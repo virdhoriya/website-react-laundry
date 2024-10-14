@@ -8,10 +8,12 @@ import Prices from "./components/prices/Prices";
 import CorporateServices from "./components/corporate_services/CorporateServices";
 import More from "./components/more/More";
 import Footer from "./components/footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <Router>
+      <Toaster />
       <Header />
       <main>
         <Routes>
