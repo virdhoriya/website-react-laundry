@@ -2,10 +2,14 @@ import PropTypes from "prop-types";
 import useFetchServiceItems from "../../hooks/useFetchServiceItems";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 
 const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
   const [categoryItemsList, setCategoryItemsList] = useState([]);
   const { categoryItems } = useFetchServiceItems(paramId, sid);
+  const baseURL = import.meta.env.VITE_BASE_URL;
+  const token = import.meta.env.VITE_DUMMY_TOKEN;
+  const [itemCount, setItemCount] = useState(0);
 
   useEffect(() => {
     setCategoryItemsList(categoryItems);
@@ -15,10 +19,46 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
     setParamId(category_id);
   };
 
+  const onIncClick = () => {
+    setItemCount(itemCount + 1);
+  };
+
+  const onDecClick = () => {
+    if (itemCount > 0) {
+      setItemCount(itemCount - 1);
+    }
+  };
+
   const handleBtnClick = async (product_id, service_id) => {
-    toast.success(
+    console.log(
       `Category id : ${paramId}  Product Id : ${product_id}  Service Id : ${service_id}`
     );
+
+    try {
+      const response = await fetch(`${baseURL}/carts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          category_id: paramId,
+          product_id: product_id,
+          service_id: service_id,
+          quantity: 1,
+        }),
+      });
+      if (response.ok) {
+        toast.success("Item Added Successfully!");
+      }
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      toast.error("Error occur while adding item into cart!", {
+        style: {
+          maxWidth: "400px",
+        },
+      });
+    }
   };
 
   return (
@@ -39,9 +79,12 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
         })}
       </div>
       <div className="flex flex-col gap-12">
-        {categoryItemsList.map((categoryItem, index) => {
+        {categoryItemsList.map((categoryItem) => {
           return (
-            <div key={index} className="cat-item-container flex gap-8">
+            <div
+              key={categoryItem.product_id}
+              className="cat-item-container flex gap-8"
+            >
               <img
                 src={categoryItem.product.image}
                 alt="Service Image"
@@ -62,6 +105,18 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
                   }
                 >
                   Add
+                </button>
+
+                <button className="inc-dec-btn">
+                  <HiOutlineMinus
+                    className="stroke-[#B9BCCF]"
+                    onClick={onDecClick}
+                  />
+                  {itemCount}
+                  <HiOutlinePlus
+                    className="stroke-[#B9BCCF]" 
+                    onClick={onIncClick}
+                  />
                 </button>
               </div>
             </div>

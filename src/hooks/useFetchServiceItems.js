@@ -18,6 +18,12 @@ const useFetchServiceItems = (category_id, sid) => {
         const data = await response.json();
         if (response.ok) {
           setCategoryItems(data?.data);
+          console.log(
+            `calling api - service id ${service_id} category id : ${category_id}`
+          );
+        }
+        if (response.ok) {
+          setCategoryItems(data?.data);
           toast.success(
             `calling api - service id ${service_id} category id : ${category_id}`
           );

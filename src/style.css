@@ -691,6 +691,22 @@ h3 {
   padding: 1.1rem 3.3rem;
 }
 
+.inc-dec-btn {
+  display: inline-block;
+  border: 1px solid #B9BCCF;
+  border-radius: 999px;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  color: var(--black);
+  padding: 1.1rem 1.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+}
 /* filter */
 
 .filter {
