@@ -39,7 +39,7 @@ const useCartOperations = () => {
     }
   };
 
-  const updateProductQuantity = async ( quantity ) => {
+  const updateProductQuantity = async (quantity) => {
     try {
       const response = await fetch(`${baseURL}/carts/${cartId}`, {
         method: "PUT",
@@ -65,7 +65,32 @@ const useCartOperations = () => {
     }
   };
 
-  return { addToCart, updateProductQuantity };
+  const deleteProduct = async () => {
+    try {
+      const response = await fetch(`${baseURL}/carts/${cartId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        toast.success(data.message, {
+          style: {
+            maxWidth: "400px",
+          },
+        });
+        console.log(response);
+      }
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      toast.error("Unable to delete item from cart!");
+    }
+  };
+
+  return { addToCart, updateProductQuantity, deleteProduct };
 };
 
 export default useCartOperations;

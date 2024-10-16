@@ -2,12 +2,12 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 import useCartOperations from "../../hooks/cart/useCartOperations";
-import toast from "react-hot-toast";
 
 const CategoryItem = ({ categoryItem, paramId }) => {
   const [itemCount, setItemCount] = useState(1);
   const [numberBtn, setNumberBtn] = useState(false);
-  const { addToCart, updateProductQuantity } = useCartOperations();
+  const { addToCart, updateProductQuantity, deleteProduct } =
+    useCartOperations();
 
   const onIncClick = async () => {
     setItemCount(itemCount + 1);
@@ -16,13 +16,13 @@ const CategoryItem = ({ categoryItem, paramId }) => {
   };
 
   const onDecClick = async () => {
-    if (itemCount > 0 && itemCount-1 != 0) {
+    if (itemCount > 0 && itemCount - 1 != 0) {
       setItemCount(itemCount - 1);
       const newCount = itemCount - 1;
       await updateProductQuantity(newCount);
-    }
-    else {
+    } else {
       setNumberBtn(false);
+      await deleteProduct();
     }
   };
 
