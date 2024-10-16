@@ -7,6 +7,7 @@ import Contact from "./components/contact/Contact";
 import Prices from "./components/prices/Prices";
 import CorporateServices from "./components/corporate_services/CorporateServices";
 import More from "./components/more/More";
+import Cart from "./components/cart/Cart";
 import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/prices" element={<Prices />} />
           <Route path="/corporate-services" element={<CorporateServices />} />
           <Route path="/more" element={<More />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
       <Footer />
