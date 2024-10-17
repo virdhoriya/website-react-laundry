@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Signup from "./components/signup/Signup";
+import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -15,9 +17,22 @@ const App = () => {
   return (
     <Router>
       <Toaster />
-      <Header />
+      <MainComponent />
+    </Router>
+  );
+};
+
+const MainComponent = () => {
+  const location = useLocation();
+  const isLoginRoute = location.pathname === "/login";
+  const isSignupRoute = location.pathname === "/signup";
+  return (
+    <>
+      {!isSignupRoute && !isLoginRoute && <Header />}
       <main>
         <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -28,8 +43,8 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
-      <Footer />
-    </Router>
+      {!isSignupRoute && !isLoginRoute && <Footer />}
+    </>
   );
 };
 

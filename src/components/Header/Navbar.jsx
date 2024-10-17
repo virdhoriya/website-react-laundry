@@ -27,7 +27,7 @@ const Navbar = () => {
             <span className="inline-block bg-red-500 h-[4.6rem] w-[4.6rem] rounded-full p-4">
               <LuShoppingCart className="h-full w-full stroke-[var(--black)]" aria-label="Shopping Cart"/>
             </span>
-            <Link to="/" className="login">
+            <Link to="/login" className="login">
               Login
             </Link>
           </div>
