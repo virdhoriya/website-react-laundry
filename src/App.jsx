@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Signup from "./components/signup/Signup";
 import Login from "./components/Login/Login";
+import ForgetPassword from "./components/forget/ForgetPassword";
 import Header from "./components/Header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -26,11 +27,13 @@ const MainComponent = () => {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/login";
   const isSignupRoute = location.pathname === "/signup";
+  const isForgetRoute = location.path === "/forget-password";
   return (
     <>
-      {!isSignupRoute && !isLoginRoute && <Header />}
+      {!isSignupRoute && !isLoginRoute && !isForgetRoute && <Header />}
       <main>
         <Routes>
+          <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
@@ -43,7 +46,7 @@ const MainComponent = () => {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
-      {!isSignupRoute && !isLoginRoute && <Footer />}
+      {!isSignupRoute && !isLoginRoute && !isForgetRoute && <Footer />}
     </>
   );
 };

@@ -8,9 +8,6 @@ const useCartOperations = () => {
 
   const addToCart = async ({ paramId, product_id, service_id, itemCount }) => {
     try {
-      console.log(
-        `Category id : ${paramId}  Product Id : ${product_id}  Service Id : ${service_id} Quantity : ${itemCount}`
-      );
       const response = await fetch(`${baseURL}/carts`, {
         method: "POST",
         headers: {
@@ -82,7 +79,6 @@ const useCartOperations = () => {
             maxWidth: "400px",
           },
         });
-        console.log(response);
       }
       // eslint-disable-next-line no-unused-vars
     } catch (error) {

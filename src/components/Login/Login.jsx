@@ -1,19 +1,46 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
 import useLogin from "../../hooks/login/useLogin";
+import * as Yup from "yup";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
   const { login } = useLogin();
+  const [errors, setErrors] = useState({});
+  const [formdata, setFormData] = useState({
+    username: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    const {name, value}= e.target;
+    setFormData({
+      ...formdata,
+      [name]: value,
+    })
+  }
+
+  const formValidation = Yup.object().shape({
+    username: Yup.string()
+    .min(10, 'Username must be at least 10 characters')
+    .required('Username is required'),
+    password: Yup.string()
+    .min(6,'Password must be at least 6 characters')
+    .required('Password is required'),
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username || !password) {
-      toast.error("Please fill in all fields", password);
-    } else {
-      await login(username, password);
+    try {
+      await formValidation.validate(formdata, { abortEarly: false });
+      await login(formdata.username, formdata.password);
+      setErrors('');
+    } catch(error) {
+      const validationErrors = {};
+      error.inner.forEach(error => {
+        validationErrors[error.path] = error.message;
+      });
+      setErrors(validationErrors);
     }
   };
 
@@ -31,7 +58,7 @@ const Login = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-10">
+        <form className={`${errors.username || errors.password ? 'space-y-6' : 'space-y-10'}`}>
           <div>
             <label
               htmlFor="username"
@@ -45,10 +72,13 @@ const Login = () => {
                 name="username"
                 placeholder="email or mobile number"
                 className="text-xl block font-medium w-full rounded-md py-3 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={formdata.username}
+                onChange={handleChange}
               />
             </div>
+            {errors.username && (
+              <p className="pt-2 text-base font-medium text-red-500">{errors.username}</p>
+            )}
           </div>
 
           <div>
@@ -60,12 +90,12 @@ const Login = () => {
                 Password
               </label>
               <div className="text-lg">
-                <a
-                  href="#"
+                <Link
+                  to="/forget-password"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
             <div className="mt-2">
@@ -75,10 +105,13 @@ const Login = () => {
                 type="password"
                 placeholder="password"
                 className="text-xl block font-medium w-full rounded-md py-3 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formdata.password}
+                onChange={handleChange}
               />
             </div>
+            {errors.password && (
+              <p className="pt-2 text-base font-medium text-red-500">{errors.password}</p>
+            )}
           </div>
 
           <div>
