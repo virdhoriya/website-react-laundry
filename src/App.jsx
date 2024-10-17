@@ -1,4 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Signup from "./components/signup/Signup";
+import Login from "./components/Login/Login";
+import ForgetPassword from "./components/forget/ForgetPassword";
 import Header from "./components/Header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -7,6 +10,7 @@ import Contact from "./components/contact/Contact";
 import Prices from "./components/prices/Prices";
 import CorporateServices from "./components/corporate_services/CorporateServices";
 import More from "./components/more/More";
+import Cart from "./components/cart/Cart";
 import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
 
@@ -14,9 +18,24 @@ const App = () => {
   return (
     <Router>
       <Toaster />
-      <Header />
+      <MainComponent />
+    </Router>
+  );
+};
+
+const MainComponent = () => {
+  const location = useLocation();
+  const isLoginRoute = location.pathname === "/login";
+  const isSignupRoute = location.pathname === "/signup";
+  const isForgetRoute = location.path === "/forget-password";
+  return (
+    <>
+      {!isSignupRoute && !isLoginRoute && !isForgetRoute && <Header />}
       <main>
         <Routes>
+          <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -24,10 +43,11 @@ const App = () => {
           <Route path="/prices" element={<Prices />} />
           <Route path="/corporate-services" element={<CorporateServices />} />
           <Route path="/more" element={<More />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
-      <Footer />
-    </Router>
+      {!isSignupRoute && !isLoginRoute && !isForgetRoute && <Footer />}
+    </>
   );
 };
 

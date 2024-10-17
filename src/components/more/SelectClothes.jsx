@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import useFetchServiceItems from "../../hooks/useFetchServiceItems";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import CategoryItem from "./CategoryItem";
+import useFetchServiceItems from "../../hooks/useFetchServiceItems";
 
 const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
   const [categoryItemsList, setCategoryItemsList] = useState([]);
@@ -13,12 +13,6 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
 
   const handleCategoryClick = (category_id) => {
     setParamId(category_id);
-  };
-
-  const handleBtnClick = async (product_id, service_id) => {
-    toast.success(
-      `Category id : ${paramId}  Product Id : ${product_id}  Service Id : ${service_id}`
-    );
   };
 
   return (
@@ -39,32 +33,13 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
         })}
       </div>
       <div className="flex flex-col gap-12">
-        {categoryItemsList.map((categoryItem, index) => {
+        {categoryItemsList.map((categoryItem) => {
           return (
-            <div key={index} className="cat-item-container flex gap-8">
-              <img
-                src={categoryItem.product.image}
-                alt="Service Image"
-                className="h-32 w-32 rounded-2xl"
-              />
-              <div className="flex-grow flex justify-between items-center">
-                <div>
-                  <h5 className="cat-item-name">{categoryItem.product.name}</h5>
-                  <p className="cat-item-price">₹{categoryItem.price}</p>
-                </div>
-                <button
-                  className="add-btn"
-                  onClick={() =>
-                    handleBtnClick(
-                      categoryItem.product_id,
-                      categoryItem.service_id
-                    )
-                  }
-                >
-                  Add
-                </button>
-              </div>
-            </div>
+            <CategoryItem
+              key={categoryItem.product_id}
+              categoryItem={categoryItem}
+              paramId={paramId}
+            />
           );
         })}
       </div>

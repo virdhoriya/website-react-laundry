@@ -18,9 +18,6 @@ const useFetchServiceItems = (category_id, sid) => {
         const data = await response.json();
         if (response.ok) {
           setCategoryItems(data?.data);
-          toast.success(
-            `calling api - service id ${service_id} category id : ${category_id}`
-          );
         }
         // eslint-disable-next-line no-unused-vars
       } catch (error) {

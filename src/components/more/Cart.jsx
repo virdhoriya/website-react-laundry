@@ -1,5 +1,6 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { RiDiscountPercentFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   return (
@@ -20,9 +21,9 @@ const Cart = () => {
             <p>Total</p>
             <h5>₹85</h5>
           </div>
-          <a href="#" className="view-cart-btn">
+          <Link to="/cart" className="view-cart-btn">
             view cart
-          </a>
+          </Link>
         </div>
       </div>
 
