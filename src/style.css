@@ -93,6 +93,17 @@
   border-radius: 999px;
 }
 
+.apply-btn {
+  background-color: #B9BCCF;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  display: inline-block;
+  color: var(--white);
+  font-weight: 500;
+  padding: 1.5rem 3rem;
+  border-radius: 999px;
+}
+
 .btn-transparent {
   border: 1px solid red;
   background-color: transparent;
@@ -946,4 +957,33 @@ h3 {
 
 .cart-table tbody tr td {
   padding: 2rem;
+}
+
+
+/* cart component */
+
+.cart-sub-title {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+}
+
+.address-btn {
+  border-radius: 999px;
+  border: 1.5px solid var(--primary);
+  padding: 1.2rem 2rem;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+}
+
+.address-btn span {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.bg-filter {
+  backdrop-filter: blur(10px);
 }

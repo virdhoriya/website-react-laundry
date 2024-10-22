@@ -1,6 +1,28 @@
-import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import TableRow from "./TableRow";
+import useCartOperations from "../../hooks/cart/useCartOperations";
 
-const Main = () => {
+const Main = ({ setSubTotal }) => {
+  const [cart, setCart] = useState([]);
+  const { viewCart } = useCartOperations();
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      const res = await viewCart();
+      if (res) {
+        setCart(res);
+      }
+    };
+    fetchCart();
+  }, []);
+
+  useEffect(() => {
+    const total = cart.reduce((accumulator, item) => {
+      return accumulator + item.price * item.quantity;
+    }, 0);
+    setSubTotal(total);
+  }, [cart, setSubTotal]);
   return (
     <table className="cart-table">
       <thead>
@@ -12,27 +34,24 @@ const Main = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <h3>Shirt</h3>
-            <p>Wet Cleaning</p>
-            <p>Material: A</p>
-          </td>
-          <td>₹40</td>
-          <td>
-            <span className="flex justify-center items-center">
-              <button className="inc-dec-btn">
-                <HiOutlineMinus className="stroke-[#B9BCCF]" />
-                {"2"}
-                <HiOutlinePlus className="stroke-[#B9BCCF]" />
-              </button>
-            </span>
-          </td>
-          <td>₹80</td>
-        </tr>
+        {cart.length === 0 ? (
+          <tr>
+            <td colSpan="4" className="text-center">
+              No item found
+            </td>
+          </tr>
+        ) : (
+          cart.map((item, index) => {
+            return <TableRow item={item} key={index} />;
+          })
+        )}
       </tbody>
     </table>
   );
+};
+
+Main.propTypes = {
+  setSubTotal: PropTypes.func.isRequired,
 };
 
 export default Main;
