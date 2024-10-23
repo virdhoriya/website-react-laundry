@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const useCartOperations = () => {
   const [cartId, setCartId] = useState(null);
   const baseURL = import.meta.env.VITE_BASE_URL;
-  const token = import.meta.env.VITE_DUMMY_TOKEN;
+  const token = localStorage.getItem("token");
 
   const addToCart = async ({ paramId, product_id, service_id, itemCount }) => {
     try {
@@ -62,9 +62,9 @@ const useCartOperations = () => {
     }
   };
 
-  const deleteProduct = async () => {
+  const deleteProduct = async (delCartid = cartId) => {
     try {
-      const response = await fetch(`${baseURL}/carts/${cartId}`, {
+      const response = await fetch(`${baseURL}/carts/${delCartid}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -72,21 +72,97 @@ const useCartOperations = () => {
         },
       });
 
+      const data = await response.json();
       if (response.ok) {
-        const data = await response.json();
         toast.success(data.message, {
           style: {
             maxWidth: "400px",
           },
         });
       }
-      // eslint-disable-next-line no-unused-vars
-    } catch (error) {
+    } catch {
       toast.error("Unable to delete item from cart!");
     }
   };
 
-  return { addToCart, updateProductQuantity, deleteProduct };
+  const viewCart = async () => {
+    try {
+      const response = await fetch(`${baseURL}/carts`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      if (response.ok) {
+        return data.data;
+      } else {
+        toast.error("Failed to fetch cart data!");
+      }
+    } catch {
+      toast.error("Unable to fetch cart data!");
+    }
+  };
+
+  const updateItemQuantity = async (cartId, quantity) => {
+    try {
+      const response = await fetch(`${baseURL}/carts/${cartId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          quantity: quantity,
+        }),
+      });
+
+      if (!response.ok) {
+        toast.error(`Unable to update cart!`);
+      }
+    } catch {
+      toast.error("Error occur while updating product quantity!", {
+        style: {
+          maxWidth: "400px",
+        },
+      });
+    }
+  };
+
+  const applyCoupon = async (subTotal, couponCode) => {
+    try {
+      const response = await fetch(`${baseURL}/coupon/apply`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          coupon_Code: couponCode,
+          order_Total: subTotal,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        toast.error(data.message || "Invalid coupon code.");
+        return;
+      }
+      toast.success(data.message);
+      console.log(data.data);
+      return data.data.discountAmount;
+    } catch {
+      toast.error("Unable to apply coupon code!");
+    }
+  };
+
+  return {
+    addToCart,
+    updateProductQuantity,
+    deleteProduct,
+    viewCart,
+    updateItemQuantity,
+    applyCoupon,
+  };
 };
 
 export default useCartOperations;
