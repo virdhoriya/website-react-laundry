@@ -10,18 +10,17 @@ const Cart = () => {
   return (
     <section className="section-cart">
       <div className="secondary-container">
-        <h1>{subTotal}</h1>
         <div className="flex justify-between items-start">
           <div className="flex-[0_0_63%]">
             <div className="flex flex-col gap-24">
-              <Main setSubTotal={setSubTotal}/>
+              <Main setSubTotal={setSubTotal} />
               <AddAddress />
               <AddInstruction />
               <PayementMethod />
             </div>
           </div>
           <div className="flex-[0_0_31%] border border-[#b9bccf4d] rounded-xl">
-            <OrderSummary />
+            <OrderSummary subTotal={subTotal} />
           </div>
         </div>
       </div>

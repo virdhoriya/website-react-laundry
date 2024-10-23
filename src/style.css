@@ -627,10 +627,13 @@ h3 {
   padding-bottom: 0.5rem;
   border-bottom: 4px solid transparent;
   transition: all 0.3s;
+  padding: 8px 1rem;
+  border-radius: 8px;
 }
 
 .service-container:hover {
-  border-color: #ff2e17;
+  /* border-color: #ff2e17; */
+  background-color: cyan;
 }
 
 /* select cloths */
@@ -985,5 +988,6 @@ h3 {
 }
 
 .bg-filter {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10
+  px);
 }

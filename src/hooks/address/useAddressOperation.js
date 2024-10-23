@@ -24,14 +24,20 @@ const useAddressOperation = () => {
   };
 
   const addAddress = async (formData) => {
+
+    const upDatedFormData = {
+      ...formData,
+      address_type: Number(formData.address_type),
+    }
+
     try {
       const response = await fetch(`${baseURL}/address`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(upDatedFormData),
       });
       const data = await response.json();
       if (response.ok) {

@@ -129,12 +129,39 @@ const useCartOperations = () => {
     }
   };
 
+  const applyCoupon = async (subTotal, couponCode) => {
+    try {
+      const response = await fetch(`${baseURL}/coupon/apply`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          coupon_Code: couponCode,
+          order_Total: subTotal,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        toast.error(data.message || "Invalid coupon code.");
+        return;
+      }
+      toast.success(data.message);
+      console.log(data.data);
+      return data.data.discountAmount;
+    } catch {
+      toast.error("Unable to apply coupon code!");
+    }
+  };
+
   return {
     addToCart,
     updateProductQuantity,
     deleteProduct,
     viewCart,
     updateItemQuantity,
+    applyCoupon,
   };
 };
 

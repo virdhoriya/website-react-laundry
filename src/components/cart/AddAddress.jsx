@@ -44,7 +44,15 @@ const AddAddress = () => {
                   area,
                   city,
                   pincode,
+                  address_type,
                 } = address;
+
+                const typeMapping = {
+                  1: "Home",
+                  2: "Office",
+                  3: "Other",
+                };
+
                 return (
                   <div
                     className="px-6 py-8 rounded-xl text-[1.6rem] tracking-normal flex gap-4 items-start justify-start flex-wrap border border-[#B9BCCF4D]"
@@ -52,13 +60,16 @@ const AddAddress = () => {
                   >
                     <input
                       type="radio"
-                      id="address"
+                      id={address_id}
                       name="address"
-                      className="inline-block mt-[0.70rem] border-4"
+                      className="h-10 w-10 appearance-none border-[6px] border-[#B9BCCF] rounded-full checked:border-red-500"
                     />
-                    <h4 className="capitalize text-[var(--black)] text-[1.8rem] font-semibold basis-[80%]">
-                      Home
-                    </h4>
+                    <label
+                      htmlFor={address_id}
+                      className="capitalize text-[var(--black)] text-[1.8rem] font-semibold basis-[80%]"
+                    >
+                      {typeMapping[address_type]}
+                    </label>
                     <label htmlFor="address">{`${building_number}, ${landmark}, ${area}, ${city}, ${pincode}`}</label>
                   </div>
                 );

@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 const AddAddressModel = ({ setIsOpen, isOpen }) => {
   const { addAddress } = useAddressOperation();
   const [formData, setFormData] = useState({
+    address_type: "1",
     building_number: "",
     area: "",
     landmark: "",
@@ -28,6 +29,7 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
     e.preventDefault();
     const res = await addAddress(formData);
     setFormData({
+      address_type: "1",
       building_number: "",
       area: "",
       landmark: "",
@@ -72,6 +74,26 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
           />
         </div>
         <form className="grid grid-cols-2 w-full gap-x-10 gap-y-12">
+          <div className="flex flex-col gap-3">
+            <label
+              htmlFor="address_type"
+              className="self-start text-[1.2rem] text-[var(--black)]"
+            >
+              Address type
+            </label>
+            <select
+              name="address_type"
+              id="address_type"
+              className="inline-block w-full p-3 ring-1 text-[1.2rem] rounded-lg text-[var(--black)"
+              onChange={handleChange}
+              defaultValue={1}
+            >
+              <option value={1}>Home</option>
+              <option value={2}>Office</option>
+              <option value={3}>Other</option>
+            </select>
+          </div>
+
           <div className="flex flex-col gap-3">
             <label
               htmlFor="building_number"
