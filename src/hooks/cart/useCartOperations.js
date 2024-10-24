@@ -148,7 +148,6 @@ const useCartOperations = () => {
         return;
       }
       toast.success(data.message);
-      console.log(data.data);
       return data.data.discountAmount;
     } catch {
       toast.error("Unable to apply coupon code!");
