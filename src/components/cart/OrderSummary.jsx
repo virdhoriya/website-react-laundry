@@ -28,7 +28,6 @@ const OrderSummary = ({ subTotal }) => {
       }
     };
     getShippingCharge();
-    console.log("Success");
   }, [fetchShippingCharge]);
 
   return (
