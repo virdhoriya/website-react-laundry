@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import useCartOperations from "../../hooks/cart/useCartOperations";
-import { useState } from "react";
+import useFetchShippingCharge from "../../hooks/cart/useFetchShippingCharge";
 
 const OrderSummary = ({ subTotal }) => {
+  const [shippingCharge, setShippingCharge] = useState(0);
   const [couponCode, setCouponCode] = useState("");
   const [discountValue, setDiscountValue] = useState(0);
   const { applyCoupon } = useCartOperations();
+  const { fetchShippingCharge } = useFetchShippingCharge();
 
   const handleApplyClick = async () => {
     let newCode = couponCode.toUpperCase();
@@ -15,6 +18,18 @@ const OrderSummary = ({ subTotal }) => {
       setDiscountValue(res);
     }
   };
+
+  useEffect(() => {
+    const getShippingCharge = async () => {
+      const response = await fetchShippingCharge();
+      if (response) {
+        const { shipping_charge } = response;
+        setShippingCharge(Number(shipping_charge));
+      }
+    };
+    getShippingCharge();
+    console.log("Success");
+  }, [fetchShippingCharge]);
 
   return (
     <div className="flex flex-col">
@@ -38,12 +53,12 @@ const OrderSummary = ({ subTotal }) => {
         </div>
         <div className="shipcharge-container">
           <p>Shipping Charge</p>
-          <h5>₹5</h5>
+          <h5>₹{shippingCharge}</h5>
         </div>
         <span className="line"></span>
         <div className="total-container">
           <p>Total</p>
-          <h5>₹85</h5>
+          <h5>₹{subTotal - discountValue + shippingCharge}</h5>
         </div>
         <Link to="/cart" className="view-cart-btn">
           checkout
