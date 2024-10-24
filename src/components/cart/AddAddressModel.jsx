@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { CgCloseR } from "react-icons/cg";
 import useAddressOperation from "../../hooks/address/useAddressOperation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const AddAddressModel = ({ setIsOpen, isOpen }) => {
-  const { addAddress } = useAddressOperation();
+const AddAddressModel = ({ setIsOpen, isOpen, address, flag }) => {
+  const { addAddress, editAddress } = useAddressOperation();
   const [formData, setFormData] = useState({
+    full_name: "",
+    phone_number: "",
     address_type: "1",
     building_number: "",
     area: "",
@@ -27,28 +29,38 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await addAddress(formData);
-    setFormData({
-      address_type: "1",
-      building_number: "",
-      area: "",
-      landmark: "",
-      pincode: "",
-      city: "",
-      state: "",
-      country: "",
-    });
-    if (res) {
-      toast.success(res);
+    if (!flag) {
+      await editAddress(formData, address.address_id);
       setIsOpen(false);
     } else {
-      toast.error("Unable to add address");
+      const res = await addAddress(formData);
+      setFormData({
+        full_name: "",
+        phone_number: "",
+        address_type: "1",
+        building_number: "",
+        area: "",
+        landmark: "",
+        pincode: "",
+        city: "",
+        state: "",
+        country: "",
+      });
+      if (res) {
+        toast.success(res);
+        setIsOpen(false);
+      } else {
+        toast.error("Unable to add address");
+      }
     }
   };
 
   const onCloseBtnClick = () => {
     setIsOpen(false);
     setFormData({
+      address_type: "1",
+      full_name: "",
+      phone_number: "",
       building_number: "",
       area: "",
       landmark: "",
@@ -58,6 +70,23 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
       country: "",
     });
   };
+
+  useEffect(() => {
+    if (address) {
+      setFormData({
+        full_name: address.full_name,
+        phone_number: address.phone_number,
+        address_type: address.address_type,
+        building_number: address.building_number,
+        area: address.area,
+        landmark: address.landmark,
+        pincode: address.pincode,
+        city: address.city,
+        state: address.state,
+        country: address.country,
+      });
+    }
+  }, [address]);
 
   return (
     <section
@@ -74,6 +103,40 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
           />
         </div>
         <form className="grid grid-cols-2 w-full gap-x-10 gap-y-12">
+          <div className="flex flex-col gap-3">
+            <label
+              htmlFor="full_name"
+              className="self-start text-[1.2rem] text-[var(--black)]"
+            >
+              Fullname
+            </label>
+            <input
+              name="full_name"
+              id="full_name"
+              type="text"
+              onChange={handleChange}
+              value={formData.full_name}
+              className="inline-block w-full p-3 ring-1 text-[1.2rem] rounded-lg text-[var(--black)"
+            />
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <label
+              htmlFor="phone_number"
+              className="self-start text-[1.2rem] text-[var(--black)]"
+            >
+              Phone number
+            </label>
+            <input
+              name="phone_number"
+              id="phone_number"
+              type="text"
+              onChange={handleChange}
+              value={formData.phone_number}
+              className="inline-block w-full p-3 ring-1 text-[1.2rem] rounded-lg text-[var(--black)"
+            />
+          </div>
+
           <div className="flex flex-col gap-3">
             <label
               htmlFor="address_type"
@@ -213,7 +276,7 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
             />
           </div>
 
-          <div className="flex justify-start items-end row-start-5">
+          <div className="flex justify-start items-end row-start-6">
             <button
               type="button"
               className="text-white bg-blue-700 text-[1.4rem] font-medium px-6 py-4 rounded-md"
@@ -231,5 +294,19 @@ const AddAddressModel = ({ setIsOpen, isOpen }) => {
 AddAddressModel.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  address: PropTypes.shape({
+    address_id: PropTypes.number,
+    full_name: PropTypes.string,
+    phone_number: PropTypes.string,
+    address_type: PropTypes.number,
+    building_number: PropTypes.string,
+    area: PropTypes.string,
+    landmark: PropTypes.string,
+    pincode: PropTypes.number,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    country: PropTypes.string,
+  }),
+  flag: PropTypes.bool.isRequired,
 };
 export default AddAddressModel;
