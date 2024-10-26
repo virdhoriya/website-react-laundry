@@ -1042,3 +1042,135 @@ h3 {
 .shortcut li:hover {
   color: rgb(138, 43, 226, 0.8);
 }
+
+/* forget password */
+
+.enter-mobile-container,
+.enter-otp-container {
+  min-width: 46rem;
+  background-color: white;
+  box-shadow: 10px 10px 30px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.enter-mobile-container h2 {
+  color: var(--black);
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+  font-weight: 700;
+  padding: 2rem 1.8rem;
+  text-transform: capitalize;
+  border-bottom: 0.5px solid #1c1e21;
+}
+
+.enter-mobile-container label {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.enter-mobile-container input {
+  padding: 1.2rem 1.4rem;
+  border-radius: 4px;
+  border: 1px solid #dbdfe9;
+  font-size: 1.6rem;
+}
+
+.btn-sendotp {
+  padding: 0.5rem 2rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 3.6rem;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.lock-icon {
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+  fill: var(--primary);
+}
+
+.enter-otp-container {
+  padding: 3rem 0;
+  min-width: 40rem;
+  max-width: 41rem;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 2rem;
+}
+
+.enter-otp-container h2 {
+  color: var(--black);
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  text-transform: capitalize;
+}
+
+.boxes {
+  display: flex;
+  gap: 1rem;
+}
+
+.box {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgba(241, 245, 249);
+  height: 4rem;
+  width: 4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.verify-btn {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  display: inline-block;
+  width: 73%;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.4rem;
+  color: white;
+  font-weight: 700;
+}
+
+.reset-password-container {
+  min-width: 31rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 10px 10px 30px 10px rgba(0, 0, 0, 0.2);
+  padding: 2.5rem 3rem;
+}
+
+.reset-password-container h2 {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.reset-password-container label {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.reset-password-container input {
+  font-size: 1.4rem;
+  font-weight: 500;
+  border: 1px solid rgba(22, 31, 95, 0.5);
+  border-radius: 4px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.reset-password-container input:focus {
+  outline: none;
+}
+
+.btn-2 {
+  padding: 0.2rem 2.5rem;
+}
