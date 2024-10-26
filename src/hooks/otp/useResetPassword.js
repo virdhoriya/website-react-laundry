@@ -3,13 +3,6 @@ import toast from "react-hot-toast";
 const useResetPassword = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const resetPassword = async (mobile_number, otp, password) => {
-    console.log("Mobile : ", typeof mobile_number);
-    console.log("Otp : ", typeof otp);
-    console.log("Password : ", typeof password);
-    console.log(
-      `data send mobile ${mobile_number} otp ${otp} password ${password}`
-    );
-
     try {
       const response = await fetch(`${baseURL}/auth/reset-password`, {
         method: "POST",
