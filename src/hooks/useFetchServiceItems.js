@@ -18,10 +18,15 @@ const useFetchServiceItems = (category_id, sid) => {
         const data = await response.json();
         if (response.ok) {
           setCategoryItems(data?.data);
+        } else {
+          toast.error("Failed to fetch selected category items !", {
+            style: {
+              maxWidth: "400px",
+            },
+          });
         }
-        // eslint-disable-next-line no-unused-vars
-      } catch (error) {
-        toast.error("Unable to fetch selected category items !", {
+      } catch {
+        toast.error("Failed to fetch selected category items !", {
           style: {
             maxWidth: "400px",
           },

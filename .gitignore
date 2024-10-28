@@ -3,3 +3,6 @@
 
 # environment
 .env
+
+# unneccesary dependencies
+.DS_Store

@@ -14,13 +14,13 @@ const useFetchServices = () => {
         const data = await response.json();
         if (response.ok) {
           setServices(data?.data?.services);
+        } else {
+          toast.error("Failed to fetch services!");
         }
-        // eslint-disable-next-line no-unused-vars
-      } catch (error) {
-        toast.error("Unable to fetch services !");
+      } catch {
+        toast.error("Failed to fetch services!");
       }
     };
-
     getServices();
   }, [baseURL]);
 

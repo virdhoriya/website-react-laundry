@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Signup from "./components/signup/Signup";
 import Login from "./components/Login/Login";
 import ForgetPassword from "./components/forget/ForgetPassword";
@@ -13,6 +18,8 @@ import More from "./components/more/More";
 import Cart from "./components/cart/Cart";
 import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import EnterOtp from "./components/forget/EnterOtp";
+import ResetPassword from "./components/forget/ResetPassword";
 
 const App = () => {
   return (
@@ -27,15 +34,24 @@ const MainComponent = () => {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/login";
   const isSignupRoute = location.pathname === "/signup";
-  const isForgetRoute = location.path === "/forget-password";
+  const isForgetRoute = location.pathname === "/forget-password";
+  const isEnterOtpRoute = location.pathname === "/enter-otp";
+  const isResetPassRoute = location.pathname === "/reset-password";
   return (
     <>
-      {!isSignupRoute && !isLoginRoute && !isForgetRoute && <Header />}
+      {!isSignupRoute &&
+        !isLoginRoute &&
+        !isForgetRoute &&
+        !isResetPassRoute &&
+        !isEnterOtpRoute && <Header />}
       <main>
         <Routes>
           <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/enter-otp" element={<EnterOtp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -46,7 +62,12 @@ const MainComponent = () => {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
-      {!isSignupRoute && !isLoginRoute && !isForgetRoute && <Footer />}
+      {!isSignupRoute &&
+        !isLoginRoute &&
+        !isForgetRoute &&
+        !isResetPassRoute &&
+        !isForgetRoute &&
+        !isEnterOtpRoute && <Footer />}
     </>
   );
 };
