@@ -19,30 +19,64 @@ const ForgetPassword = () => {
   };
 
   return (
-    <section className="bg-[#e9ebee]">
+    <section className="bg-white">
       <div className="h-[100vh] w-[100vw] flex justify-center items-center">
-        <div className="enter-mobile-container">
-          <h2>find your account</h2>
-          <div className="py-8 px-[1.8rem] border-b-[0.5px] border-[#1c1e21] flex flex-col gap-8">
-            <label htmlFor="mobile_number">
-              Please enter your mobile number
-            </label>
-            <input
-              required
-              id="mobile_number"
-              type="text"
-              className="focus:outline-blue-400"
-              placeholder="Enter mobile number"
-              value={mobileNumber || ""}
-              onChange={(e) => setMobileNumber(Number(e.target.value))}
-            />
+        <div className="forget-pass-container flex flex-col gap-14">
+          <h2 className="text-center py-2 text-3xl font-bold leading-9 tracking-tight text-gray-900">
+            Find your account
+          </h2>
+
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
+              <label
+                htmlFor="country"
+                className="text-left text-[1.4rem] font-medium"
+              >
+                Country
+              </label>
+              <select
+                name="country"
+                id="country"
+                className="text-[1.4rem] block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
+              >
+                <option value="india">
+                  <img src="india-flag.png" alt="India" />
+                  <span className="text-[1.4rem] font-semibold">india</span>
+                </option>
+                <option value="usa">
+                  <img src="usa-flag.png" alt="USA" />
+                  <span className="text-[1.4rem] font-semibold">america</span>
+                </option>
+              </select>
+            </div>
+            <div className="flex flex-col gap-3">
+              <label
+                htmlFor="mobile_number"
+                className="text-left text-[1.4rem] font-medium"
+              >
+                Please enter your mobile number
+              </label>
+              <input
+                required
+                id="mobile_number"
+                type="text"
+                className="text-[1.4rem] block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
+                placeholder="Enter mobile number"
+                value={mobileNumber || ""}
+                onChange={(e) => setMobileNumber(Number(e.target.value))}
+              />
+            </div>
           </div>
-          <div className="py-8 px-[1.8rem] flex  justify-end items-center gap-4">
-            <button className="btn-sendotp bg-[#e4e6eb]" onClick={handleCancle}>
+
+          <div className="flex justify-between items-center gap-8">
+            <button
+              className="btn-sendotp bg-[#e4e6eb] extra-pad"
+              onClick={handleCancle}
+            >
               cancel
             </button>
             <button
-              className="btn-sendotp bg-primary text-white"
+              className="btn-sendotp bg-indigo-600 text-white extra-pad"
               onClick={handleSendOtp}
             >
               send otp

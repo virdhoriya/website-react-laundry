@@ -1,12 +1,12 @@
 import { useRef } from "react";
-import { SlLock } from "react-icons/sl";
 import useValidateOtp from "../../hooks/otp/useValidateOtp";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const EnterOtp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const mobile_number = location?.state?.mobileNumber;
+  const last3 = String(mobile_number).slice(-3);
   const { validateOtp } = useValidateOtp();
   const inputRefs = useRef([]);
 
@@ -36,27 +36,39 @@ const EnterOtp = () => {
   };
 
   return (
-    <section className="bg-[#e9ebee]">
-      <div className="h-[100vh] w-[100vw] flex justify-center items-center shadow">
-        <div className="enter-otp-container">
-          <SlLock className="lock-icon" />
-          <h2>Enter your otp</h2>
-          <div className="boxes">
-            {[...Array(6)].map((_, index) => (
-              <input
-                key={index}
-                type="text"
-                className="box"
-                maxLength={1}
-                ref={(el) => (inputRefs.current[index] = el)}
-                onChange={(e) => handleInputChange(e, index)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-              />
-            ))}
+    <section className="bg-white">
+      <div className="h-[100vh] w-[100vw] flex justify-center items-center">
+        <div className="enter-mobile-container">
+          <Link to="/forget-password" className="forget-link">
+            forget password
+          </Link>
+          <p className="verify-text">Verify your phone number</p>
+          <p className="verify-text2">We have send you an SMS with 6 digits</p>
+          <div className="otp-boxes-container flex flex-col gap-6">
+            <p className="text-[#9ca3af]">code sent to</p>
+            <span className="font-bold text-center text-[var(--primary)]">
+              +91 *****{last3}
+            </span>
+            <div className="boxes">
+              {[...Array(6)].map((_, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  className="box new-box text-[var(--primary)] focus:ring-2"
+                  maxLength={1}
+                  ref={(el) => (inputRefs.current[index] = el)}
+                  onChange={(e) => handleInputChange(e, index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                />
+              ))}
+            </div>
           </div>
-          <button className="verify-btn bg-indigo-500" onClick={handleVerify}>
-            Verify
-          </button>
+
+          <div>
+            <button className="new-verift-button" onClick={handleVerify}>
+              Verify
+            </button>
+          </div>
         </div>
       </div>
     </section>

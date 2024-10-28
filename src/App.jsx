@@ -20,6 +20,7 @@ import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
 import EnterOtp from "./components/forget/EnterOtp";
 import ResetPassword from "./components/forget/ResetPassword";
+import Tmp from "./components/tmp/Tmp";
 
 const App = () => {
   return (
@@ -37,12 +38,14 @@ const MainComponent = () => {
   const isForgetRoute = location.pathname === "/forget-password";
   const isEnterOtpRoute = location.pathname === "/enter-otp";
   const isResetPassRoute = location.pathname === "/reset-password";
+  const tmp = location.pathname === "/tmp";
   return (
     <>
       {!isSignupRoute &&
         !isLoginRoute &&
         !isForgetRoute &&
         !isResetPassRoute &&
+        !tmp &&
         !isEnterOtpRoute && <Header />}
       <main>
         <Routes>
@@ -53,6 +56,7 @@ const MainComponent = () => {
           <Route path="/login" element={<Login />} />
 
           <Route path="/" element={<Home />} />
+          <Route path="/tmp" element={<Tmp />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
@@ -67,6 +71,7 @@ const MainComponent = () => {
         !isForgetRoute &&
         !isResetPassRoute &&
         !isForgetRoute &&
+        !tmp &&
         !isEnterOtpRoute && <Footer />}
     </>
   );

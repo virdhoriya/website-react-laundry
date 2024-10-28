@@ -30,7 +30,7 @@ const ResetPassword = () => {
         formData.confPassword
       );
       if (result.success) {
-        navigate("login");
+        navigate("/login");
       }
     } catch (error) {
       const validationErrors = {};
@@ -61,18 +61,21 @@ const ResetPassword = () => {
   });
 
   return (
-    <section className="bg-[#e9ebee]">
+    <section className="bg-white">
       <div className="h-[100vh] w-[100vw] flex justify-center items-center">
         <form className="reset-password-container flex flex-col gap-4">
-          <h2>Reset Password</h2>
+          <h2 className="capitalize text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 py-4">
+            Reset Password
+          </h2>
 
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label htmlFor="new_password">new password</label>
             <input
               id="new_password"
-              type="text"
+              type="password"
               name="newPassword"
-              className="focus:outline-blue-400"
+              placeholder="new password"
+              className="text-[1.4rem] block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
               value={formData.newPassword}
               onChange={handleChange}
             />
@@ -85,13 +88,14 @@ const ResetPassword = () => {
             )}
           </div>
 
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label htmlFor="conf_password">confirm password</label>
             <input
               name="confPassword"
               id="conf_password"
-              type="text"
-              className="focus:outline-blue-400"
+              type="password"
+              placeholder="confirm password"
+              className="text-[1.4rem] block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
               value={formData.confPassword}
               onChange={handleChange}
             />
@@ -104,7 +108,7 @@ const ResetPassword = () => {
             )}
           </div>
 
-          <div className="flex justify-between items-center mt-6">
+          <div className="flex justify-between items-center py-2">
             <button
               type="button"
               className="btn-sendotp btn-2 bg-[#e4e6eb]"
@@ -114,7 +118,7 @@ const ResetPassword = () => {
             </button>
             <button
               type="button"
-              className="btn-sendotp btn-2 bg-primary text-white"
+              className="btn-sendotp btn-2 bg-[#6366F1] text-white"
               onClick={handleSubmit}
             >
               submit
