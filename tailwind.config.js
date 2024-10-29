@@ -17,6 +17,11 @@ export default {
       },
       backgroundImage: {
         'pricelist-component': "url('/priceList.png')",
+      },
+      screens: {
+        'laptop-l': {'max' : '100em'},
+        'laptop-m': { 'max' : '83.75em'},
+        'laptop': {'max': '80em'},
       }
     },
   },

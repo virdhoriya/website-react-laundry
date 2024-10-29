@@ -1,35 +1,62 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
-import useCartOperations from "../../hooks/cart/useCartOperations";
+import useAddToCart from "../../hooks/cart/useAddToCart";
+import toast from "react-hot-toast";
+import useUpdateCart from "../../hooks/cart/useUpdateCart";
+import useDeletCart from "../../hooks/cart/useDeletCart";
 
 const CategoryItem = ({ categoryItem, paramId }) => {
   const [itemCount, setItemCount] = useState(1);
+  const [cartId, setCartId] = useState(null);
   const [numberBtn, setNumberBtn] = useState(false);
-  const { addToCart, updateProductQuantity, deleteProduct } =
-    useCartOperations();
+
+  const { addToCart } = useAddToCart();
+  const { updateCart } = useUpdateCart();
+  const { deleteCart } = useDeletCart();
 
   const onIncClick = async () => {
     setItemCount(itemCount + 1);
     const newCount = itemCount + 1;
-    await updateProductQuantity(newCount);
+    await updateCart(newCount, cartId);
   };
 
   const onDecClick = async () => {
     if (itemCount > 0 && itemCount - 1 != 0) {
       setItemCount(itemCount - 1);
       const newCount = itemCount - 1;
-      await updateProductQuantity(newCount);
+      await updateCart(newCount, cartId);
     } else {
       setNumberBtn(false);
-      await deleteProduct();
+      await deleteCart(cartId);
     }
   };
 
   const handleBtnClick = async (product_id, service_id) => {
     setNumberBtn(true);
-    await addToCart({ paramId, product_id, service_id, itemCount });
+    const result = await addToCart({
+      paramId,
+      product_id,
+      service_id,
+      itemCount,
+    });
+    if (result) {
+      setCartId(result);
+    } else {
+      toast.error("Failed to add item into cart!");
+    }
   };
+
+  useEffect(() => {
+    if (categoryItem?.carts) {
+      setCartId(categoryItem?.carts?.cart_id);
+      setItemCount(categoryItem?.carts?.quantity);
+      setNumberBtn(true);
+    } else {
+      setNumberBtn(false);
+      setItemCount(1);
+    }
+  }, [categoryItem]);
 
   return (
     <div
@@ -69,6 +96,10 @@ const CategoryItem = ({ categoryItem, paramId }) => {
 
 CategoryItem.propTypes = {
   categoryItem: PropTypes.shape({
+    carts: PropTypes.shape({
+      cart_id: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    }),
     price: PropTypes.number.isRequired,
     service_id: PropTypes.number.isRequired,
     product_id: PropTypes.number.isRequired,
