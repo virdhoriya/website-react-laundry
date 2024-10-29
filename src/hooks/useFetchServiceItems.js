@@ -10,7 +10,7 @@ const useFetchServiceItems = (category_id, sid) => {
     const fetchServiceItems = async () => {
       try {
         const response = await fetch(
-          `${baseURL}/web/products?category_id=${category_id}&service_id=${service_id}'`,
+          `${baseURL}/web/products?category_id=${category_id}&service_id=${service_id}`,
           {
             method: "GET",
           }

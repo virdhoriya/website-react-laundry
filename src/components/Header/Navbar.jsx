@@ -3,12 +3,12 @@ import { LuShoppingCart } from "react-icons/lu";
 
 const Navbar = () => {
   return (
-    <nav className="py-6 bg-transparent">
+    <nav className="py-4 bg-transparent laptop-l:py-3 laptop-m:py-2 laptop:py-2">
       <div className="container">
         <div className="flex items-center justify-between">
 
           <div>
-            <img src="/logo.png" alt="logo" className="h-16 w-96" />
+            <img src="/logo.png" alt="logo" className="h-16 w-96 laptop-l:h-14 laptop-l:w-80 laptop-m:h-12 laptop-m:w-72 laptop:h-10 laptop:w-64" />
           </div>
 
           <div className="z-10">
@@ -23,8 +23,8 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="flex justify-center items-center gap-8 z-10">
-            <span className="inline-block bg-red-500 h-[4.6rem] w-[4.6rem] rounded-full p-4">
+          <div className="flex justify-center items-center gap-8 z-10 laptop-l:gap-4">
+            <span className="inline-block bg-red-500 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem]">
               <LuShoppingCart className="h-full w-full stroke-[var(--black)]" aria-label="Shopping Cart"/>
             </span>
             <Link to="/login" className="login">

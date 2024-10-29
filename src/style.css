@@ -28,7 +28,7 @@
   font-size: 2rem;
   line-height: 2.6rem;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--primary);
   letter-spacing: normal;
   padding-bottom: 2px;
   transition: all 0.3s;
@@ -46,7 +46,7 @@
   font-size: 2rem;
   color: var(--white);
   font-weight: 500;
-  padding: 1.125rem 3rem;
+  padding: 1.075rem 3rem;
   border-radius: 999px;
 }
 
