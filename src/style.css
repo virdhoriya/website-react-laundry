@@ -1308,3 +1308,56 @@ h3 {
 .extra-pad {
   padding: .5rem 3rem;
 }
+
+.logout-container {
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  max-width: 13rem;
+  border: 1px solid #B9BCCF4D;
+  border-radius: 4px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.9rem 1.8rem;
+  margin-top: 0.8rem;
+}
+
+.logout-container::before {
+  content: "";
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  background-image: url('triangle.png');
+  background-size: cover;
+  position: absolute;
+  top: -0.9rem;
+  right: 1.2rem;
+  border-radius: 4px;
+  filter: invert(87%);
+  z-index: -10;
+}
+
+.logout-container::after {
+  content: "";
+  display: inline-block;
+  height: 1.2px;
+  width: 9.5px;
+  background-color: white;
+  position: absolute;
+  top: -1px;
+  right: 1.72rem;
+}
+
+.logout {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: var(--black);
+  color: #676788;
+  text-transform: capitalize;
+  font-weight: 600;
+}
