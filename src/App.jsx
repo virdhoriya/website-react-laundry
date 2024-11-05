@@ -20,6 +20,7 @@ import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
 import EnterOtp from "./components/forget/EnterOtp";
 import ResetPassword from "./components/forget/ResetPassword";
+import Order from "./components/order/Order";
 
 const App = () => {
   return (
@@ -60,6 +61,7 @@ const MainComponent = () => {
           <Route path="/corporate-services" element={<CorporateServices />} />
           <Route path="/more" element={<More />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<Order />} />
         </Routes>
       </main>
       {!isSignupRoute &&

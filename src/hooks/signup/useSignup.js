@@ -6,13 +6,17 @@ const useSignup = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
 
   const signup = async (formData) => {
+    let newFormData = {
+      ...formData,
+      gender: Number(formData.gender)
+    }
     try {
       const response = await fetch(`${baseURL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(newFormData),
       });
 
       const data = await response.json();

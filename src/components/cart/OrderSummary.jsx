@@ -1,21 +1,51 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useCartOperations from "../../hooks/cart/useCartOperations";
 import useFetchShippingCharge from "../../hooks/cart/useFetchShippingCharge";
+import usePlaceOrder from "../../hooks/order/usePlaceOrder";
+import useViewCart from "../../hooks/cart/useViewCart";
+import { useNavigate } from "react-router-dom";
+import useApplyCoupon from "../../hooks/coupon/useApplyCoupon";
 
-const OrderSummary = ({ subTotal }) => {
+const OrderSummary = ({
+  subTotal,
+  instruction,
+  paymentMethod,
+  selectedAddId,
+}) => {
+  const navigate = useNavigate();
   const [shippingCharge, setShippingCharge] = useState(0);
   const [couponCode, setCouponCode] = useState("");
+  const [newCouponCode, setNewCouponCode] = useState("");
   const [discountValue, setDiscountValue] = useState(0);
-  const { applyCoupon } = useCartOperations();
+  const { applyCoupon } = useApplyCoupon();
   const { fetchShippingCharge } = useFetchShippingCharge();
+  const { placeOrder } = usePlaceOrder();
+  const { viewCart } = useViewCart();
+  const [items, setItems] = useState({});
 
   const handleApplyClick = async () => {
     let newCode = couponCode.toUpperCase();
     const res = await applyCoupon(subTotal, newCode);
     if (res) {
       setDiscountValue(res);
+      setNewCouponCode(newCode);
+    }
+  };
+
+  const handleCheckout = async () => {
+    let newSubTotal = subTotal - discountValue;
+    const result = await placeOrder(
+      items,
+      newSubTotal,
+      instruction,
+      newCouponCode,
+      shippingCharge,
+      paymentMethod,
+      selectedAddId
+    );
+
+    if (result) {
+      navigate("/order", { state: { result } });
     }
   };
 
@@ -28,7 +58,15 @@ const OrderSummary = ({ subTotal }) => {
       }
     };
     getShippingCharge();
-  }, [fetchShippingCharge]);
+
+    const fetchCart = async () => {
+      const res = await viewCart();
+      if (res) {
+        setItems(res);
+      }
+    };
+    fetchCart();
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -59,9 +97,9 @@ const OrderSummary = ({ subTotal }) => {
           <p>Total</p>
           <h5>₹{subTotal - discountValue + shippingCharge}</h5>
         </div>
-        <Link to="/cart" className="view-cart-btn">
+        <button className="view-cart-btn" onClick={handleCheckout}>
           checkout
-        </Link>
+        </button>
       </div>
     </div>
   );
@@ -69,6 +107,9 @@ const OrderSummary = ({ subTotal }) => {
 
 OrderSummary.propTypes = {
   subTotal: PropTypes.number.isRequired,
+  instruction: PropTypes.string.isRequired,
+  paymentMethod: PropTypes.number.isRequired,
+  selectedAddId: PropTypes.number.isRequired,
 };
 
 export default OrderSummary;

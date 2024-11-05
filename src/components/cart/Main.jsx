@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import TableRow from "./TableRow";
-import useCartOperations from "../../hooks/cart/useCartOperations";
+import useViewCart from "../../hooks/cart/useViewCart";
 
 const Main = ({ setSubTotal }) => {
   const [cart, setCart] = useState([]);
-  const { viewCart } = useCartOperations();
+  const { viewCart } = useViewCart();
 
   useEffect(() => {
     const fetchCart = async () => {
