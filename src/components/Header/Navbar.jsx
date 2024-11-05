@@ -81,9 +81,9 @@ const Navbar = () => {
             {isLoggedIn ? (
               <span className="inline-block h-[4.6rem] w-[4.6rem] relative group">
                 <img
-                  src="/avatar.avif"
+                  src="/avatar.jpeg"
                   alt="Avatar"
-                  className="h-full w-full rounded-full border-[1.5px] border-black"
+                  className="h-full w-full rounded-full border-[1.5px] border-black/45"
                 />
                 <div className="hidden group-hover:inline-block">
                   <div className="logout-container" onClick={onLogoutClick}>

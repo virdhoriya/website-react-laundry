@@ -1053,26 +1053,11 @@ h3 {
   border-radius: 8px;
 }
 
-/* .enter-mobile-container h2 {
-  color: var(--black);
-  font-size: 2.2rem;
-  line-height: 2.4rem;
-  font-weight: 700;
-  padding: 2rem 1.8rem;
-  text-transform: capitalize;
-} */
-
 .enter-mobile-container label {
   font-size: 1.4rem;
   font-weight: 500;
   align-self: flex-start;
 }
-/* .enter-mobile-container input {
-  padding: 1.2rem 1.4rem;
-  border-radius: 4px;
-  border: 1px solid #dbdfe9;
-  font-size: 1.6rem;
-} */
 
 .btn-sendotp {
   padding: 0.4rem 2rem;
@@ -1201,13 +1186,6 @@ h3 {
   padding-bottom: 3rem;
 }
 
-/* .enter-otp-container {
-  min-width: 46rem;
-  background-color: white;
-  box-shadow: 10px 10px 30px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-} */
-
 .enter-otp-container {
   padding: 3rem 0;
   min-width: 39rem;
@@ -1304,9 +1282,8 @@ h3 {
   padding: 0.4rem 3.5rem;
 }
 
-
 .extra-pad {
-  padding: .5rem 3rem;
+  padding: 0.5rem 3rem;
 }
 
 .logout-container {
@@ -1315,7 +1292,7 @@ h3 {
   top: 100%;
   right: 0;
   max-width: 13rem;
-  border: 1px solid #B9BCCF4D;
+  border: 1px solid #b9bccf4d;
   border-radius: 4px;
   cursor: pointer;
 
@@ -1332,7 +1309,7 @@ h3 {
   display: inline-block;
   height: 2rem;
   width: 2rem;
-  background-image: url('triangle.png');
+  background-image: url("triangle.png");
   background-size: cover;
   position: absolute;
   top: -0.9rem;
@@ -1360,4 +1337,12 @@ h3 {
   color: #676788;
   text-transform: capitalize;
   font-weight: 600;
+}
+
+.order-container {
+  max-width: 54rem;
+  padding: 3.2rem;
+  border-radius: 8px;
+  border: 1px solid #dbdfe9;
+  box-shadow: 3px 3px 12px 4px rgba(0, 0, 0, 0.1);
 }

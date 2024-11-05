@@ -7,6 +7,10 @@ import OrderSummary from "./OrderSummary";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
+  const [instruction, setInstruction] = useState("");
+  const [paymentMethod, setPayementMethod] = useState(0);
+  const [selectedAddId, setSelectAddId] = useState(0);
+
   return (
     <section className="section-cart">
       <div className="secondary-container">
@@ -14,13 +18,21 @@ const Cart = () => {
           <div className="flex-[0_0_63%]">
             <div className="flex flex-col gap-24">
               <Main setSubTotal={setSubTotal} />
-              <AddAddress />
-              <AddInstruction />
-              <PayementMethod />
+              <AddAddress setSelectAddId={setSelectAddId} />
+              <AddInstruction
+                instruction={instruction}
+                setInstruction={setInstruction}
+              />
+              <PayementMethod setPayementMethod={setPayementMethod} />
             </div>
           </div>
           <div className="flex-[0_0_31%] border border-[#b9bccf4d] rounded-xl">
-            <OrderSummary subTotal={subTotal} />
+            <OrderSummary
+              subTotal={subTotal}
+              instruction={instruction}
+              paymentMethod={paymentMethod}
+              selectedAddId={selectedAddId}
+            />
           </div>
         </div>
       </div>

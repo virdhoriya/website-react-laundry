@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 
 const useFetchServiceItems = (category_id, sid) => {
   const [categoryItems, setCategoryItems] = useState([]);
+  const token = localStorage.getItem("token");
   const baseURL = import.meta.env.VITE_BASE_URL;
   const service_id = sid;
 
@@ -13,6 +14,9 @@ const useFetchServiceItems = (category_id, sid) => {
           `${baseURL}/web/products?category_id=${category_id}&service_id=${service_id}`,
           {
             method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         const data = await response.json();
@@ -35,7 +39,7 @@ const useFetchServiceItems = (category_id, sid) => {
     };
 
     fetchServiceItems();
-  }, [baseURL, category_id, service_id]);
+  }, [baseURL, category_id, service_id, token]);
 
   return { categoryItems };
 };
