@@ -1294,12 +1294,6 @@ h3 {
   max-width: 13rem;
   border: 1px solid #b9bccf4d;
   border-radius: 4px;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
   padding: 0.9rem 1.8rem;
   margin-top: 0.8rem;
 }
@@ -1345,4 +1339,217 @@ h3 {
   border-radius: 8px;
   border: 1px solid #dbdfe9;
   box-shadow: 3px 3px 12px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* dashboard */
+
+.dash-logo {
+  display: inline-block;
+  max-width: 28rem;
+  height: auto;
+  border-bottom: 1px solid #b9bccf4d;
+}
+
+.dash-sidebar li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 4rem;
+}
+
+.dash-icons-container > * {
+  display: inline-block;
+  height: 2.6rem;
+  width: 2.6rem;
+  fill: #b9bccf;
+  transition: all 0.2s;
+}
+
+.dash-sidebar li span {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: #b9bccf;
+  transition: all 0.1s;
+  font-weight: 500;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  z-index: 99;
+  background-color: var(--red);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(48%, -30%);
+}
+
+.dash-section-head {
+  color: var(--primary);
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+}
+
+.cus-detail-container {
+  background-color: white;
+  border: 1px solid #b9bccf4d;
+  border-radius: 0.8rem;
+}
+
+.profile-img-container {
+  display: inline-block;
+  height: 12rem;
+  width: 12rem;
+}
+
+.edit-profile-img {
+  height: 3.6rem;
+  width: 3.6rem;
+  background-color: var(--red);
+  border-radius: 50%;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.user-detail label {
+  align-self: flex-start;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  color: #687182;
+  text-transform: capitalize;
+  font-weight: normal;
+}
+
+.user-detail input,
+.user-detail textarea {
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  color: var(--black);
+  border-radius: 4px;
+  padding: 1.1rem 1.6rem;
+}
+
+.dash-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  transition: all 0.2s;
+}
+
+.dash-nav-link:hover .dash-icons-container > * {
+  fill: var(--primary);
+}
+
+.dash-nav-link:hover > span {
+  color: var(--primary);
+}
+
+.active-icons-clr > * {
+  fill: var(--primary) !important;
+}
+
+.active-label {
+  color: var(--primary) !important;
+}
+
+.update-btn {
+  background-color: var(--primary);
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 1.4rem 3rem;
+  border-radius: 999px;
+}
+
+.cus-detail-container {
+  background-color: white;
+  border: 1px solid #b9bccf4d;
+  border-radius: 0.8rem;
+}
+
+.new-address-btn {
+  border: 1px solid var(--primary);
+  padding: 1.2rem 1.6rem;
+}
+
+.new-address-btn span {
+  font-weight: 500;
+}
+
+.rating-star-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.star {
+  display: inline-block;
+  height: 4.6rem;
+  width: 4.6rem;
+}
+
+.submit-review {
+  display: inline-block;
+  line-height: normal;
+  background-color: var(--primary-color);
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 500;
+  padding: 1.2rem 2.4rem;
+  border-radius: 999px;
+}
+
+.datepicker-container input {
+  max-width: 10rem;
+  min-width: 10rem;
+  display: inline-block;
+  padding: 1.3rem 0 1.3rem 1.3rem;
+}
+
+.datepicker-container button svg {
+  fill: var(--primary);
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.status-card {
+  flex-basis: 32%;
+  border-radius: 6px;
+  background-color: white;
+  padding: 1.5rem;
+}
+
+.card-label {
+  color: #687182;
+  font-size: 1.5rem;
+  line-height: 1.6rem;
+}
+.card-price {
+  font-size: 1.7rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.booking-list h3 {
+  font-size: 1.8rem;
+  line-height: 2rem;
+  color: var(--primary);
+  font-weight: 600;
 }
