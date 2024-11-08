@@ -504,7 +504,7 @@ h3 {
   display: inline-block;
   height: 37.5rem;
   width: 37.5rem;
-  background-image: url("./circel-star.png");
+  background-image: url("/circel-star.png");
   position: absolute;
   top: 0;
   left: 0;
@@ -1303,7 +1303,7 @@ h3 {
   display: inline-block;
   height: 2rem;
   width: 2rem;
-  background-image: url("triangle.png");
+  background-image: url("/triangle.png");
   background-size: cover;
   position: absolute;
   top: -0.9rem;
