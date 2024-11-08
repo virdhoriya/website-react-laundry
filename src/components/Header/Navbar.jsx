@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { LuShoppingCart } from "react-icons/lu";
 import { FiLogOut } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,6 +10,10 @@ const Navbar = () => {
   const onLogoutClick = () => {
     localStorage.clear();
     navigate("/login");
+  };
+
+  const onProfileClick = () => {
+    navigate("/dashboard/home");
   };
 
   return (
@@ -86,9 +91,21 @@ const Navbar = () => {
                   className="h-full w-full rounded-full border-[1.5px] border-black/45"
                 />
                 <div className="hidden group-hover:inline-block">
-                  <div className="logout-container" onClick={onLogoutClick}>
-                    <FiLogOut className="h-[2rem] w-[2rem] stroke-[#676788]" />
-                    <span className="logout">logout</span>
+                  <div className="logout-container flex flex-col items-start gap-4">
+                    <span
+                      className="flex items-center justify-center gap-4 cursor-pointer"
+                      onClick={onLogoutClick}
+                    >
+                      <FiLogOut className="h-[2rem] w-[2rem] stroke-[#676788]" />
+                      <span className="logout">logout</span>
+                    </span>
+                    <span
+                      className="flex items-center justify-center gap-4 cursor-pointer"
+                      onClick={onProfileClick}
+                    >
+                      <CgProfile className="h-[2rem] w-[2rem] text-[#676788]" />
+                      <span className="logout">Profile</span>
+                    </span>
                   </div>
                 </div>
               </span>

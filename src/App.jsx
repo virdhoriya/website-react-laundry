@@ -21,6 +21,12 @@ import { Toaster } from "react-hot-toast";
 import EnterOtp from "./components/forget/EnterOtp";
 import ResetPassword from "./components/forget/ResetPassword";
 import Order from "./components/order/Order";
+import DashBoard from "./components/dashboard/DashBoard";
+import Profile from "./components/dashboard/Profile";
+import DashBoardHome from "./components/dashboard/Home";
+import PriceListView from "./components/dashboard/PriceListView";
+import WriteReview from "./components/dashboard/WriteReview";
+import SavedAddress from "./components/dashboard/SavedAddress";
 
 const App = () => {
   return (
@@ -33,18 +39,23 @@ const App = () => {
 
 const MainComponent = () => {
   const location = useLocation();
-  const isLoginRoute = location.pathname === "/login";
-  const isSignupRoute = location.pathname === "/signup";
-  const isForgetRoute = location.pathname === "/forget-password";
-  const isEnterOtpRoute = location.pathname === "/enter-otp";
-  const isResetPassRoute = location.pathname === "/reset-password";
+
+  const excludeHeaderFooterRoutes = [
+    "/login",
+    "/signup",
+    "/forget-password",
+    "/enter-otp",
+    "/reset-password",
+    "/dashboard",
+  ];
+
+  const isExcludedRoute =
+    excludeHeaderFooterRoutes.includes(location.pathname) ||
+    location.pathname.startsWith("/dashboard");
+
   return (
     <>
-      {!isSignupRoute &&
-        !isLoginRoute &&
-        !isForgetRoute &&
-        !isResetPassRoute &&
-        !isEnterOtpRoute && <Header />}
+      {!isExcludedRoute && <Header />}
       <main>
         <Routes>
           <Route path="/forget-password" element={<ForgetPassword />} />
@@ -62,14 +73,17 @@ const MainComponent = () => {
           <Route path="/more" element={<More />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<Order />} />
+
+          <Route path="/dashboard" element={<DashBoard />}>
+            <Route path="home" element={<DashBoardHome />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="price-list" element={<PriceListView />} />
+            <Route path="write-review" element={<WriteReview />} />
+            <Route path="saved-addresses" element={<SavedAddress />} />
+          </Route>
         </Routes>
       </main>
-      {!isSignupRoute &&
-        !isLoginRoute &&
-        !isForgetRoute &&
-        !isResetPassRoute &&
-        !isForgetRoute &&
-        !isEnterOtpRoute && <Footer />}
+      {!isExcludedRoute && <Footer />}
     </>
   );
 };
