@@ -2,7 +2,7 @@ const Coupon = () => {
   return (
     <section className="section-coupon">
       <div className="secondary-container">
-        <div className="p-16 bg-[url('./cupon-bg.png')] bg-cover bg-center">
+        <div className="p-16 bg-[url('/cupon-bg.png')] bg-cover bg-center">
           <article className="border-4 border-white flex items-center">
             <div className="flex-[0_0_50%]">
                 <img src="/shocked-girl.png" alt="A girl looking surprised"/>
