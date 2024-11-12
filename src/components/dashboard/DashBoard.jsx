@@ -5,11 +5,13 @@ import Sidebar from "./Sidebar";
 const DashBoard = () => {
   return (
     <section>
-      <div className="max-w-[144rem] mx-auto">
+      <div className="dashboard-container">
         <Navbar />
-        <div className="flex h-[calc(100vh-8rem)]">
-          <div className="basis-[28rem] py-16 border-r border-[#b9bccf4d] bg-white">
-            <Sidebar />
+        <div className="flex items-stretch h-full">
+          <div className="basis-[28rem] border-r border-[#b9bccf4d]">
+            <div className="py-16">
+              <Sidebar />
+            </div>
           </div>
           <div className="grow py-14 px-12 bg-[rgba(239,243,255,0.8)]">
             <Outlet />
