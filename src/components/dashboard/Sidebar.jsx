@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoNewspaper, IoPerson } from "react-icons/io5";
 import { MdReviews } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const location = useLocation();
+  let path = location.pathname;
 
   const menuItems = [
     { icon: <AiFillHome />, label: "Dashboard", route: "/dashboard/home" },
@@ -32,17 +32,19 @@ const Sidebar = () => {
     <>
       <ul className="dash-sidebar flex flex-col gap-12">
         {menuItems.map((item, index) => (
-          <li key={index} onClick={() => setActiveIndex(index)}>
+          <li key={index}>
             <Link to={item.route} className="dash-nav-link">
               <span
                 className={`dash-icons-container ${
-                  index === activeIndex ? "active-icons-clr" : ""
+                  item.route === path ? "active-icons-clr" : ""
                 }`}
               >
                 {item.icon}
               </span>
               <span
-                className={`${index === activeIndex ? "active-label" : ""}`}
+                className={`${
+                  item.route === path ? "active-label" : ""
+                }`}
               >
                 {item.label}
               </span>

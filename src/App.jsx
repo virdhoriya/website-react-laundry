@@ -27,7 +27,7 @@ import DashBoardHome from "./components/dashboard/Home";
 import PriceListView from "./components/dashboard/PriceListView";
 import WriteReview from "./components/dashboard/WriteReview";
 import SavedAddress from "./components/dashboard/SavedAddress";
-
+import ViewOrder from "./components/dashboard/ViewOrder";
 const App = () => {
   return (
     <Router>
@@ -80,6 +80,7 @@ const MainComponent = () => {
             <Route path="price-list" element={<PriceListView />} />
             <Route path="write-review" element={<WriteReview />} />
             <Route path="saved-addresses" element={<SavedAddress />} />
+            <Route path="view-order" element={<ViewOrder />} />
           </Route>
         </Routes>
       </main>
