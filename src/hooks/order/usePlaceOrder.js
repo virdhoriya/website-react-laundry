@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 const usePlaceOrder = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const token = localStorage.getItem("token");
+  const userObj = JSON.parse(localStorage.getItem("user"));
+  const user_id = userObj.user_id;
 
   const placeOrder = async (
     items,
@@ -30,7 +32,7 @@ const usePlaceOrder = () => {
           order_status: 1,
           payment_status: 3,
           address_id,
-          user_id: 74,
+          user_id
         }),
       });
       const data = await response.json();

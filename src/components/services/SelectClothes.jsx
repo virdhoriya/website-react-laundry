@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import CategoryItem from "./CategoryItem";
 import useFetchServiceItems from "../../hooks/useFetchServiceItems";
 
-const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
+const SelectClothes = ({
+  serviceSection,
+  sid,
+  setParamId,
+  paramId,
+  isAuthenticated,
+}) => {
   const [categoryItemsList, setCategoryItemsList] = useState([]);
   const { categoryItems } = useFetchServiceItems(paramId, sid);
 
@@ -39,6 +45,7 @@ const SelectClothes = ({ serviceSection, sid, setParamId, paramId }) => {
               key={categoryItem.product_id}
               categoryItem={categoryItem}
               paramId={paramId}
+              isAuthenticated={isAuthenticated}
             />
           );
         })}
@@ -57,6 +64,7 @@ SelectClothes.propTypes = {
   sid: PropTypes.number.isRequired,
   setParamId: PropTypes.func.isRequired,
   paramId: PropTypes.number.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default SelectClothes;

@@ -14,9 +14,6 @@ const useFetchServiceItems = (category_id, sid) => {
           `${baseURL}/web/products?category_id=${category_id}&service_id=${service_id}`,
           {
             method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
           }
         );
         const data = await response.json();

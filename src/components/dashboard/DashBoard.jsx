@@ -7,8 +7,8 @@ const DashBoard = () => {
     <section>
       <div className="dashboard-container">
         <Navbar />
-        <div className="flex items-stretch h-full">
-          <div className="basis-[28rem] border-r border-[#b9bccf4d]">
+        <div className="flex min-h-full">
+          <div className="basis-[28rem] border-r border-l border-[#b9bccf4d]">
             <div className="py-16">
               <Sidebar />
             </div>

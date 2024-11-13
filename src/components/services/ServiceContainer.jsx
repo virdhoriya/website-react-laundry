@@ -3,7 +3,13 @@ import SelectClothes from "./SelectClothes";
 import Filter from "./Filter";
 import Cart from "./Cart";
 
-const ServiceContainer = ({ serviceSectionCategory, sid, setParamId, paramId }) => {
+const ServiceContainer = ({
+  serviceSectionCategory,
+  sid,
+  setParamId,
+  paramId,
+  isAuthenticated,
+}) => {
   return (
     <section className="pt-16 pb-48">
       <div className="secondary-container">
@@ -17,6 +23,7 @@ const ServiceContainer = ({ serviceSectionCategory, sid, setParamId, paramId }) 
               sid={sid}
               setParamId={setParamId}
               paramId={paramId}
+              isAuthenticated={isAuthenticated}
             />
           </div>
           <div className="flex-[0_0_21.45%]">
@@ -38,6 +45,7 @@ ServiceContainer.propTypes = {
   sid: PropTypes.number.isRequired,
   setParamId: PropTypes.func.isRequired,
   paramId: PropTypes.number.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default ServiceContainer;

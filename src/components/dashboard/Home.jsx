@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { RiHourglassFill, RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { IoCaretDown, IoCaretUp, IoNewspaper } from "react-icons/io5";
@@ -10,10 +11,9 @@ import {
   FaAngleDoubleRight,
   FaAngleLeft,
   FaAngleRight,
+  FaEye,
 } from "react-icons/fa";
 import useGetOrders02 from "../../hooks/dashboard/useGetOrders02";
-import { MdDownloadForOffline } from "react-icons/md";
-import toast from "react-hot-toast";
 
 const Home = () => {
   const { getOrders } = useGetOrders();
@@ -25,6 +25,7 @@ const Home = () => {
   const [totalRows, setTotalRows] = useState(0);
   const [activeBtn, setActiveBtn] = useState(1);
   const [sortOrder, setSortOrder] = useState("asc");
+  const navigate = useNavigate();
 
   const handlePageClick = async (page) => {
     setLoading(true);
@@ -240,9 +241,13 @@ const Home = () => {
                       style={{ padding: "5px" }}
                       className="flex items-center justify-center"
                     >
-                      <MdDownloadForOffline
-                        className="inline-block h-10 w-10 cursor-pointer"
-                        onClick={() => toast.success(`Download : ${order_id}`)}
+                      <FaEye
+                        className="inline-block h-8 w-8 cursor-pointer"
+                        onClick={() =>
+                          navigate("/dashboard/view-order", {
+                            state: { order_id },
+                          })
+                        }
                       />
                     </td>
                   </tr>
