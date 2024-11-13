@@ -10,9 +10,9 @@ import {
   FaAngleDoubleRight,
   FaAngleLeft,
   FaAngleRight,
+  FaEye,
 } from "react-icons/fa";
 import useGetOrders02 from "../../hooks/dashboard/useGetOrders02";
-import { MdDownloadForOffline } from "react-icons/md";
 import toast from "react-hot-toast";
 
 const Home = () => {
@@ -240,8 +240,8 @@ const Home = () => {
                       style={{ padding: "5px" }}
                       className="flex items-center justify-center"
                     >
-                      <MdDownloadForOffline
-                        className="inline-block h-10 w-10 cursor-pointer"
+                      <FaEye
+                        className="inline-block h-8 w-8 cursor-pointer"
                         onClick={() => toast.success(`Download : ${order_id}`)}
                       />
                     </td>

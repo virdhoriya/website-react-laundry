@@ -1691,3 +1691,15 @@ h3 {
   width: 1rem;
   fill: #b9bccf;
 }
+
+
+.info-login-container {
+  width: 26rem;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2.8rem;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}

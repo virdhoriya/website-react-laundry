@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 const useAddToCart = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const token = localStorage.getItem("token");
+
   const addToCart = async ({ paramId, product_id, service_id, itemCount }) => {
     try {
       const response = await fetch(`${baseURL}/carts`, {

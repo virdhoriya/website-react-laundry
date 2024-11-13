@@ -28,6 +28,9 @@ import PriceListView from "./components/dashboard/PriceListView";
 import WriteReview from "./components/dashboard/WriteReview";
 import SavedAddress from "./components/dashboard/SavedAddress";
 import ViewOrder from "./components/dashboard/ViewOrder";
+import ProtectedRoute from "./components/protected/ProtectedRoute";
+import PrivateRoute from "./components/protected/PrivateRoute";
+
 const App = () => {
   return (
     <Router>
@@ -53,28 +56,83 @@ const MainComponent = () => {
     excludeHeaderFooterRoutes.includes(location.pathname) ||
     location.pathname.startsWith("/dashboard");
 
+  const isAuthenticated = Boolean(localStorage.getItem("token"));
+
   return (
     <>
       {!isExcludedRoute && <Header />}
       <main>
         <Routes>
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/enter-otp" element={<EnterOtp />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/forget-password"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated}>
+                <ForgetPassword />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/enter-otp"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated}>
+                <EnterOtp />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated}>
+                <ResetPassword />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated}>
+                <Signup />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated}>
+                <Login />
+              </PrivateRoute>
+            }
+          />
 
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/prices" element={<Prices />} />
           <Route path="/corporate-services" element={<CorporateServices />} />
           <Route path="/more" element={<More />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/services"
+            element={<Services isAuthenticated={isAuthenticated} />}
+          />
           <Route path="/order" element={<Order />} />
 
-          <Route path="/dashboard" element={<DashBoard />}>
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <DashBoard />
+              </ProtectedRoute>
+            }
+          >
             <Route path="home" element={<DashBoardHome />} />
             <Route path="profile" element={<Profile />} />
             <Route path="price-list" element={<PriceListView />} />
