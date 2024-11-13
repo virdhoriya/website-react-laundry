@@ -25,9 +25,6 @@ const Services = ({ isAuthenticated }) => {
         paramId={paramId}
         isAuthenticated={isAuthenticated}
       />
-      {/* <div className="info-login-model">
-        virji dhoriya
-      </div> */}
     </div>
   );
 };

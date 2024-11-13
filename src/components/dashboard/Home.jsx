@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { RiHourglassFill, RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { IoCaretDown, IoCaretUp, IoNewspaper } from "react-icons/io5";
@@ -13,7 +14,6 @@ import {
   FaEye,
 } from "react-icons/fa";
 import useGetOrders02 from "../../hooks/dashboard/useGetOrders02";
-import toast from "react-hot-toast";
 
 const Home = () => {
   const { getOrders } = useGetOrders();
@@ -25,6 +25,7 @@ const Home = () => {
   const [totalRows, setTotalRows] = useState(0);
   const [activeBtn, setActiveBtn] = useState(1);
   const [sortOrder, setSortOrder] = useState("asc");
+  const navigate = useNavigate();
 
   const handlePageClick = async (page) => {
     setLoading(true);
@@ -242,7 +243,11 @@ const Home = () => {
                     >
                       <FaEye
                         className="inline-block h-8 w-8 cursor-pointer"
-                        onClick={() => toast.success(`Download : ${order_id}`)}
+                        onClick={() =>
+                          navigate("/dashboard/view-order", {
+                            state: { order_id },
+                          })
+                        }
                       />
                     </td>
                   </tr>

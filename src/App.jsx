@@ -29,7 +29,8 @@ import WriteReview from "./components/dashboard/WriteReview";
 import SavedAddress from "./components/dashboard/SavedAddress";
 import ViewOrder from "./components/dashboard/ViewOrder";
 import ProtectedRoute from "./components/protected/ProtectedRoute";
-import PrivateRoute from "./components/protected/PrivateRoute";
+import PublicRoute from "./components/protected/PublicRoute";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
@@ -66,41 +67,41 @@ const MainComponent = () => {
           <Route
             path="/forget-password"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute isAuthenticated={isAuthenticated}>
                 <ForgetPassword />
-              </PrivateRoute>
+              </PublicRoute>
             }
           />
           <Route
             path="/enter-otp"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute isAuthenticated={isAuthenticated}>
                 <EnterOtp />
-              </PrivateRoute>
+              </PublicRoute>
             }
           />
           <Route
             path="/reset-password"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute isAuthenticated={isAuthenticated}>
                 <ResetPassword />
-              </PrivateRoute>
+              </PublicRoute>
             }
           />
           <Route
             path="/signup"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute isAuthenticated={isAuthenticated}>
                 <Signup />
-              </PrivateRoute>
+              </PublicRoute>
             }
           />
           <Route
             path="/login"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute isAuthenticated={isAuthenticated}>
                 <Login />
-              </PrivateRoute>
+              </PublicRoute>
             }
           />
 
@@ -140,6 +141,7 @@ const MainComponent = () => {
             <Route path="saved-addresses" element={<SavedAddress />} />
             <Route path="view-order" element={<ViewOrder />} />
           </Route>
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </main>
       {!isExcludedRoute && <Footer />}

@@ -1426,8 +1426,6 @@ h3 {
   height: 100vh;
   /* overflow: hidden; */
   margin: 0 auto;
-  border-left: 1px solid #b9bccf4d;
-  border-right: 1px solid #b9bccf4d;
 }
 
 /* dashboard */
@@ -1437,6 +1435,7 @@ h3 {
   max-width: 28rem;
   height: auto;
   border-bottom: 1px solid #b9bccf4d;
+  border-left: 1px solid #b9bccf4d;
 }
 
 .cart-item {
@@ -1702,4 +1701,33 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
+}
+
+.cus-info-container,
+.order-list-container,
+.common-container {
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid #b9bccf4d;
+}
+
+.info-label {
+  color: #676788;
+  display: inline-block;
+  width: 12rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
+
+.info-ans {
+  color: var(--black);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+
+.info-label .address {
+  width: 100%;
 }
