@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import * as Yup from "yup";
@@ -59,6 +59,12 @@ const ResetPassword = () => {
       .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
       .required("Confirmation password is required"),
   });
+
+  useEffect(() => {
+    if (!location.state) {
+      navigate("/login");
+    }
+  }, [location.state, navigate]);
 
   return (
     <section className="bg-white">

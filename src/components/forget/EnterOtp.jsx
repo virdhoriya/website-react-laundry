@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import useValidateOtp from "../../hooks/otp/useValidateOtp";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -34,6 +34,12 @@ const EnterOtp = () => {
       navigate("/reset-password", { state: { mobile_number, otp } });
     }
   };
+
+  useEffect(() => {
+    if (!location.state) {
+      navigate("/login");
+    }
+  }, [location.state, navigate]);
 
   return (
     <section className="bg-white">
