@@ -8,6 +8,10 @@ import Loading from "./Loading";
 const Profile = () => {
   const { getUserDetail } = useGetUserDetail();
   const { updateUserDetail } = useUpdateUserDetail();
+  const [preview, setPreview] = useState(null);
+  const [docPreview, setDocPreview] = useState(null);
+  const [flag, setFlag] = useState(false);
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -15,25 +19,26 @@ const Profile = () => {
     mobile_number: "",
     gender: 0,
     id_proof: null,
+    image: null,
   });
   const [loading, setLoading] = useState(true);
-  const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateUserDetail(formData);
+    flag && (await updateUserDetail(formData));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name == "gender") {
+      setFlag(true);
       setFormData({
         ...formData,
         [name]: Number(value),
       });
     } else {
+      setFlag(true);
       setFormData({
         ...formData,
         [name]: value,
@@ -42,25 +47,48 @@ const Profile = () => {
   };
 
   const updateFileChange = (e) => {
+    let documentFile = e.target.files[0];
+    if (documentFile) {
+      setFlag(true);
+      setFormData({
+        ...formData,
+        id_proof: documentFile,
+      });
+    }
+  };
+
+  const handleProfilePicChange = (e) => {
     let imageFile = e.target.files[0];
-    setFile(imageFile);
-    let generateUrl = URL.createObjectURL(imageFile);
-    setPreview(generateUrl);
+    if (imageFile) {
+      setFlag(true);
+      const previewUrl = URL.createObjectURL(imageFile);
+      setPreview(previewUrl);
+      setFormData({
+        ...formData,
+        image: imageFile,
+      });
+    }
   };
 
   useEffect(() => {
     const fetchUserData = async () => {
       const result = await getUserDetail();
       if (result) {
-        const { first_name, last_name, email, mobile_number, gender } =
-          result.user;
-        setFormData({
+        const {
           first_name,
           last_name,
           email,
           mobile_number,
           gender,
-        });
+          image,
+          id_proof,
+        } = result.user;
+        setFormData({ first_name, last_name, email, mobile_number, gender });
+        const imageUrl = image
+          ? `http://35.154.167.170:3000/${image}`
+          : "/default_avatar.png";
+        id_proof && setDocPreview(`http://35.154.167.170:3000/${id_proof}`);
+        setPreview(imageUrl);
         setLoading(false);
       }
     };
@@ -77,13 +105,25 @@ const Profile = () => {
           <div className="p-14 flex items-start gap-20">
             <div className="profile-img-container relative">
               <img
-                src="/default_avatar.png"
+                src={preview}
                 alt="Avatar"
                 className="h-full w-full rounded-full border-[1.5px] border-[var(--black)]"
               />
-              <button className="edit-profile-img">
+              <button
+                className="edit-profile-img"
+                onClick={() =>
+                  document.getElementById("profileImageInput").click()
+                }
+              >
                 <FaPencilAlt className="inline-block h-full w-full fill-white p-3" />
               </button>
+              <input
+                type="file"
+                id="profileImageInput"
+                className="hidden"
+                accept="image/*"
+                onChange={handleProfilePicChange}
+              />
             </div>
             <div className="grow">
               <form className="user-detail" onSubmit={handleSubmit}>
@@ -141,10 +181,20 @@ const Profile = () => {
                     <input
                       id="document"
                       type="file"
-                      accept="image/*"
                       onChange={updateFileChange}
                       className="border-[1.5px] border-indigo-200 focus:border-indigo-500 focus:outline-none"
                     />
+                    {docPreview && (
+                      <div className="flex items-start gap-8">
+                        <a
+                          href={docPreview}
+                          className="inline-block text-indigo-600 hover:underline"
+                          target="__blank"
+                        >
+                          view document
+                        </a>
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-4">
@@ -189,10 +239,6 @@ const Profile = () => {
                     <button className="update-btn" type="submit">
                       update
                     </button>
-                  </div>
-
-                  <div className="col-span-2">
-                    {preview && <img src={preview} alt="ok" />}
                   </div>
                 </div>
               </form>

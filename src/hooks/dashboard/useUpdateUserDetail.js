@@ -5,19 +5,34 @@ const useUpdateUserDetail = () => {
   const token = localStorage.getItem("token");
 
   const updateUserDetail = async (formData) => {
+    let newFormData = new FormData();
+    newFormData.append("first_name", formData.first_name);
+    newFormData.append("last_name", formData.last_name);
+    newFormData.append("email", formData.email);
+    newFormData.append("mobile_number", formData.mobile_number);
+    newFormData.append("gender", formData.gender);
+
+    if (formData.image) {
+      newFormData.append("image", formData.image);
+    }
+    if (formData.id_proof) {
+      newFormData.append("id_proof", formData.id_proof);
+    }
+
     try {
       const response = await fetch(`${baseURL}/user/customer`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: newFormData,
       });
+      const data = await response.json();
 
       if (response.ok) {
-        toast.success("user data updates successfully");
+        toast.success("user data updated successfully");
       } else {
-        toast.error("Failed to update user data!");
+        toast.error(data.message);
       }
     } catch {
       toast.error("Failed to update user data!");
