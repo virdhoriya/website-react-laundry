@@ -1560,11 +1560,12 @@ h3 {
 /* price list view */
 
 .price-list-table {
+  table-layout: auto;
   cursor: default;
   width: 100%;
   text-align: center;
   background-color: white;
-  border-radius: 0.8rem;
+  border-radius: 1.2rem;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1588,6 +1589,12 @@ h3 {
 .price-list-table th,
 .price-list-table td {
   border: 1px solid #e0e3ec;
+}
+
+.price-list-table thead tr,
+.price-list-table tbody tr {
+  display: grid;
+  grid-template-columns: 0.5fr 0.8fr 1fr 1fr 0.8fr;
 }
 
 /* order history */
@@ -1660,6 +1667,11 @@ h3 {
   fill: #676788;
 }
 
+.page-icon-light {
+  display: inline-block;
+  fill: lightgray;
+}
+
 .page-num {
   font-size: 1.6rem;
   line-height: 1.6rem;
@@ -1679,6 +1691,9 @@ h3 {
 .active-page .page-icon {
   fill: white;
 }
+.active-page .page-icon-light {
+  fill: white;
+}
 
 .border-transparent {
   border-color: transparent;
@@ -1691,13 +1706,12 @@ h3 {
   fill: #b9bccf;
 }
 
-
 .info-login-container {
   width: 26rem;
   background-color: white;
   border-radius: 8px;
   padding: 2.8rem;
-  
+
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
@@ -1730,4 +1744,47 @@ h3 {
 
 .info-label .address {
   width: 100%;
+}
+
+.pagination-column td {
+  padding: 0;
+}
+
+.searc-input {
+  display: inline-block;
+  width: 24rem;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 4px;
+  padding: 1.2rem 4rem 1.2rem 1.2rem;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+}
+
+.search-input-container {
+  display: inline-block;
+}
+
+.rpp-label {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: #676788;
+  font-weight: 500;
+}
+
+.rpp-dropdown {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: #676788;
+  font-weight: 500;
+}
+
+.rpp-dropdown:focus {
+  outline: none;
 }

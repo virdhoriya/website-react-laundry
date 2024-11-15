@@ -22,10 +22,7 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    let sFormData = new FormData();
-    sFormData.append("image", file);
-    await updateUserDetail(sFormData);
+    await updateUserDetail(formData);
   };
 
   const handleChange = (e) => {

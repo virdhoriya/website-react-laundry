@@ -11,7 +11,7 @@ const useUpdateUserDetail = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: formData,
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
