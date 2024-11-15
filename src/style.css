@@ -1783,6 +1783,9 @@ h3 {
   line-height: 1.4rem;
   color: #676788;
   font-weight: 500;
+  border: 1px solid #676788;
+  border-radius: 4px;
+  padding: 2px;
 }
 
 .rpp-dropdown:focus {
