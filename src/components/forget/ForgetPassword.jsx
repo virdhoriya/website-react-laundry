@@ -39,13 +39,11 @@ const ForgetPassword = () => {
                 id="country"
                 className="text-[1.4rem] block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
               >
-                <option value="india">
-                  <img src="india-flag.png" alt="India" />
-                  <span className="text-[1.4rem] font-semibold">india</span>
+                <option value="india" className="text-[1.4rem] font-semibold">
+                  india
                 </option>
-                <option value="usa">
-                  <img src="usa-flag.png" alt="USA" />
-                  <span className="text-[1.4rem] font-semibold">america</span>
+                <option value="usa" className="text-[1.4rem] font-semibold">
+                  america
                 </option>
               </select>
             </div>

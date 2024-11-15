@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <section className="h-[100vh] px-6 py-12">
       <div className="flex flex-col gap-8 justify-center items-center">
-        <div className="login-form-container">
+        <form className="login-form-container">
           <div className="flex flex-col justify-center items-center gap-10">
             <img
               src="sc-logo.png"
@@ -125,7 +125,7 @@ const Login = () => {
 
           <div>
             <button
-              type="button"
+              type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-6 py-4 text-lg font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               onClick={(e) => handleSubmit(e)}
             >
@@ -141,7 +141,7 @@ const Login = () => {
               Register
             </Link>
           </p>
-        </div>
+        </form>
       </div>
     </section>
   );
