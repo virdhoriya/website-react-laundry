@@ -49,7 +49,6 @@ const PriceListView = () => {
     let newRpp = e.target.value;
     setRpp(newRpp);
 
-    console.log(newRpp);
     setRows(Math.ceil(totalRows / newRpp));
   };
 
