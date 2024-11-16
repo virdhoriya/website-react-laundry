@@ -85,9 +85,9 @@ const Profile = () => {
         } = result.user;
         setFormData({ first_name, last_name, email, mobile_number, gender });
         const imageUrl = image
-          ? `http://35.154.167.170:3000/${image}`
+          ? image
           : "/default_avatar.png";
-        id_proof && setDocPreview(`http://35.154.167.170:3000/${id_proof}`);
+        id_proof && setDocPreview(id_proof);
         setPreview(imageUrl);
         setLoading(false);
       }
@@ -160,7 +160,7 @@ const Profile = () => {
                       type="text"
                       name="email"
                       value={formData.email}
-                      className="border-[1.5px] border-indigo-200 focus:border-indigo-500 focus:outline-none"
+                      className="readonly-input border-[1.5px] border-indigo-200 focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
 
@@ -172,7 +172,7 @@ const Profile = () => {
                       type="text"
                       name="mobile_number"
                       value={formData.mobile_number}
-                      className="border-[1.5px] border-indigo-200 focus:border-indigo-500 focus:outline-none"
+                      className="readonly-input border-[1.5px] border-indigo-200 focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
 
