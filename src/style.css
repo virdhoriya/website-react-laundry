@@ -1791,3 +1791,9 @@ h3 {
 .rpp-dropdown:focus {
   outline: none;
 }
+
+.user-detail .readonly-input {
+  color: rgb(160, 163, 187) !important;
+  cursor: not-allowed;
+  background-color: rgba(211, 211, 211, 0.1);
+}

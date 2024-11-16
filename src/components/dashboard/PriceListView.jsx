@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { IoCaretDown, IoCaretUp } from "react-icons/io5";
 import Loading from "./Loading";
-import toast from "react-hot-toast";
 
 const PriceListView = () => {
   const { getPriceList } = useGetPriceList();
@@ -45,7 +44,6 @@ const PriceListView = () => {
   };
 
   const handleRppChange = (e) => {
-    toast.success(`option changed : ${e.target.value}`);
     let newRpp = e.target.value;
     setRpp(newRpp);
 
