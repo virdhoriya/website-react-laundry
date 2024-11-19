@@ -1,45 +1,45 @@
 const Steps = () => {
   return (
-    <section className="section-easy-steps">
+    <section className="space-xl">
       <div className="secondary-container">
         <p className="section-title">How We Works</p>
-        <h2 className="mb-16">Follow 4 Easy Steps</h2>
+        <h2 className="mb-16 laptop-m:mb-14 laptop-s:mb-12 tab-l:mb-10">Follow 4 Easy Steps</h2>
 
-        <div className="flex justify-between items-center text-[1.8rem]">
-          <div className="flex flex-col items-center">
-            <img src="/step-1.png" alt="step01" height={80} width={74} className="inline-block pb-16"/>
-            <span className="uppercase text-[1.8rem]">Step 01</span>
-            <p className="text-[2.2rem] font-semibold text-center"><span className="text-red-500">Bag up </span>all your dirty<br/>clothes</p>
+        <div className="flex justify-between items-center text-[1.8rem] gap-8 laptop-l:text-[1.6rem] laptop-s:text-[1.4rem] tab-s:text-[1rem] tab:gap-4">
+          <div className="steps-container">
+            <img src="/step-1.png" alt="step01" className="steps-image"/>
+            <span className="uppercase">Step 01</span>
+            <p className="steps-title"><span>Bag up</span> all your dirty clothes</p>
           </div>
 
           <div>
-            <img src="/arrow01.png" alt="arrow"/>
+            <img src="/arrow01.png" alt="arrow" className="arrow-image"/>
           </div>
 
-          <div className="flex flex-col items-center">
-            <img src="/step-2.png" alt="step02" className="inline-block pb-16"/>
-            <span className="uppercase text-[1.8rem]">Step 02</span>
-            <p className="text-[2.2rem] font-semibold text-center">We <span className="text-red-500">pick up</span> your <br />clothes</p>
-          </div>
-
-          <div>
-            <img src="/arrow02.png" alt="arrow" />
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/step-3.png" alt="step03" className="inline-block pb-16"/>
-            <span className="uppercase text-[1.8rem]">Step 03</span>
-            <p className="text-[2.2rem] font-semibold text-center">We <span className="text-red-500">clean your</span> <br/>clothes</p>
+          <div className="steps-container">
+            <img src="/step-2.png" alt="step02" className="steps-image"/>
+            <span className="uppercase">Step 02</span>
+            <p className="steps-title">We <span>pick up</span> your clothes</p>
           </div>
 
           <div>
-            <img src="/arrow01.png" alt="arrow" />
+            <img src="/arrow02.png" alt="arrow" className="arrow-image"/>
           </div>
 
-          <div className="flex flex-col items-center">
-            <img src="/step-4.png" alt="step04" className="inline-block pb-16"/>
-            <span className="uppercase text-[1.8rem]">Step 04</span>
-            <p className="text-[2.2rem] font-semibold text-center">We <span className="text-red-500">deliver</span> clean, <br/>folded clothes</p>
+          <div className="steps-container">
+            <img src="/step-3.png" alt="step03" className="steps-image"/>
+            <span className="uppercase">Step 03</span>
+            <p className="steps-title">We <span>clean your</span> clothes</p>
+          </div>
+
+          <div>
+            <img src="/arrow01.png" alt="arrow" className="arrow-image"/>
+          </div>
+
+          <div className="steps-container">
+            <img src="/step-4.png" alt="step04" className="steps-image"/>
+            <span className="uppercase">Step 04</span>
+            <p className="steps-title">We <span>deliver</span> clean, folded clothes</p>
           </div>
         </div>
       </div>

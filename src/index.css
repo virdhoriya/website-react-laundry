@@ -26,12 +26,18 @@ body {
   --primary-color: #161f5f;
   --light-blue-bg: #f0f2fa;
   --dark-white-bg: #f7f8fd;
-  --white: #fff;
+
   --black: #000;
   --grey: #393B43;
   --heading: #080914;
 
+  --red: #FF2E17;
+
+  --white: #fff;
+
+  --bg: #F0F2FA;
   --primary: #161F5F;
   --black: #080914;
-  --red: #FF2E17;
+  --secondary: #FF2E17;
+
 }

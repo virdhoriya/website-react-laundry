@@ -5,7 +5,7 @@ import { PiInstagramLogoFill } from "react-icons/pi";
 
 const Headline = () => {
   return (
-    <div className="bg-light-blue">
+    <div className="bg-[var(--bg)]">
       <div className="container">
         <div className="flex items-center justify-between">
 
@@ -40,6 +40,7 @@ const Headline = () => {
               <p>9825600838</p>
             </div>
           </div>
+          
         </div>
       </div>
     </div>

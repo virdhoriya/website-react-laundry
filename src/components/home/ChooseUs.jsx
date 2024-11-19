@@ -1,11 +1,11 @@
 const ChooseUs = () => {
   return (
-    <section className="section-space bg-[url('/chooseus-bg.png')] text-white">
+    <section className="space-xl bg-[url('/chooseus-bg.png')] text-white">
       <div className="secondary-container">
         <p className="section-title">WHY CHOOSE US</p>
-        <h2 className="mb-20 text-white">Sikka Cleaners is best in Town</h2>
+        <h2 className="text-white mb-20 laptop-l:mb-16 laptop:mb-12 tab-l:mb-10">Sikka Cleaners is best in Town</h2>
 
-        <div className="grid grid-cols-3 gap-20">
+        <div className="grid grid-cols-3 gap-20 laptop-l:gap-16 laptop:gap-14 tab-l:gap-10 tab-s:gap-8 tab:grid-cols-2 mb-l:grid-cols-1">
           <div className="card">
             <h3 className="card-title text-white">Quality</h3>
             <p className="card-description">

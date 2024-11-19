@@ -4,7 +4,7 @@
 
 @media only screen and (max-width: 100em) {
   .container {
-    padding: 0 6rem;
+    padding: 0 7rem;
   }
 
   .navbar {
@@ -18,6 +18,36 @@
   .login {
     font-size: 1.8rem;
     padding: 1rem 2.4rem;
+    font-weight: normal;
+  }
+
+  .space-xl {
+    padding: 6rem 0;
+  }
+
+  .secondary-container {
+    padding: 0 7rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+    line-height: 5.6rem;
+  }
+
+  .steps-image {
+    padding-bottom: 3rem;
+  }
+
+  .steps-title {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 3.8rem;
+  }
+
+  .card-title {
+    font-size: 2.6rem;
   }
 }
 
@@ -27,15 +57,60 @@
 
 @media only screen and (max-width: 83.75em) {
   .container {
-    padding: 0 5rem;
+    padding: 0 6rem;
   }
 
   .navbar {
-    gap: 2.4rem;
+    gap: 2.2rem;
   }
 
   .navbar li {
+    font-size: 1.7rem;
+    border-bottom: 3px solid transparent;
+  }
+
+  .login {
+    font-size: 1.7rem;
+  }
+
+  .space-xl {
+    padding: 5rem 0;
+  }
+
+  .secondary-container {
+    padding: 0 6rem;
+  }
+
+  .section-title {
     font-size: 1.8rem;
+    letter-spacing: 1.5px;
+  }
+
+  h2 {
+    font-size: 3.6rem;
+    line-height: 4.8rem;
+  }
+
+  .btn {
+    font-size: 1.8rem;
+    padding: 1.5rem 2rem;
+  }
+
+  h3 {
+    font-size: 2.2rem;
+  }
+
+  .content {
+    font-size: 1.6rem;
+  }
+
+  .steps-image {
+    max-height: 10rem;
+    width: auto;
+  }
+
+  .card {
+    padding: 3rem;
   }
 }
 
@@ -45,7 +120,7 @@
 
 @media only screen and (max-width: 80em) {
   .container {
-    padding: 0 4rem;
+    padding: 0 5rem;
   }
 
   .navbar {
@@ -54,11 +129,278 @@
 
   .navbar li {
     font-size: 1.6rem;
-    border-bottom: 3px solid transparent;
   }
 
   .login {
-    font-size: 1.7rem;
-    padding: 1.075rem 2.4rem;
+    font-size: 1.6rem;
+    padding: 1.025rem 2rem;
+  }
+
+  .space-xl {
+    padding: 4rem 0;
+  }
+
+  .secondary-container {
+    padding: 0 5rem;
+  }
+
+  .steps-container {
+    max-width: 18rem;
+  }
+
+  .card {
+    padding: 2.6rem;
+  }
+
+  .card-title {
+    font-size: 2rem;
+    letter-spacing: normal;
+  }
+
+  .card-description {
+    font-size: 1.6rem;
+    letter-spacing: normal;
+    line-height: 2.4rem;
+  }
+}
+
+/*****************/
+/*  BELOW 1140px */
+/*****************/
+
+@media only screen and (max-width: 71.25em) {
+  .container {
+    padding: 0 4rem;
+  }
+
+  .navbar {
+    gap: 1.8rem;
+  }
+
+  .navbar li {
+    font-size: 1.4rem;
+  }
+
+  .login {
+    font-size: 1.4rem;
+    padding: 1.125rem 2rem;
+  }
+
+  .space-xl {
+    padding: 3rem 0;
+  }
+
+  .secondary-container {
+    padding: 0 4rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 3.2rem;
+    line-height: 4.4rem;
+  }
+
+  .btn {
+    font-size: 1.6rem;
+    padding: 1.3rem 1.8rem;
+  }
+
+  .logout-container {
+    padding: 0.7rem 1.4rem;
+  }
+
+  .logout {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .steps-title {
+    font-size: 1.8rem;
+  }
+
+  .steps-image {
+    max-height: 8rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/*****************/
+/*  BELOW 1024px */
+/*****************/
+
+@media only screen and (max-width: 64em) {
+  .card {
+    padding: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-description {
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    letter-spacing: normal;
+  }
+}
+
+/*****************/
+/*  BELOW 947px */
+/*****************/
+
+@media only screen and (max-width: 60.875em) {
+  .container {
+    padding: 0 3rem;
+  }
+
+  .login {
+    font-size: 1.4rem;
+    padding: 1.025rem 2rem;
+  }
+
+  .space-xl {
+    padding: 2.5rem 0;
+  }
+
+  .secondary-container {
+    padding: 0 3rem;
+  }
+
+  .section-title,
+  .content {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+
+  h2 {
+    font-size: 2.8rem;
+    line-height: 3.4rem;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+    padding: 1.1rem 1.6rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .steps-title {
+    font-size: 1.6rem;
+  }
+
+  .steps-image {
+    max-height: 8rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/*****************/
+/*  BELOW 880px */
+/*****************/
+
+@media only screen and (max-width: 55em) {
+  h2 {
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+  }
+
+  .steps-image {
+    max-height: 6rem;
+  }
+
+  .steps-container {
+    max-width: 10rem;
+  }
+
+  .steps-title {
+    font-size: 1.2rem;
+  }
+
+  .arrow-image {
+    display: inline-block;
+    max-width: 6rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+
+  .card-description {
+    line-height: normal;
+  }
+}
+
+/*****************/
+/*  BELOW 615px */
+/*****************/
+
+@media only screen and (max-width: 38.4375em) {
+  .container {
+    padding: 0 2.5rem;
+  }
+
+  .secondary-container {
+    padding: 0 2.5rem;
+  }
+
+  .space-xl {
+    padding: 2rem 0;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    line-height: normal;
+  }
+
+  .btn {
+    font-size: 1.3rem;
+  }
+
+  .steps-image {
+    padding-bottom: 2rem;
+  }
+}
+
+/*****************/
+/*  BELOW 440 */
+/*****************/
+
+@media only screen and (max-width: 27.5em) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .secondary-container {
+    padding: 0 2rem;
+  }
+
+  .space-xl {
+    padding: 1.5rem 0;
+  }
+}
+
+/*****************/
+/*  BELOW 320px  */
+/*****************/
+
+@media only screen and (max-width: 20em) {
+  .container {
+    padding: 0 1rem;
   }
 }

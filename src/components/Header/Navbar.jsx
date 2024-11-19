@@ -17,18 +17,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="py-4 bg-transparent laptop-l:py-3 laptop-m:py-2 laptop:py-2">
+    <nav className="py-4 bg-[#F7F8FD] laptop-l:py-3 laptop-m:py-2">
       <div className="container">
         <div className="flex items-center justify-between">
           <div>
             <img
               src="/logo.png"
               alt="logo"
-              className="h-16 w-96 laptop-l:h-14 laptop-l:w-80 laptop-m:h-12 laptop-m:w-72 laptop:h-10 laptop:w-64"
+              className="h-16 w-96 laptop-l:h-14 laptop-l:w-80 laptop-m:h-12 laptop-m:w-72 laptop:h-10 laptop:w-64 laptop-s:w-56 laptop-s:h-auto"
             />
           </div>
 
-          <div className="z-10">
+          <div className="z-10 tab-m:hidden">
             <ul className="navbar">
               <li>
                 <Link to="/" title="Home" aria-label="Home">
@@ -76,19 +76,25 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="flex justify-center items-center gap-8 z-10 laptop-l:gap-4">
-            <span className="inline-block bg-red-500 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem]">
+          <div className="flex justify-center items-center gap-8 z-10 laptop-l:gap-6">
+            <Link
+              to="/cart"
+              className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]"
+            >
               <LuShoppingCart
                 className="h-full w-full stroke-[var(--black)]"
                 aria-label="Shopping Cart"
               />
-            </span>
+              <div className="cart-tag">
+                <span>1</span>
+              </div>
+            </Link>
             {isLoggedIn ? (
-              <span className="inline-block h-[4.6rem] w-[4.6rem] relative group">
+              <span className="inline-block h-[4.6rem] w-[4.6rem] relative group laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]">
                 <img
                   src="/avatar.jpeg"
                   alt="Avatar"
-                  className="h-full w-full rounded-full border-[1.5px] border-black/45"
+                  className="h-full w-full rounded-full border-[1.5px] border-black/45 laptop-l:border"
                 />
                 <div className="hidden group-hover:inline-block">
                   <div className="logout-container flex flex-col items-start gap-4">
@@ -114,6 +120,13 @@ const Navbar = () => {
                 Login
               </Link>
             )}
+            <div className="h-[3.8rem] w-[3.8rem] justify-center items-center hidden tab-m:flex">
+              <div className="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
