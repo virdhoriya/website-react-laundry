@@ -7,47 +7,43 @@ const Banner = () => {
   const { banners } = useGetBanner();
 
   useEffect(() => {
-    if (banners.banner) {
+    if (banners.banner && banners.banner.length > 0) {
       setActiveBanner(banners.banner[0]);
+      setActiveDot(0);
     }
   }, [banners]);
-
-  if (!banners?.banner) {
-    return <p>No banner found!</p>;
-  }
 
   const handleDot = (index) => {
     setActiveDot(index);
     setActiveBanner(banners.banner[index]);
   };
 
+  if (!banners?.banner || banners.banner.length === 0) {
+    return <p>No banner found!</p>;
+  }
+
   return (
-    <section className="main-banner-container relative">
-      {/* <div className="full-width relative"> */}
+    <section className="bg-[#f7f8fd]">
       <div className="container">
         <div className="relative">
           <div className="inner-banner-container flex justify-start items-center">
             <div className="flex flex-col gap-40">
-              <div className="w-[100%]">
+              <div>
                 <h1>{activeBanner.title}</h1>
                 <p>{activeBanner.description}</p>
               </div>
               <div className="pagination-container">
                 <span>01</span>
                 <span className="dots">
-                  {banners.banner ? (
-                    banners.banner.map((ban, index) => {
-                      return (
-                        <span
-                          key={index}
-                          onClick={() => handleDot(index)}
-                          className={activeDot === index ? "active-dot" : ""}
-                        ></span>
-                      );
-                    })
-                  ) : (
-                    <p>no</p>
-                  )}
+                  {banners.banner.map((ban, index) => {
+                    return (
+                      <span
+                        key={index}
+                        onClick={() => handleDot(index)}
+                        className={activeDot === index ? "active-dot" : ""}
+                      ></span>
+                    );
+                  })}
                 </span>
                 <span>0{banners.banner.length}</span>
               </div>
@@ -63,11 +59,6 @@ const Banner = () => {
           </div>
         </div>
       </div>
-
-      {/* <img src="/rectangle.png" alt="Rectangle" className="rectange-shape"/>
-
-      <img src="/ellipse.png" alt="Ellipse" className="ellipse-img"/> */}
-      {/* </div> */}
     </section>
   );
 };
