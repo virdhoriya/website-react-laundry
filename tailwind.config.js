@@ -28,8 +28,7 @@ export default {
         'tab-s' : { 'max' : '55em' },
         'tab' : { 'max' : '38.4375em'},
         'mb-l': { 'max' : '27.5em' },
-        'mb': {'max' : '20em'},
-         
+        'mb': {'max' : '20em'},  
       }
     },
   },
