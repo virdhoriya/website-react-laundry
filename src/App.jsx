@@ -1,36 +1,42 @@
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
 } from "react-router-dom";
-import Signup from "./components/signup/Signup";
-import Login from "./components/Login/Login";
-import ForgetPassword from "./components/forget/ForgetPassword";
+import { Toaster } from "react-hot-toast";
 import Header from "./components/Header/Header";
 import Home from "./components/home/Home";
-import About from "./components/about/About";
-import Services from "./components/services/Services";
-import Contact from "./components/contact/Contact";
-import Prices from "./components/prices/Prices";
-import CorporateServices from "./components/corporate_services/CorporateServices";
-import More from "./components/more/More";
-import Cart from "./components/cart/Cart";
 import Footer from "./components/footer/Footer";
-import { Toaster } from "react-hot-toast";
-import EnterOtp from "./components/forget/EnterOtp";
-import ResetPassword from "./components/forget/ResetPassword";
-import Order from "./components/order/Order";
-import DashBoard from "./components/dashboard/DashBoard";
-import Profile from "./components/dashboard/Profile";
-import DashBoardHome from "./components/dashboard/Home";
-import PriceListView from "./components/dashboard/PriceListView";
-import WriteReview from "./components/dashboard/WriteReview";
-import SavedAddress from "./components/dashboard/SavedAddress";
-import ViewOrder from "./components/dashboard/ViewOrder";
+const Signup = lazy(() => import("./components/signup/Signup"));
+const Login = lazy(() => import("./components/Login/Login"));
+const EnterOtp = lazy(() => import("./components/forget/EnterOtp"));
+const ForgetPassword = lazy(() => import("./components/forget/ForgetPassword"));
+const ResetPassword = lazy(() => import("./components/forget/ResetPassword"));
+const Services = lazy(() => import("./components/services/Services"));
+const CorporateServices = lazy(() =>
+  import("./components/corporate_services/CorporateServices")
+);
+const Prices = lazy(() => import("./components/prices/Prices"));
+const About = lazy(() => import("./components/about/About"));
+const Contact = lazy(() => import("./components/contact/Contact"));
+const More = lazy(() => import("./components/more/More"));
+const Cart = lazy(() => import("./components/cart/Cart"));
+const Order = lazy(() => import("./components/order/Order"));
+const DashBoard = lazy(() => import("./components/dashboard/DashBoard"));
+const DashBoardHome = lazy(() => import("./components/dashboard/Home"));
+const Profile = lazy(() => import("./components/dashboard/Profile"));
+const PriceListView = lazy(() =>
+  import("./components/dashboard/PriceListView")
+);
+const WriteReview = lazy(() => import("./components/dashboard/WriteReview"));
+const SavedAddress = lazy(() => import("./components/dashboard/SavedAddress"));
+const ViewOrder = lazy(() => import("./components/dashboard/ViewOrder"));
 import ProtectedRoute from "./components/protected/ProtectedRoute";
 import PublicRoute from "./components/protected/PublicRoute";
 import NotFound from "./components/NotFound";
+import Loading from "./components/loading/Loading";
 
 const App = () => {
   return (
@@ -68,7 +74,9 @@ const MainComponent = () => {
             path="/forget-password"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
-                <ForgetPassword />
+                <Suspense fallback={<Loading />}>
+                  <ForgetPassword />
+                </Suspense>
               </PublicRoute>
             }
           />
@@ -76,7 +84,9 @@ const MainComponent = () => {
             path="/enter-otp"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
-                <EnterOtp />
+                <Suspense fallback={<Loading />}>
+                  <EnterOtp />
+                </Suspense>
               </PublicRoute>
             }
           />
@@ -84,7 +94,9 @@ const MainComponent = () => {
             path="/reset-password"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
-                <ResetPassword />
+                <Suspense fallback={<Loading />}>
+                  <ResetPassword />
+                </Suspense>
               </PublicRoute>
             }
           />
@@ -92,7 +104,9 @@ const MainComponent = () => {
             path="/signup"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
-                <Signup />
+                <Suspense fallback={<Loading />}>
+                  <Signup />
+                </Suspense>
               </PublicRoute>
             }
           />
@@ -100,28 +114,78 @@ const MainComponent = () => {
             path="/login"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
-                <Login />
+                <Suspense fallback={<Loading />}>
+                  <Login />
+                </Suspense>
               </PublicRoute>
             }
           />
 
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/prices" element={<Prices />} />
-          <Route path="/corporate-services" element={<CorporateServices />} />
-          <Route path="/more" element={<More />} />
+          <Route
+            path="/about"
+            element={
+              <Suspense fallback={<Loading />}>
+                <About />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Suspense fallback={<Loading />}>
+                <Contact />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/prices"
+            element={
+              <Suspense fallback={<Loading />}>
+                <Prices />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/corporate-services"
+            element={
+              <Suspense fallback={<Loading />}>
+                <CorporateServices />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/more"
+            element={
+              <Suspense fallback={<Loading />}>
+                <More />
+              </Suspense>
+            }
+          />
           <Route
             path="/services"
-            element={<Services isAuthenticated={isAuthenticated} />}
+            element={
+              <Suspense fallback={<Loading />}>
+                <Services isAuthenticated={isAuthenticated} />
+              </Suspense>
+            }
           />
-          <Route path="/order" element={<Order />} />
+          <Route
+            path="/order"
+            element={
+              <Suspense fallback={<Loading />}>
+                <Order />
+              </Suspense>
+            }
+          />
 
           <Route
             path="/cart"
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <Cart />
+                <Suspense fallback={<Loading />}>
+                  <Cart />
+                </Suspense>
               </ProtectedRoute>
             }
           />
@@ -130,16 +194,60 @@ const MainComponent = () => {
             path="/dashboard"
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <DashBoard />
+                <Suspense fallback={<Loading />}>
+                  <DashBoard />
+                </Suspense>
               </ProtectedRoute>
             }
           >
-            <Route path="home" element={<DashBoardHome />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="price-list" element={<PriceListView />} />
-            <Route path="write-review" element={<WriteReview />} />
-            <Route path="saved-addresses" element={<SavedAddress />} />
-            <Route path="view-order" element={<ViewOrder />} />
+            <Route
+              path="home"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <DashBoardHome />
+                </Suspense>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Profile />
+                </Suspense>
+              }
+            />
+            <Route
+              path="price-list"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <PriceListView />
+                </Suspense>
+              }
+            />
+            <Route
+              path="write-review"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <WriteReview />
+                </Suspense>
+              }
+            />
+            <Route
+              path="saved-addresses"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <SavedAddress />
+                </Suspense>
+              }
+            />
+            <Route
+              path="view-order"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <ViewOrder />
+                </Suspense>
+              }
+            />
           </Route>
           <Route path="/*" element={<NotFound />} />
         </Routes>
