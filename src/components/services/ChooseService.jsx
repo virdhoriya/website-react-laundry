@@ -1,48 +1,60 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import Loading from "../loading/Loading";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbSearch } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedServiceId } from "../../redux/slices/serviceSlice";
 import useFetchServices from "../../hooks/useFetchServices";
-import useFetchCategories from "../../hooks/useFetchCategories";
+import useFetchCategories from "../../hooks/services/useFetchCategories";
+import {
+  setCategories,
+  setSelectedCategoryId,
+} from "../../redux/slices/categorySlice";
 
-const ChooseService = ({
-  setServiceSectionCategory,
-  setSid,
-  sid,
-  setParamId,
-}) => {
-  const [selectedServiceId, setSelectedServiceId] = useState(sid);
-  const [serviceData, setServiceData] = useState([]);
+const ChooseService = () => {
+  const dispatch = useDispatch();
+  const { fetchCategories } = useFetchCategories();
+  const selectedServiceId = useSelector(
+    (state) => state.service.selectedServiceId
+  );
   const [search, setSearch] = useState("");
-  const baseURL = import.meta.env.VITE_BASE_URL;
-  const token = import.meta.env.VITE_TOKEN;
-  const { services } = useFetchServices();
-  const { categories } = useFetchCategories(selectedServiceId);
+  const { services, loading } = useFetchServices();
 
-  const handleServiceClick = (id) => {
-    setSelectedServiceId(id);
-    setParamId(175);
+  const handleServiceClick = async (id) => {
+    dispatch(setSelectedServiceId(id));
   };
 
   useEffect(() => {
-    if (services) {
-      setServiceData(services);
+    if (!loading && services.length > 0) {
+      if (!selectedServiceId) {
+        dispatch(setSelectedServiceId(services[0].service_id));
+      }
     }
+  }, [loading, services, selectedServiceId, dispatch]);
 
-    if (categories) {
-      setServiceSectionCategory(categories);
+  useEffect(() => {
+    if (selectedServiceId) {
+      const getCategories = async () => {
+        const result = await fetchCategories(selectedServiceId);
+        if (result) {
+          console.log("Result : ", result);
+          if (result.length > 0) {
+            dispatch(setSelectedCategoryId(result[0].category_category_id));
+            dispatch(setCategories(result));
+          } else {
+            dispatch(setSelectedCategoryId(0));
+            dispatch(setCategories([]));
+          }
+        }
+      };
+      getCategories();
     }
-    setSid(selectedServiceId);
-  }, [
-    services,
-    selectedServiceId,
-    baseURL,
-    token,
-    setServiceSectionCategory,
-    categories,
-    setSid,
-  ]);
+  }, [dispatch, fetchCategories, selectedServiceId]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <section className="section-services">
@@ -52,7 +64,7 @@ const ChooseService = ({
         <div className="flex justify-center items-center">
           <div className="bg-white flex flex-col rounded-3xl shadow-lg ">
             <div className="flex justify-center gap-24 pt-12 px-12 border-b border-[#B9BCCF4D] border-black">
-              {serviceData.map((service) => {
+              {services.map((service) => {
                 const { name, image, service_id } = service;
                 return (
                   <div
@@ -100,13 +112,6 @@ const ChooseService = ({
       </div>
     </section>
   );
-};
-
-ChooseService.propTypes = {
-  setServiceSectionCategory: PropTypes.func.isRequired,
-  setSid: PropTypes.func.isRequired,
-  setParamId: PropTypes.func.isRequired,
-  sid: PropTypes.number.isRequired,
 };
 
 export default ChooseService;

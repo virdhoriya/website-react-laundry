@@ -2,14 +2,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { LuShoppingCart } from "react-icons/lu";
 import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
+import { useDispatch } from "react-redux";
+import { setAuthStatus } from "../../redux/slices/authSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("token");
+  const dispatch = useDispatch();
 
   const onLogoutClick = () => {
     localStorage.clear();
     navigate("/login");
+    dispatch(setAuthStatus(false));
   };
 
   const onProfileClick = () => {

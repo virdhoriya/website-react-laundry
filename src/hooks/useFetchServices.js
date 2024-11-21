@@ -4,9 +4,10 @@ import toast from "react-hot-toast";
 const useFetchServices = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getServices = async () => {
+    const fetchServices = async () => {
       try {
         const response = await fetch(`${baseURL}/web/services`, {
           method: "GET",
@@ -19,12 +20,14 @@ const useFetchServices = () => {
         }
       } catch {
         toast.error("Failed to fetch services!");
+      } finally {
+        setLoading(false);
       }
     };
-    getServices();
+    fetchServices();
   }, [baseURL]);
 
-  return { services };
+  return { services, loading };
 };
 
 export default useFetchServices;

@@ -26,6 +26,7 @@ const useLogin = () => {
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("user", JSON.stringify(data.data.user));
         navigate("/");
+        return data.data;
       } else {
         toast.error(data.message, {
           style: {
@@ -33,8 +34,7 @@ const useLogin = () => {
           },
         });
       }
-      // eslint-disable-next-line no-unused-vars
-    } catch (error) {
+    } catch {
       toast.error("Login failed. Please check your credentials and try again.");
     }
   };

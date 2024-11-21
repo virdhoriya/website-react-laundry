@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,8 +37,15 @@ import ProtectedRoute from "./components/protected/ProtectedRoute";
 import PublicRoute from "./components/protected/PublicRoute";
 import NotFound from "./components/NotFound";
 import Loading from "./components/loading/Loading";
+import { useDispatch } from "react-redux";
+import { setAuthStatus } from "./redux/slices/authSlice";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    dispatch(setAuthStatus(!!token));
+  }, [dispatch]);
   return (
     <Router>
       <Toaster />
@@ -166,7 +173,7 @@ const MainComponent = () => {
             path="/services"
             element={
               <Suspense fallback={<Loading />}>
-                <Services isAuthenticated={isAuthenticated} />
+                <Services />
               </Suspense>
             }
           />
