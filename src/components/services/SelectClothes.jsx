@@ -15,11 +15,9 @@ const SelectClothes = () => {
 
   useEffect(() => {
     if (service_id && category_id) {
-      console.log(`category_id ${category_id} service_id ${service_id}`);
       const getProducts = async () => {
         const result = await fetchServiceItems(category_id, service_id);
         if (result && result.length > 0) {
-          console.log("REsult : ", result);
           setCategoryItemsList(result);
         }
       };

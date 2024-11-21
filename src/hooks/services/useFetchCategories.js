@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 const useFetchCategories = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const fetchCategories = async (selectedServiceId) => {
-    console.log("asjasjasjaisj : ", selectedServiceId);
     try {
       const response = await fetch(
         `${baseURL}/web/categories?service_id=${selectedServiceId}`,

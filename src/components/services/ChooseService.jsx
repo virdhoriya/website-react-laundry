@@ -38,7 +38,6 @@ const ChooseService = () => {
       const getCategories = async () => {
         const result = await fetchCategories(selectedServiceId);
         if (result) {
-          console.log("Result : ", result);
           if (result.length > 0) {
             dispatch(setSelectedCategoryId(result[0].category_category_id));
             dispatch(setCategories(result));
