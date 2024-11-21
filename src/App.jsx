@@ -39,13 +39,25 @@ import NotFound from "./components/NotFound";
 import Loading from "./components/loading/Loading";
 import { useDispatch } from "react-redux";
 import { setAuthStatus } from "./redux/slices/authSlice";
+import useValidateToken from "./hooks/token/useValidateToken";
+import { addUser } from "./redux/slices/userSlice";
+
 
 const App = () => {
+  const { loading, user } = useValidateToken();
   const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(setAuthStatus(!!token));
-  }, [dispatch]);
+
+    if (user && !loading) {
+      dispatch(addUser(user));
+    }
+  }, [dispatch, user, loading]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Router>
       <Toaster />
@@ -53,6 +65,7 @@ const App = () => {
     </Router>
   );
 };
+
 
 const MainComponent = () => {
   const location = useLocation();
