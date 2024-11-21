@@ -2,8 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/login/useLogin";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../redux/slices/userSlice";
+import { setAuthStatus } from "../../redux/slices/authSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const { login } = useLogin();
   const [errors, setErrors] = useState({});
   const [formdata, setFormData] = useState({
@@ -32,7 +36,11 @@ const Login = () => {
     e.preventDefault();
     try {
       await formValidation.validate(formdata, { abortEarly: false });
-      await login(formdata.username, formdata.password);
+      const result = await login(formdata.username, formdata.password);
+      if (result) {
+        dispatch(addUser(result.user));
+        dispatch(setAuthStatus(!!result.token));
+      }
       setErrors("");
     } catch (error) {
       const validationErrors = {};

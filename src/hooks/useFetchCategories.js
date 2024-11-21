@@ -6,6 +6,7 @@ const useFetchCategories = (selectedServiceId) => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const getCategories = async () => {
+      if (!selectedServiceId) return;
       try {
         const response = await fetch(
           `${baseURL}/web/categories?service_id=${selectedServiceId}`,

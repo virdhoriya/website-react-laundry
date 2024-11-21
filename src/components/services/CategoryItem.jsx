@@ -6,13 +6,14 @@ import toast from "react-hot-toast";
 import useUpdateCart from "../../hooks/cart/useUpdateCart";
 import useDeletCart from "../../hooks/cart/useDeletCart";
 import { useNavigate } from "react-router-dom";
-
-const CategoryItem = ({ categoryItem, paramId, isAuthenticated }) => {
+import { useSelector } from "react-redux";
+const CategoryItem = ({ categoryItem, category_id }) => {
   const navigate = useNavigate();
   const [itemCount, setItemCount] = useState(1);
   const [cartId, setCartId] = useState(null);
   const [numberBtn, setNumberBtn] = useState(false);
   const [modelIsOpen, setModelIsOpen] = useState(false);
+  const isAuthenticated = useSelector((store) => store.auth.isAuthenticated);
 
   const { addToCart } = useAddToCart();
   const { updateCart } = useUpdateCart();
@@ -41,7 +42,7 @@ const CategoryItem = ({ categoryItem, paramId, isAuthenticated }) => {
     } else {
       setNumberBtn(true);
       const result = await addToCart({
-        paramId,
+        category_id,
         product_id,
         service_id,
         itemCount,
@@ -158,8 +159,7 @@ CategoryItem.propTypes = {
       image: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  paramId: PropTypes.number.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  category_id: PropTypes.number.isRequired,
 };
 
 export default CategoryItem;

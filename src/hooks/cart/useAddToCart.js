@@ -4,7 +4,12 @@ const useAddToCart = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const token = localStorage.getItem("token");
 
-  const addToCart = async ({ paramId, product_id, service_id, itemCount }) => {
+  const addToCart = async ({
+    category_id,
+    product_id,
+    service_id,
+    itemCount,
+  }) => {
     try {
       const response = await fetch(`${baseURL}/carts`, {
         method: "POST",
@@ -13,7 +18,7 @@ const useAddToCart = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          category_id: paramId,
+          category_id: Number(category_id),
           product_id: product_id,
           service_id: service_id,
           quantity: itemCount,

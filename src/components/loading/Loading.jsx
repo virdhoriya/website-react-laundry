@@ -2,7 +2,7 @@ import "./loading.css";
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-white z-[999] overflow-hidden">
       <div className="loading">
         <span></span>
         <span></span>
