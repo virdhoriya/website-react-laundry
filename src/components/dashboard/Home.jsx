@@ -59,7 +59,6 @@ const Home = () => {
     const fetchOrders = async () => {
       const result = await getOrders();
       if (result) {
-        console.log("Result : ", result);
         SetTotalDueAmt(result?.totalPendingAmount?.total_pending_due_amount);
         setIpoCount(result.inProgressCount);
         setTotalRows(result.count);
