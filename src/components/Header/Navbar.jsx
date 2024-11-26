@@ -2,13 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { LuShoppingCart } from "react-icons/lu";
 import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAuthStatus } from "../../redux/slices/authSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("token");
   const dispatch = useDispatch();
+  let profile_image = useSelector((state) => state.user.user.image);
+  if (!profile_image) {
+    profile_image = "./default_avatar.png";
+  }
 
   const onLogoutClick = () => {
     localStorage.clear();
@@ -96,9 +100,10 @@ const Navbar = () => {
             {isLoggedIn ? (
               <span className="inline-block h-[4.6rem] w-[4.6rem] relative group laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]">
                 <img
-                  src="/avatar.jpeg"
+                  src={profile_image}
                   alt="Avatar"
                   className="h-full w-full rounded-full border-[1.5px] border-black/45 laptop-l:border"
+                  loading="lazy"
                 />
                 <div className="hidden group-hover:inline-block">
                   <div className="logout-container flex flex-col items-start gap-4">

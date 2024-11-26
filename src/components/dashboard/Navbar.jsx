@@ -1,8 +1,13 @@
 import { LuShoppingCart } from "react-icons/lu";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let cartItem = 1;
+  let profile_image = useSelector((state) => state.user.user.image);
+  if (!profile_image) {
+    profile_image = "./default_avatar.png";
+  }
   return (
     <div className="flex">
       <img src="/dash-logo.png" alt="Logo" className="dash-logo" />
@@ -25,7 +30,7 @@ const Navbar = () => {
           </Link>
           <span className="inline-block h-[4.6rem] w-[4.6rem] border border-white/30 rounded-full">
             <img
-              src="/default_avatar.png"
+              src={profile_image}
               alt="Avatar"
               className="h-full w-full rounded-full bg-white"
             />

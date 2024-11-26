@@ -190,79 +190,83 @@ const Home = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order, index) => {
-                const {
-                  order_id,
-                  total,
-                  created_at,
-                  estimated_delivery_time,
-                  kasar_amount,
-                  paid_amount,
-                  order_status,
-                  order_status_name,
-                } = order;
+              {totalRows > 0 ? (
+                orders.map((order, index) => {
+                  const {
+                    order_id,
+                    total,
+                    created_at,
+                    estimated_delivery_time,
+                    kasar_amount,
+                    paid_amount,
+                    order_status,
+                    order_status_name,
+                  } = order;
 
-                return (
-                  <tr key={index}>
-                    <td>{order_id}</td>
-                    <td>{dayjs(created_at).format("DD/MM/YYYY, hh:mm A")}</td>
-                    <td>
-                      {dayjs(estimated_delivery_time).format("DD/MM/YYYY")}
-                    </td>
-                    <td>₹{total}</td>
-                    <td>₹{kasar_amount}</td>
-                    <td>{paid_amount || "₹0"}</td>
-                    <td
-                      style={{ padding: "5px", textAlign: "left" }}
-                      className="flex items-center justify-center"
-                    >
-                      {order_status == 1 && (
-                        <span className="inline-block px-4 rounded-xl bg-[#FEF7E7] text-[#F2B413] font-medium text-[1rem] leading-[2.4rem]">
-                          {order_status_name}
-                        </span>
-                      )}
-                      {order_status == 2 && (
-                        <span className="inline-block px-4 rounded-xl bg-[#E8E9EF] text-[#161F5F] font-medium text-[1rem] leading-[2.4rem]">
-                          In Process
-                        </span>
-                      )}
-                      {order_status == 3 && (
-                        <span className="inline-block px-4 rounded-xl bg-[#FAEEE7] text-[#CC5511] font-medium text-[1rem] leading-[2.4rem]">
-                          Picked Up
-                        </span>
-                      )}
-                      {order_status == 4 && (
-                        <span className="inline-block px-4 rounded-xl bg-[#EBF8FB] text-[#39B8D3] font-medium text-[1rem] leading-[2.4rem]">
-                          Out for Delivery
-                        </span>
-                      )}
-                      {order_status == 5 && (
-                        <span className="inline-block px-4 rounded-xl bg-[#EBFBF1] text-[#39D377] font-medium text-[1rem] leading-[2.4rem]">
-                          Delivered
-                        </span>
-                      )}
-                    </td>
-                    <td
-                      style={{ padding: "5px" }}
-                      className="flex items-center justify-center"
-                    >
-                      <FaEye
-                        className="inline-block h-8 w-8 cursor-pointer"
-                        onClick={() =>
-                          navigate("/dashboard/view-order", {
-                            state: { order_id },
-                          })
-                        }
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
+                  return (
+                    <tr key={index}>
+                      <td>{order_id}</td>
+                      <td>{dayjs(created_at).format("DD/MM/YYYY, hh:mm A")}</td>
+                      <td>
+                        {dayjs(estimated_delivery_time).format("DD/MM/YYYY")}
+                      </td>
+                      <td>₹{total}</td>
+                      <td>₹{kasar_amount}</td>
+                      <td>{paid_amount || "₹0"}</td>
+                      <td
+                        style={{ padding: "5px", textAlign: "left" }}
+                        className="flex items-center justify-center"
+                      >
+                        {order_status == 1 && (
+                          <span className="inline-block px-4 rounded-xl bg-[#FEF7E7] text-[#F2B413] font-medium text-[1rem] leading-[2.4rem]">
+                            {order_status_name}
+                          </span>
+                        )}
+                        {order_status == 2 && (
+                          <span className="inline-block px-4 rounded-xl bg-[#E8E9EF] text-[#161F5F] font-medium text-[1rem] leading-[2.4rem]">
+                            In Process
+                          </span>
+                        )}
+                        {order_status == 3 && (
+                          <span className="inline-block px-4 rounded-xl bg-[#FAEEE7] text-[#CC5511] font-medium text-[1rem] leading-[2.4rem]">
+                            Picked Up
+                          </span>
+                        )}
+                        {order_status == 4 && (
+                          <span className="inline-block px-4 rounded-xl bg-[#EBF8FB] text-[#39B8D3] font-medium text-[1rem] leading-[2.4rem]">
+                            Out for Delivery
+                          </span>
+                        )}
+                        {order_status == 5 && (
+                          <span className="inline-block px-4 rounded-xl bg-[#EBFBF1] text-[#39D377] font-medium text-[1rem] leading-[2.4rem]">
+                            Delivered
+                          </span>
+                        )}
+                      </td>
+                      <td
+                        style={{ padding: "5px" }}
+                        className="flex items-center justify-center"
+                      >
+                        <FaEye
+                          className="inline-block h-8 w-8 cursor-pointer"
+                          onClick={() =>
+                            navigate("/dashboard/view-order", {
+                              state: { order_id },
+                            })
+                          }
+                        />
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <td>No record found !</td>
+              )}
             </tbody>
           </table>
 
           <div className="bg-white flex items-center justify-between px-8">
-            {totalRows > 0 ? (
+            {totalRows > 10 && (
               <>
                 <p className="current-page-num">
                   Showing{" "}
@@ -391,10 +395,6 @@ const Home = () => {
                   </button>
                 </div>
               </>
-            ) : (
-              <p className="basis-[100%] text-center text-[1.2rem] leading-[1.8rem] text-[#676788] p-5">
-                No Order Found !
-              </p>
             )}
           </div>
         </div>

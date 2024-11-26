@@ -41,7 +41,8 @@ import { useDispatch } from "react-redux";
 import { setAuthStatus } from "./redux/slices/authSlice";
 import useValidateToken from "./hooks/token/useValidateToken";
 import { addUser } from "./redux/slices/userSlice";
-
+import Admin from "./components/admin/Admin";
+import ScrollToTop from "./components/scroll/ScrollToTop";
 
 const App = () => {
   const { loading, user } = useValidateToken();
@@ -61,11 +62,11 @@ const App = () => {
   return (
     <Router>
       <Toaster />
+      <ScrollToTop />
       <MainComponent />
     </Router>
   );
 };
-
 
 const MainComponent = () => {
   const location = useLocation();
@@ -83,8 +84,6 @@ const MainComponent = () => {
     excludeHeaderFooterRoutes.includes(location.pathname) ||
     location.pathname.startsWith("/dashboard");
 
-  const isAuthenticated = Boolean(localStorage.getItem("token"));
-
   return (
     <>
       {!isExcludedRoute && <Header />}
@@ -93,7 +92,7 @@ const MainComponent = () => {
           <Route
             path="/forget-password"
             element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute>
                 <Suspense fallback={<Loading />}>
                   <ForgetPassword />
                 </Suspense>
@@ -103,7 +102,7 @@ const MainComponent = () => {
           <Route
             path="/enter-otp"
             element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute>
                 <Suspense fallback={<Loading />}>
                   <EnterOtp />
                 </Suspense>
@@ -113,7 +112,7 @@ const MainComponent = () => {
           <Route
             path="/reset-password"
             element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute>
                 <Suspense fallback={<Loading />}>
                   <ResetPassword />
                 </Suspense>
@@ -123,7 +122,7 @@ const MainComponent = () => {
           <Route
             path="/signup"
             element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute>
                 <Suspense fallback={<Loading />}>
                   <Signup />
                 </Suspense>
@@ -133,13 +132,15 @@ const MainComponent = () => {
           <Route
             path="/login"
             element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
+              <PublicRoute>
                 <Suspense fallback={<Loading />}>
                   <Login />
                 </Suspense>
               </PublicRoute>
             }
           />
+
+          <Route path="/admin" element={<Admin />} />
 
           <Route path="/" element={<Home />} />
           <Route
@@ -202,7 +203,7 @@ const MainComponent = () => {
           <Route
             path="/cart"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProtectedRoute>
                 <Suspense fallback={<Loading />}>
                   <Cart />
                 </Suspense>
@@ -213,7 +214,7 @@ const MainComponent = () => {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProtectedRoute>
                 <Suspense fallback={<Loading />}>
                   <DashBoard />
                 </Suspense>

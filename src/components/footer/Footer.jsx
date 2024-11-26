@@ -2,6 +2,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FiClock, FiPhoneCall } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiInstagramFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -37,28 +38,31 @@ const Footer = () => {
               <p className="laptop-m:text-[1.4rem] laptop-s:text-[1.2rem]">
                 &copy; 2024 Sikka Cleaners All rights reserved.
               </p>
-              <button className="border border-[var(--secondary)] rounded-full p-[1.2rem] text-[1.4rem] font-semibold leading-[1.4rem font-semibold] laptop-m:p-4 laptop-s:p-3 laptop-s:text-[1.3rem] laptop-s:font-medium">
+              <Link
+                to="/admin"
+                className="border border-[var(--secondary)] rounded-full p-[1.2rem] text-[1.4rem] font-semibold leading-[1.4rem font-semibold] laptop-m:p-4 laptop-s:p-3 laptop-s:text-[1.3rem] laptop-s:font-medium"
+              >
                 Admin Login
-              </button>
+              </Link>
             </div>
 
             <div className="tab-s:basis-[45%]">
               <h4 className="sitemap-title">Explore</h4>
               <ul className="sitemap-list">
                 <li>
-                  <a href="#">About</a>
+                  <Link to="/about">About</Link>
                 </li>
                 <li>
-                  <a href="#">Our Services</a>
+                  <Link to="/services">Our Services</Link>
                 </li>
                 <li>
-                  <a href="#">Prices</a>
+                  <Link to="/prices">Prices</Link>
                 </li>
                 <li>
-                  <a href="#">FAQ</a>
+                  <Link to="/">FAQ</Link>
                 </li>
                 <li>
-                  <a href="#">Contact Us</a>
+                  <Link to="/contact">Contact Us</Link>
                 </li>
               </ul>
             </div>
@@ -80,15 +84,18 @@ const Footer = () => {
                 <div className="flex items-center gap-4">
                   <FiPhoneCall className="block h-[2.4rem] w-[2.4rem] laptop-m:h-[2rem] laptop-m:w-[2rem]" />
                   <p>9879400838</p>
-                  <span className="block ">|</span>
+                  <span className="block">|</span>
                   <p>9825600838</p>
                 </div>
-                <div className="flex items-center gap-4">
+                <a
+                  href="mailto:sikkacleaners@gmail.com"
+                  className="flex items-center gap-4"
+                >
                   <span className="block">
                     <MdOutlineEmail className="block h-[2.4rem] w-[2.4rem] laptop-m:h-[2rem] laptop-m:w-[2rem]" />
                   </span>
                   <p>sikkacleaners@gmail.com</p>
-                </div>
+                </a>
                 <div className="flex items-center gap-4">
                   <span className="block">
                     <FiClock className="block h-[2.4rem] w-[2.4rem] laptop-m:h-[2rem] laptop-m:w-[2rem]" />
