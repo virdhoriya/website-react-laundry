@@ -49,6 +49,34 @@
   .card-title {
     font-size: 2.6rem;
   }
+
+  .caption {
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+    margin-top: 3.5rem;
+  }
+
+  .footer-container {
+    padding: 7rem 0;
+  }
+
+  .footer-detail-container {
+    padding: 0 7rem;
+  }
+
+  .sitemap-title {
+    font-size: 2rem;
+    line-height: normal;
+  }
+
+  .mobile {
+    width: 53%;
+  }
+
+  .download h2 {
+    font-size: 3.6rem;
+    line-height: 5.2rem;
+  }
 }
 
 /*****************/
@@ -112,6 +140,45 @@
   .card {
     padding: 3rem;
   }
+
+  .caption {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .benefits-container figure img {
+    max-height: 4rem;
+    max-width: 4rem;
+  }
+
+  .sitemap-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    letter-spacing: 3px;
+  }
+
+  .footer-detail-container {
+    padding: 0 6rem;
+  }
+
+  .sitemap-list li {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+
+  .download h2 {
+    font-size: 3.6rem;
+    line-height: 4.8rem;
+  }
+
+  .download p {
+    font-size: 1.6rem;
+    line-height: 2.7rem;
+  }
+
+  .mobile {
+    width: 55.5%;
+  }
 }
 
 /*****************/
@@ -161,6 +228,22 @@
     font-size: 1.6rem;
     letter-spacing: normal;
     line-height: 2.4rem;
+  }
+
+  .footer-container {
+    padding: 6rem 0;
+  }
+
+  .footer-detail-container {
+    padding: 0 5rem;
+  }
+
+  .sitemap-list li {
+    letter-spacing: 0.8px;
+  }
+
+  .sitemap-list {
+    gap: 1.5rem;
   }
 }
 
@@ -225,6 +308,42 @@
     max-height: 8rem;
     padding-bottom: 2.5rem;
   }
+
+  .caption {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    margin-top: 3rem;
+  }
+
+  .benefits-container figure img {
+    max-height: 3.6rem;
+    max-width: 3.6rem;
+  }
+
+  .sitemap-title {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .sitemap-list li {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-detail-container {
+    padding: 0 4rem;
+  }
+
+  .download h2 {
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+  }
+
+  .download p {
+    font-size: 1.5rem;
+    line-height: 2.6rem;
+  }
 }
 
 /*****************/
@@ -245,6 +364,23 @@
     font-size: 1.4rem;
     line-height: 1.9rem;
     letter-spacing: normal;
+  }
+
+  .sitemap-list {
+    gap: 1.3rem;
+  }
+
+  .sitemap-list li {
+    letter-spacing: 0.1px;
+  }
+
+  .download h2 {
+    font-size: 3.2rem;
+    line-height: 4.2rem;
+  }
+
+  .mobile {
+    width: 58.5%;
   }
 }
 
@@ -298,6 +434,24 @@
     max-height: 8rem;
     padding-bottom: 2.5rem;
   }
+
+  .footer-detail-container {
+    padding: 0 3rem;
+  }
+
+  .mobile {
+    width: 50%;
+  }
+
+  .download h2 {
+    font-size: 2.8rem;
+    line-height: 3.2rem;
+  }
+
+  .download p {
+    font-size: 1.4rem;
+    line-height: normal;
+  }
 }
 
 /*****************/
@@ -339,6 +493,33 @@
   .card-description {
     line-height: normal;
   }
+
+  .benefits-container figure img {
+    max-height: 3rem;
+    max-width: 3rem;
+  }
+
+  .caption {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+  }
+
+  .footer-container {
+    padding: 5rem 0;
+  }
+
+  .footer-logo {
+    max-width: 24rem;
+  }
+
+  .download h2 {
+    font-size: 2.4rem;
+    line-height: normal;
+  }
+
+  .mobile {
+    width: 23.7rem;
+  }
 }
 
 /*****************/
@@ -374,6 +555,15 @@
 
   .steps-image {
     padding-bottom: 2rem;
+  }
+
+  .mobile {
+    width: 50%;
+  }
+
+  .download {
+    flex-direction: column;
+    gap: 2rem;
   }
 }
 

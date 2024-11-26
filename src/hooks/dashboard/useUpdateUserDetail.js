@@ -31,11 +31,14 @@ const useUpdateUserDetail = () => {
 
       if (response.ok) {
         toast.success("user data updated successfully");
+        return data?.data?.user?.updatedData;
       } else {
         toast.error(data.message);
+        return null;
       }
     } catch {
       toast.error("Failed to update user data!");
+      return null;
     }
   };
   return { updateUserDetail };

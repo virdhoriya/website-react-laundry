@@ -292,6 +292,214 @@ h3 {
   line-height: 2.8rem;
 }
 
+/* benefits */
+
+.caption {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  margin-top: 4rem;
+}
+
+.benefits-container figure img {
+  display: inline-block;
+  max-height: 4.8rem;
+  max-width: 4.8rem;
+}
+
+/* footer  */
+
+.footer {
+  color: var(--white);
+  background-image: linear-gradient(
+      rgba(22, 31, 95, 0.95),
+      rgba(22, 31, 95, 0.95)
+    ),
+    url("./footer-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.footer-container {
+  max-width: 192rem;
+  margin: 0 auto;
+  padding: 14rem 0;
+}
+
+.footer-detail-container {
+  box-sizing: content-box;
+  max-width: 162rem;
+  padding: 0 8rem;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.2rem;
+}
+
+.sitemap-title {
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 3rem;
+}
+
+.sitemap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sitemap-list li {
+  font-size: 1.8rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+/* testimonials */
+
+.review-count {
+  background-color: #eff3ff66;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.review-count span {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.review-count p {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  text-transform: uppercase;
+  color: var(--secondary);
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.review-container {
+  background-color: rgba(239, 243, 255, 1);
+  min-width: 48.9rem;
+  border-radius: 2rem;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.review-container h4 {
+  column-rule: var(--black);
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  font-weight: 600;
+}
+
+.review-container p {
+  color: #393B43;
+  font-size: 2rem;
+  line-height: 3.2rem;
+  font-weight: normal;
+}
+
+
+.testimonials-scroll::-webkit-scrollbar {
+  display: inline-block;
+  height: 8rem;
+}
+
+.testimonials-scroll::-webkit-scrollbar-thumb {
+  background: radial-gradient(circle farthest-corner, var(--primary) 0%, var(--primary) 50%, transparent 50%, transparent 100%) no-repeat;
+  background-size: 11rem 11rem;
+  background-position: center;
+}
+
+/* download */
+
+.download {
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  z-index: -100;
+}
+
+.download h2 {
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 6.6rem;
+}
+
+.download p {
+  color: #393B43;
+  font-weight: normal;
+  font-size: 1.8rem;
+  line-height: 3rem;
+}
+
+.mobile {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+}
+
+/* .mobile-bg {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 10.1rem;
+  z-index: 1;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .section-services h1 {
   color: #fff;
   font-size: 6rem;
@@ -324,12 +532,6 @@ h3 {
 
 .section-space {
   padding: 7rem 0;
-}
-
-.footer-container {
-  max-width: 192rem;
-  margin: 0 auto;
-  padding: 14.8rem 15rem;
 }
 
 .full-width {
@@ -380,151 +582,6 @@ h1 {
 
 .primary {
   color: var(--primary-color);
-}
-
-/* home  - banner */
-
-/* home - benefits */
-
-.laundry-image {
-  height: auto;
-  max-width: 65.9rem;
-}
-
-.caption {
-  color: #1b1850;
-  font-weight: 600;
-  font-size: 2.8rem;
-  line-height: 2.8rem;
-  margin-top: 4rem;
-}
-
-/* home - testimonials */
-
-.review-count {
-  background-color: #eff3ff66;
-  border-radius: 1rem;
-  padding: 2rem;
-}
-
-.review-count span {
-  font-size: 4rem;
-  color: #1b1850;
-  line-height: 4rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.review-count p {
-  font-size: 2rem;
-  line-height: 2rem;
-  color: #ff2e17;
-  letter-spacing: 1px;
-  font-weight: 700;
-  margin-top: 1rem;
-}
-
-.review-container {
-  background-color: rgba(239, 243, 255, 1);
-  min-width: 48.9rem;
-  border-radius: 3rem;
-  padding: 5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.review-container h4 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  line-height: 2.8rem;
-}
-
-.review-container p {
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 3.2rem;
-}
-
-.testimonials-scroll::-webkit-scrollbar {
-  height: 1rem;
-  background-color: #f0f0f0;
-}
-
-.testimonials-scroll::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-.testimonials-scroll::-webkit-scrollbar-thumb {
-  display: inline-block;
-  height: 2rem;
-  width: 40px;
-  background-color: var(--primary-color);
-}
-
-/* home - download */
-
-.download {
-  border-radius: 2rem;
-  display: flex;
-  z-index: -100;
-}
-
-.download h2 {
-  font-size: 4.8rem;
-  font-weight: 700;
-  line-height: 6.6rem;
-}
-
-.download p {
-  font-weight: normal;
-  font-size: 1.8rem;
-  line-height: 3rem;
-  margin: 2rem 0;
-}
-
-.mobile {
-  display: inline-block;
-  position: relative;
-  z-index: 2;
-}
-
-.mobile-bg {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 10.1rem;
-  z-index: 1;
-}
-
-/* footer */
-
-.footer-container {
-  /* background-image: url("./footer-bg.png");
-  background-size: cover;
-  background-position: center; */
-  background-color: black;
-}
-
-.sitemap-title {
-  font-size: 2.6rem;
-  font-weight: 600;
-  line-height: 2.6rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-bottom: 3rem;
-}
-
-.sitemap-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-}
-
-.sitemap-list li {
-  font-size: 2.2rem;
-  font-weight: normal;
-  line-height: 2rem;
-  letter-spacing: 1px;
 }
 
 /* about */

@@ -1,11 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { FaPencilAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import useGetUserDetail from "../../hooks/dashboard/useGetUserDetail";
 import useUpdateUserDetail from "../../hooks/dashboard/useUpdateUserDetail";
 import Loading from "./Loading";
+import { addUser } from "../../redux/slices/userSlice";
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const { getUserDetail } = useGetUserDetail();
   const { updateUserDetail } = useUpdateUserDetail();
   const [preview, setPreview] = useState(null);
@@ -25,7 +28,12 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    flag && (await updateUserDetail(formData));
+    if (flag) {
+      const result = await updateUserDetail(formData);
+      if (result) {
+        dispatch(addUser(result));
+      }
+    }
   };
 
   const handleChange = (e) => {
@@ -84,9 +92,7 @@ const Profile = () => {
           id_proof,
         } = result.user;
         setFormData({ first_name, last_name, email, mobile_number, gender });
-        const imageUrl = image
-          ? image
-          : "/default_avatar.png";
+        const imageUrl = image ? image : "/default_avatar.png";
         id_proof && setDocPreview(id_proof);
         setPreview(imageUrl);
         setLoading(false);

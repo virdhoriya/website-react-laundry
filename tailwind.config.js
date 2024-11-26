@@ -11,7 +11,6 @@ export default {
       },
       backgroundColor: {
         'primary': '#161f5f',
-        'laundry-benefit': '#EFF3FF',
         'download': '#F7F8FD',
         'history': '#EFF3FF',
       },

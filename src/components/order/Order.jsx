@@ -81,8 +81,7 @@ const Order = () => {
           </div>
           <div className="flex items-center gap-8">
             <Link
-              to=""
-              onClick={(e) => e.preventDefault()}
+              to="/dashboard/home"
               className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-200 rounded-lg text-xl px-5 py-4 font-semibold"
             >
               Track your order

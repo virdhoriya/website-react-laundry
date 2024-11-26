@@ -30,7 +30,7 @@ const usePlaceOrder = () => {
           shipping_charges,
           payment_type,
           order_status: 1,
-          payment_status: 3,
+          payment_status: 1,
           address_id,
           user_id
         }),
