@@ -4,10 +4,18 @@ const useFetchServiceItems = () => {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const fetchServiceItems = async (category_id, service_id) => {
     try {
+      const token = localStorage.getItem("token");
+      const headers = {};
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch(
         `${baseURL}/web/products?category_id=${category_id}&service_id=${service_id}`,
         {
           method: "GET",
+          headers,
         }
       );
       const data = await response.json();

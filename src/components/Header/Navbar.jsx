@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 import { LuShoppingCart } from "react-icons/lu";
 import { FiLogOut } from "react-icons/fi";
@@ -7,6 +8,7 @@ import { setAuthStatus } from "../../redux/slices/authSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const isLoggedIn = localStorage.getItem("token");
   const dispatch = useDispatch();
   let profile_image = useSelector((state) => state.user.user.image);
@@ -25,7 +27,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="py-4 bg-[#F7F8FD] laptop-l:py-3 laptop-m:py-2">
+    <nav
+      className={`py-4 laptop-l:py-3 laptop-m:py-2 ${
+        pathname === "/services" ? "path-service" : "bg-[#F7F8FD]"
+      }`}
+    >
       <div className="container">
         <div className="flex items-center justify-between">
           <div>
@@ -38,12 +44,12 @@ const Navbar = () => {
 
           <div className="z-10 tab-m:hidden">
             <ul className="navbar">
-              <li>
+              <li className={`${pathname === "/" && "active-nav"}`}>
                 <Link to="/" title="Home" aria-label="Home">
                   Home
                 </Link>
               </li>
-              <li>
+              <li className={`${pathname === "/services" && "active-nav"}`}>
                 <Link
                   to="/services"
                   title="Our Service"
@@ -52,7 +58,11 @@ const Navbar = () => {
                   Our Service
                 </Link>
               </li>
-              <li>
+              <li
+                className={`${
+                  pathname === "/corporate-services" && "active-nav"
+                }`}
+              >
                 <Link
                   to="/corporate-services"
                   title="Corporate Services"
@@ -61,22 +71,22 @@ const Navbar = () => {
                   Corporate Services
                 </Link>
               </li>
-              <li>
+              <li className={`${pathname === "/prices" && "active-nav"}`}>
                 <Link to="/prices" title="Price List" aria-label="Price List">
                   Price List
                 </Link>
               </li>
-              <li>
+              <li className={`${pathname === "/about" && "active-nav"}`}>
                 <Link to="/about" title="About Us" aria-label="About Us">
                   About Us
                 </Link>
               </li>
-              <li>
+              <li className={`${pathname === "/contact" && "active-nav"}`}>
                 <Link to="/contact" title="Contact Us" aria-label="Contact Us">
                   Contact Us
                 </Link>
               </li>
-              <li>
+              <li className={`${pathname === "/more" && "active-nav"}`}>
                 <Link to="/more" title="More" aria-label="More">
                   More
                 </Link>

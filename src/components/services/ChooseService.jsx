@@ -68,7 +68,9 @@ const ChooseService = () => {
                 return (
                   <div
                     key={name}
-                    className="service-container flex flex-col gap-8 items-center"
+                    className={`service-container flex flex-col gap-8 items-center ${
+                      selectedServiceId === service_id && "active-service"
+                    }`}
                     onClick={() => handleServiceClick(service_id)}
                   >
                     <div className="h-24 w-24 text-center">

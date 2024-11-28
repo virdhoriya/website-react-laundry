@@ -7,7 +7,7 @@ const Services = () => {
     <div>
       <BackgroundImage />
       <ChooseService />
-      <ServiceContainer />
+      <ServiceContainer /> 
     </div>
   );
 };

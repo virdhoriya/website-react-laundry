@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useGetBanner from "../../hooks/useGetBanner";
+import Loading from "../loading/Loading";
 
 const Banner = () => {
   const [activeBanner, setActiveBanner] = useState(0);
@@ -19,15 +20,15 @@ const Banner = () => {
   };
 
   if (!banners?.banner || banners.banner.length === 0) {
-    return <p>No banner found!</p>;
+    return <Loading />;
   }
 
   return (
     <section className="bg-[#f7f8fd]">
       <div className="container">
-        <div className="relative">
+        <div className="flex justify-center items-center">
           <div className="inner-banner-container flex justify-start items-center">
-            <div className="flex flex-col gap-40">
+            <div className="flex flex-col gap-40 laptop-l:gap-32 laptop-m:gap-24 laptop-s:gap-20 tab-l:gap-16">
               <div>
                 <h1>{activeBanner.title}</h1>
                 <p>{activeBanner.description}</p>

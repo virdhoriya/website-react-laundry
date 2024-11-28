@@ -1,19 +1,22 @@
+import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
     <section className="section-space">
-      <div className="secondary-container">
-        <div className="flex items-start justify-start">
-          <div className="flex-[0_0_50%]">
-            <h2 className="banner-title mb-20">
+      <div className="tertiary-container">
+        <div className="flex items-start justify-start tab-s:items-stretch tab:flex-col tab:gap-12">
+          <div className="flex-[0_0_50%] tab:flex tab:justify-between tab:items-center">
+            <h2 className="banner-title mb-20 laptop-l:mb-16 laptop-m:mb-12 laptop-s:mb-8 tab-s:mb-16 tab:mb-0 tab:flex-wrap">
               Laundry
-              <br />
+              <span className="hidden tab:inline-block px-2"></span>
+              <br className="tab:hidden" />
               Service
             </h2>
-            <a href="#" className="btn">
+            <Link to="/contact" className="primary-button">
               Contact Us
-            </a>
+            </Link>
           </div>
-          <div className="flex-[0_0_50%]">
+          <div className="flex-[0_0_45%] space-y-16 laptop-m:space-y-12 laptop-m:flex-[0_0_50%]  laptop-s:space-y-8 tab:space-y-6">
             <p className="para2">
               We are professional cleaners in delivering you the highest quality
               of services in pressing and clean.
