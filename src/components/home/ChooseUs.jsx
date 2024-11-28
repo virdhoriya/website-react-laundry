@@ -1,6 +1,6 @@
 const ChooseUs = () => {
   return (
-    <section className="space-xl bg-[url('/chooseus-bg.png')] text-white">
+    <section className="space-xl choose-us-container text-white">
       <div className="secondary-container">
         <p className="section-title">WHY CHOOSE US</p>
         <h2 className="text-white mb-20 laptop-l:mb-16 laptop:mb-12 tab-l:mb-10">Sikka Cleaners is best in Town</h2>

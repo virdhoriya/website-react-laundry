@@ -1,3 +1,4 @@
+import Banner from "./Banner";
 import Coupon from "./Coupon";
 import Services from "./Services";
 import WelcomeTo from "./WelcomeTo";
@@ -10,6 +11,7 @@ import Download from "./Download";
 const Home = () => {
   return (
     <div>
+      <Banner />
       <Coupon />
       <Services />
       <WelcomeTo />

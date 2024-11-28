@@ -23,7 +23,7 @@ const SelectClothes = () => {
       };
       getProducts();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category_id, service_id]);
 
   const handleCategoryClick = (category_id) => {
@@ -40,7 +40,9 @@ const SelectClothes = () => {
               return (
                 <span
                   key={category_category_id}
-                  className="category-tags"
+                  className={`category-tags ${
+                    category_id === category_category_id && "active-tag"
+                  }`}
                   onClick={() => handleCategoryClick(category_category_id)}
                 >
                   {category_name}
