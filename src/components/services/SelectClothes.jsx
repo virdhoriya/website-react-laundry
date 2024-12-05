@@ -33,7 +33,7 @@ const SelectClothes = () => {
   return (
     <div className="select-clothes-container">
       <h4 className="service-title">Select Cloths</h4>
-      <div className="flex gap-16">
+      <div className="flex items-center gap-16 laptop-l:gap-12 laptop-m:gap-8">
         {categories.length > 0
           ? categories.map((category) => {
               const { category_name, category_category_id } = category;
@@ -41,7 +41,7 @@ const SelectClothes = () => {
                 <span
                   key={category_category_id}
                   className={`category-tags ${
-                    category_id === category_category_id && "active-tag"
+                    category_id === category_category_id ? "active-tag" : ""
                   }`}
                   onClick={() => handleCategoryClick(category_category_id)}
                 >
@@ -51,7 +51,7 @@ const SelectClothes = () => {
             })
           : "No category Found"}
       </div>
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12 laptop-l:gap-10 laptop-m:gap-8">
         {categories.length > 0 &&
           categoryItemsList.map((categoryItem) => {
             return (

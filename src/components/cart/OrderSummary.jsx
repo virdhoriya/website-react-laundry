@@ -66,6 +66,7 @@ const OrderSummary = ({
       }
     };
     fetchCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -83,17 +84,17 @@ const OrderSummary = ({
           Apply
         </button>
       </div>
-      <div className="px-12 py-12 flex flex-col gap-10 ">
-        <div className="subtotal-container">
+      <div className="px-12 py-12 flex flex-col gap-12">
+        <div className="place-center">
           <p>Sub Total</p>
           <h5>₹{subTotal - discountValue}</h5>
         </div>
-        <div className="shipcharge-container">
+        <div className="place-center">
           <p>Shipping Charge</p>
           <h5>₹{shippingCharge}</h5>
         </div>
         <span className="line"></span>
-        <div className="total-container">
+        <div className="place-center total-container">
           <p>Total</p>
           <h5>₹{subTotal - discountValue + shippingCharge}</h5>
         </div>
