@@ -38,12 +38,14 @@ const Footer = () => {
               <p className="laptop-m:text-[1.4rem] laptop-s:text-[1.2rem]">
                 &copy; 2024 Sikka Cleaners All rights reserved.
               </p>
-              <Link
-                to="/admin"
+              <a
+                href="http://35.154.167.170/"
+                target="__blank"
+                rel="noopener noreferrer"
                 className="border border-[var(--secondary)] rounded-full p-[1.2rem] text-[1.4rem] font-semibold leading-[1.4rem font-semibold] laptop-m:p-4 laptop-s:p-3 laptop-s:text-[1.3rem] laptop-s:font-medium"
               >
                 Admin Login
-              </Link>
+              </a>
             </div>
 
             <div className="tab-s:basis-[45%]">

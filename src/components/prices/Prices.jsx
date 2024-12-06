@@ -3,10 +3,10 @@ import PriceList from "./PriceList";
 
 const Prices = () => {
   return (
-    <div>
+    <>
       <Banner />
       <PriceList />
-    </div>
+    </>
   );
 };
 
