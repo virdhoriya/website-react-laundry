@@ -1,3 +1,4 @@
+import "./cart.css";
 import { useState } from "react";
 import Main from "./Main";
 import AddAddress from "./AddAddress";

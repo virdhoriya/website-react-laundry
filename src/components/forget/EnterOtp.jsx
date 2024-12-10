@@ -1,3 +1,4 @@
+import "./enterotp.css";
 import { useEffect, useRef } from "react";
 import useValidateOtp from "../../hooks/otp/useValidateOtp";
 import { Link, useLocation, useNavigate } from "react-router-dom";

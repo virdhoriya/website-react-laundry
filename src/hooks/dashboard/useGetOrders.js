@@ -15,7 +15,7 @@ const useGetOrders = () => {
 
       const data = await response.json();
       if (response.ok) {
-        return data.data;
+        return data?.data;
       } else {
         toast.error("Failed to fetch orders!");
         return false;

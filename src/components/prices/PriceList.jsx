@@ -13,9 +13,9 @@ const PriceList = () => {
                 REASONABLE PRICING
               </span>
             </h2>
-            <Link to="/dashboard/price-list" className="price-list-btn">
+            <a href="/" className="price-list-btn">
               Check Price List
-            </Link>
+            </a>
           </div>
           <div className="flex justify-between items-start gap-12 laptop-s:gap-16 tab-s:flex-wrap tab-s:justify-center">
             {category.map((cat) => {

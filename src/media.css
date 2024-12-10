@@ -165,17 +165,6 @@
     line-height: 2.7rem;
   }
 
-  .sr-list li {
-    font-size: 2rem;
-    line-height: 3.2rem;
-  }
-
-  .sr-list li::before {
-    top: 0%;
-    left: 0;
-    transform: translateY(0);
-  }
-
   .section-services h1 {
     font-size: 5.2rem;
     line-height: 6.8rem;
@@ -448,20 +437,6 @@
   .para2 {
     font-size: 1.7rem;
     line-height: 2.6rem;
-  }
-
-  .sr-list {
-    gap: 3rem;
-  }
-
-  .sr-list li {
-    font-size: 1.8rem;
-    line-height: 2.8rem;
-  }
-
-  .sr-list li {
-    font-size: 1.6rem;
-    line-height: 2.4rem;
   }
 
   .section-services {
@@ -779,27 +754,6 @@
     line-height: 2.2rem;
   }
 
-  .sr-list li {
-    padding-left: 2.75rem;
-  }
-
-  .sr-list li::before {
-    background-color: black;
-    height: 1.9rem;
-    width: 1.9rem;
-    border-radius: 99px;
-    background-image: linear-gradient(
-      to right bottom,
-      rgba(255, 255, 255, 0.5),
-      rgba(196, 70, 32, 0.821)
-    );
-  }
-
-  .sr-list li {
-    font-size: 1.4rem;
-    line-height: 1.9rem;
-  }
-
   .section-services {
     padding: 2rem 0 2rem 0;
   }
@@ -1048,17 +1002,6 @@
     padding: 0 3rem;
   }
 
-  .sm-services {
-    width: 80%;
-    border-top-left-radius: 0.6rem;
-    border-bottom-left-radius: 0.6rem;
-    backdrop-filter: blur(1px);
-  }
-
-  .sr-list {
-    gap: 2.5rem;
-  }
-
   .section-services h1 {
     font-size: 2.4rem;
     padding: 4rem 0 7rem 0;
@@ -1171,33 +1114,9 @@
     border-radius: 0.7rem;
   }
 
-  .sm-services {
-    background-image: repeating-linear-gradient(
-      45deg,
-      rgba(255, 0, 0, 0.5),
-      transparent 0.1px
-    );
-    backdrop-filter: blur(1rem);
-  }
   .floated-container h2 {
     font-size: 2.2rem;
     line-height: normal;
-  }
-
-  .sr-list li {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-    font-weight: 500;
-    padding-left: 2.4rem;
-  }
-
-  .sr-list li::before {
-    height: 1.6rem;
-    width: 1.6rem;
-  }
-
-  .sr-list {
-    gap: 2rem;
   }
 
   .service-container {
@@ -1308,20 +1227,6 @@
     font-size: 1.8rem;
   }
 
-  .sr-list li {
-    font-size: 1rem;
-    line-height: 1.4rem;
-    padding-left: 2rem;
-  }
-
-  .sr-list li::before {
-    height: 1.4rem;
-    width: 1.4rem;
-  }
-
-  .sr-list {
-    gap: 1.5rem;
-  }
 }
 
 /*****************/

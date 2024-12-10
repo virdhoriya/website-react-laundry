@@ -15,6 +15,7 @@ const Main = ({ setSubTotal }) => {
       }
     };
     fetchCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

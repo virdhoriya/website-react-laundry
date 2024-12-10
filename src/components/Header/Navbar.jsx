@@ -5,12 +5,17 @@ import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthStatus } from "../../redux/slices/authSlice";
+import { useEffect, useState } from "react";
+import { RxCross2 } from "react-icons/rx";
+import { FaHome } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isLoggedIn = localStorage.getItem("token");
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
   let profile_image = useSelector((state) => state.user.user.image);
   if (!profile_image) {
     profile_image = "./default_avatar.png";
@@ -26,6 +31,18 @@ const Navbar = () => {
     navigate("/dashboard/home");
   };
 
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   return (
     <>
       <nav
@@ -33,7 +50,9 @@ const Navbar = () => {
           pathname === "/services" ? "path-service" : "bg-[#F7F8FD]"
         }`}
       >
-        <div className="container">
+        <div
+          className={`${pathname === "/contact" ? "container-b" : "container"}`}
+        >
           <div className="flex items-center justify-between">
             <div>
               {pathname === "/services" ? (
@@ -157,7 +176,10 @@ const Navbar = () => {
                 </Link>
               )}
               <div className="h-[3.8rem] w-[3.8rem] justify-center items-center hidden tab-m:flex">
-                <div className={`hamburger`}>
+                <div
+                  className={`hamburger ${isOpen ? "active-mobile-nav" : ""}`}
+                  onClick={toggleOpen}
+                >
                   <span></span>
                   <span></span>
                   <span></span>
@@ -167,6 +189,129 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <div
+        className={`mobile-nav-cover ${isOpen ? "animate-nav-cover" : ""}`}
+      ></div>
+      <div
+        className={`mobile-nav-container space-y-8 shadow-2xl hidden tab-m:block ${
+          isOpen ? "animate-nav-container" : ""
+        }`}
+      >
+        <div className="relative flex flex-col rounded-xl bg-transparent p-4 text-[var(--primary)]">
+          <div className="p-4 flex items-center justify-between">
+            <h5 className="block font-sans text-[1.8rem] antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+              Sidebar
+            </h5>
+            <RxCross2 className="h-9 w-9" onClick={toggleOpen} />
+          </div>
+          <nav className="flex flex-col gap-2 p-2 font-sans text-[1.4rem] font-medium text-[var(--primary)]">
+            <Link
+              to="/"
+              className={`nav-item ${
+                pathname === "/" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <FaHome className="nav-icon" />
+              </div>
+              Home
+            </Link>
+
+            <Link
+              to="/services"
+              className={`nav-item ${
+                pathname === "/services" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Our Services
+            </Link>
+
+            <Link
+              to="/corporate-services"
+              className={`nav-item ${
+                pathname === "/corporate-services" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Corporate Services
+            </Link>
+
+            <Link
+              to="/prices"
+              className={`nav-item ${
+                pathname === "/prices" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Price List
+            </Link>
+
+            <Link
+              to="/about"
+              className={`nav-item ${
+                pathname === "/about" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              About us
+            </Link>
+
+            <Link
+              to="/contact"
+              className={`nav-item ${
+                pathname === "/contact" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Contact us
+            </Link>
+
+            <Link
+              to="/dashboard/home"
+              className={`nav-item ${
+                pathname === "/dashboard/home" ? "active-nav-item" : ""
+              }`}
+              onClick={toggleOpen}
+            >
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Profile
+            </Link>
+
+            <Link to="" className="nav-item" onClick={toggleOpen}>
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Logout
+            </Link>
+
+            <Link to="/" className="nav-item" onClick={toggleOpen}>
+              <div>
+                <IoMdSettings className="nav-icon" />
+              </div>
+              Setting
+            </Link>
+          </nav>
+        </div>
+      </div>
     </>
   );
 };

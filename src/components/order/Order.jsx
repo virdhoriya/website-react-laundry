@@ -1,3 +1,4 @@
+import "./order.css";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 

@@ -1,0 +1,163 @@
+/* ServiceList */
+
+.full-width {
+  max-width: 192rem;
+  margin: 0 auto;
+}
+
+.sm-services {
+  background-color: rgb(219 234 254);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 83%;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.sr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.sr-list li {
+  font-size: 2.2rem;
+  line-height: 3.6rem;
+  font-weight: 600;
+  padding-left: 5rem;
+  position: relative;
+}
+
+.sr-list li::before {
+  content: "";
+  display: inline-block;
+  background-image: url("/styled-bullet.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 3rem;
+  width: 4.5rem;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.floated-container {
+  max-width: 135rem;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 100em) {
+  .sr-list li {
+    font-size: 2rem;
+    line-height: 3.2rem;
+  }
+
+  .sr-list li::before {
+    top: 0%;
+    left: 0;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 90em) {
+}
+
+@media only screen and (max-width: 83.75em) {
+  .sr-list {
+    gap: 3rem;
+  }
+
+  .sr-list li {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+
+  .sr-list li {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+
+@media only screen and (max-width: 80em) {
+}
+
+@media only screen and (max-width: 71.25em) {
+  .sr-list li {
+    padding-left: 2.75rem;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+  }
+
+  .sr-list li::before {
+    background-color: black;
+    height: 1.9rem;
+    width: 1.9rem;
+    border-radius: 99px;
+    background-image: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.5),
+      rgba(196, 70, 32, 0.821)
+    );
+  }
+}
+
+@media only screen and (max-width: 64em) {
+}
+
+@media only screen and (max-width: 60.875em) {
+  .sr-list {
+    gap: 2.5rem;
+  }
+
+  .sm-services {
+    width: 80%;
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    backdrop-filter: blur(1px);
+  }
+}
+
+@media only screen and (max-width: 55em) {
+  .sr-list li {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 500;
+    padding-left: 2.4rem;
+  }
+
+  .sr-list li::before {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+
+  .sr-list {
+    gap: 2rem;
+  }
+}
+
+@media only screen and (max-width: 38.4375em) {
+  .sr-list li {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding-left: 2rem;
+  }
+
+  .sr-list li::before {
+    height: 1.4rem;
+    width: 1.4rem;
+  }
+
+  .sr-list {
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 27.5em) {
+}
+
+@media only screen and (max-width: 20em) {
+}

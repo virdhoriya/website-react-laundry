@@ -1,3 +1,4 @@
+import "./home.css";
 import Banner from "./Banner";
 import Coupon from "./Coupon";
 import Services from "./Services";

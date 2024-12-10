@@ -17,7 +17,7 @@ const History = () => {
               <img src="/2008.png" alt="2008" className="year" />
             </div>
           </div>
-          <div className="flex justify-center items-center gap-16 pt-32 timeline-text ">
+          <div className="flex justify-center items-center gap-16 pt-32 timeline-text">
             <span>1978</span>
             <span>2001</span>
             <span className="active-time">2008</span>

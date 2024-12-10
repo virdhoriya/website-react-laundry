@@ -3,6 +3,7 @@ import StatsDisplay from "./StatsDisplay";
 import Details from "./Details";
 import Video from "./Video";
 import History from "./History";
+import "./about.css";
 
 const About = () => {
   return (
