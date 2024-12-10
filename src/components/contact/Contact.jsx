@@ -1,3 +1,4 @@
+import "./contact.css";
 import ContactUsForm from "./ContactUsForm";
 import Map from "./Map";
 

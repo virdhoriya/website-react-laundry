@@ -3,8 +3,8 @@ import { SlLocationPin } from "react-icons/sl";
 
 const Map = () => {
   return (
-    <section className="section-space">
-      <div className="secondary-container">
+    <section className="section-padding">
+      <div className="content-container">
         <div className="flex items-center justify-between">
           <div>
             <iframe
@@ -12,18 +12,18 @@ const Map = () => {
               width="980"
               height="870"
               style={{ border: 0 }}
-              allowFullScreen="true"
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="rounded-3xl"
             ></iframe>
           </div>
+
           <div className="flex-[0_0_31%]">
             <div className="flex flex-col gap-36">
-
               <div className="flex flex-col gap-12">
                 <div className="flex items-center gap-8">
-                  <SlLocationPin className="h-12 w-12 fill-red-500" />
+                  <SlLocationPin className="h-12 w-12 fill-[var(--secondary)]" />
                   <h4 className="text-[2.6rem] leading-[2.6rem] font-bold">
                     Memnagar Branch
                   </h4>
@@ -32,17 +32,17 @@ const Map = () => {
                   57, Kamal Society, Opp.Jain Derasar, B/S Tarun Nagar-3,
                   Nr.Subhash Chowk, Memnagar, Ahmedabad - 380052, Gujarat, India
                 </p>
-                <div className="flex items-center gap-4">
-                  <FiPhoneCall className="block h-[2.2rem] w-[2.2rem]" />
+                <div className="flex items-center gap-4 font-medium">
+                  <FiPhoneCall className="h-[2.4rem] w-[2.4rem]" />
                   <p>+91-9712926934</p>
-                  <span className="block">|</span>
+                  <span>|</span>
                   <p>079-27414934</p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-12">
                 <div className="flex items-center gap-8">
-                  <SlLocationPin className="h-12 w-12 fill-red-500" />
+                  <SlLocationPin className="h-12 w-12 fill-[var(--secondary)]" />
                   <h4 className="text-[2.6rem] leading-[2.6rem] font-bold">
                     Naranpura Branch
                   </h4>
@@ -52,24 +52,25 @@ const Map = () => {
                   Ladies Hostel, Divyapath School, Memnagar Road, Naranpura,
                   Ahmedabad - 380051, Gujarat, India.
                 </p>
-                <div className="flex items-center gap-4">
-                  <FiPhoneCall className="block h-[2.2rem] w-[2.2rem]" />
+                <div className="flex items-center gap-4 font-medium">
+                  <FiPhoneCall className="h-[2.2rem] w-[2.2rem]" />
                   <p>+91-9409420403</p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-12">
                 <div className="flex items-center gap-8">
-                  <SlLocationPin className="h-12 w-12 fill-red-500" />
+                  <SlLocationPin className="h-12 w-12 fill-[var(--secondary)]" />
                   <h4 className="text-[2.6rem] leading-[2.6rem] font-bold">
                     Workshop
                   </h4>
                 </div>
                 <p className="text-[1.8rem] leading-[3rem] font-medium">
-                    Shop No: 5B, ajanta sheds, in shrijee estate, B/H, bharataluminum, near. IRIS Automation, nr, santej - vadsar road canal, santej, ghandhinagar, Gujarat.
+                  Shop No: 5B, ajanta sheds, in shrijee estate, B/H,
+                  bharataluminum, near. IRIS Automation, nr, santej - vadsar
+                  road canal, santej, ghandhinagar, Gujarat.
                 </p>
               </div>
-
             </div>
           </div>
         </div>

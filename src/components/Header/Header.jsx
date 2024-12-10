@@ -1,3 +1,4 @@
+import "./header.css";
 import Navbar from "./Navbar";
 
 const Header = () => {
@@ -7,5 +8,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;

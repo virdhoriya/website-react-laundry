@@ -1,0 +1,255 @@
+/* Banner */
+
+.inner-banner-container {
+  height: 83.4rem;
+  flex-basis: 50%;
+}
+
+.inner-banner-container h1 {
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  font-weight: 700;
+  font-size: 8rem;
+  line-height: 10rem;
+  letter-spacing: 1.2px;
+  margin-bottom: 2rem;
+}
+
+.inner-banner-container p {
+  max-width: 45rem;
+  color: #393b43;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: 1.2px;
+}
+
+.pagination-container {
+  color: #9c9da1;
+  font-size: 3rem;
+  line-height: 2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dots span {
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: #9c9da1;
+}
+
+.dots .active-dot {
+  background-color: var(--red);
+}
+
+.banner-img-container {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.banner-img {
+  display: inline-block;
+  width: 56.8rem;
+  height: auto;
+}
+
+/* services */
+
+.section-title {
+  font-size: 2rem;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.content {
+  font-size: 1.8rem;
+  letter-spacing: normal;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--grey);
+}
+
+/* steps */
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 20.6rem;
+}
+
+.steps-image {
+  display: inline-block;
+  padding-bottom: 4rem;
+}
+
+.steps-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.steps-title span {
+  color: var(--secondary);
+}
+
+/* Choose us */
+
+.choose-us-container {
+  background-image: linear-gradient(
+      rgba(22, 31, 95, 0.9),
+      rgba(22, 31, 95, 0.9)
+    ),
+    url("./chooseus-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card {
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  padding: 5rem;
+}
+
+.card-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.card-description {
+  font-size: 1.8rem;
+  letter-spacing: 0.6px;
+  line-height: 2.8rem;
+}
+
+/* Benefits */
+
+.benefits-container figure img {
+  display: inline-block;
+  max-height: 4.8rem;
+  max-width: 4.8rem;
+}
+
+.caption {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  margin-top: 4rem;
+}
+
+/* Testimonials */
+
+.review-count {
+  background-color: #eff3ff66;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.review-count span {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.review-count p {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  text-transform: uppercase;
+  color: var(--secondary);
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.review-container {
+  background-color: rgba(239, 243, 255, 1);
+  min-width: 48.9rem;
+  max-width: 48.9rem;
+  border-radius: 2rem;
+  padding: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.review-container h4 {
+  color: var(--black);
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  font-weight: 600;
+}
+
+.review-container p {
+  color: #393b43;
+  font-size: 2rem;
+  line-height: 3.2rem;
+  font-weight: normal;
+}
+
+.testimonials-scroll::-webkit-scrollbar {
+  display: inline-block;
+  height: 8rem;
+}
+
+.testimonials-scroll::-webkit-scrollbar-thumb {
+  background: radial-gradient(
+      circle farthest-corner,
+      var(--primary) 0%,
+      var(--primary) 50%,
+      transparent 50%,
+      transparent 100%
+    )
+    no-repeat;
+  background-size: 11rem 11rem;
+  background-position: center;
+}
+
+/* Download */
+
+.download {
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  z-index: -100;
+}
+
+.download h2 {
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 6.6rem;
+}
+
+.download p {
+  color: #393b43;
+  font-weight: normal;
+  font-size: 1.8rem;
+  line-height: 3rem;
+}
+
+.mobile {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+}

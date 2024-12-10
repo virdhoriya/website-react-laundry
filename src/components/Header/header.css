@@ -1,0 +1,266 @@
+/* Headline */
+
+.headline-text {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.navbar li {
+  font-size: 2rem;
+  line-height: 2.6rem;
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: normal;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+  border-bottom: 4px solid transparent;
+}
+
+.navbar li:hover {
+  border-color: var(--secondary);
+}
+
+.navbar .active-nav {
+  border-color: var(--secondary);
+}
+
+.cart-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  z-index: 99;
+  background-color: var(--red);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(48%, -30%);
+}
+
+.logout-container {
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  max-width: 13rem;
+  border: 1px solid #b9bccf4d;
+  border-radius: 4px;
+  padding: 0.9rem 1.8rem;
+  margin-top: 0.8rem;
+}
+
+.logout-container::before {
+  content: "";
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: -100;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary);
+  transform: rotate(45deg);
+  transform: translate(-12px, -5px) rotate(45deg);
+  border: 1px solid #b9bccf4d;
+  border-radius: 1px;
+}
+
+.logout {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: var(--black);
+  color: #676788;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.login {
+  display: inline-block;
+  line-height: normal;
+  background-color: var(--primary);
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: 500;
+  padding: 1.075rem 3rem;
+  border-radius: 999px;
+}
+
+.path-service {
+  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3rem);
+  -webkit-backdrop-filter: blur(3rem);
+}
+
+.path-service .navbar li {
+  color: white;
+}
+
+.hamburger {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hamburger span {
+  display: inline-block;
+  height: 4px;
+  width: 100%;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.active-mobile-nav span:first-child {
+  transform: translateY(8.6px) rotate(45deg);
+  transform-origin: center;
+}
+
+.active-mobile-nav span:last-child {
+  transform: translateY(-9.4px) rotate(-45deg);
+  transform-origin: center;
+}
+
+.active-mobile-nav span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.mobile-nav-cover {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  z-index: 990;
+  transition: all 0.6s;
+  display: none;
+  transform: translateX(100%);
+}
+
+.animate-nav-cover {
+  transform: translateX(0);
+}
+
+.mobile-nav-container {
+  z-index: 999;
+  width: 25rem;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.6s;
+}
+
+.animate-nav-container {
+  transform: translateX(0);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  padding: 1rem;
+  line-height: 1.25;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.3rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-item .nav-icon {
+  height: 1.8rem;
+  width: 1.8rem;
+  /* display: none; */
+}
+
+.nav-item:hover {
+  background-color: rgba(38, 50, 56, 0.1);
+}
+
+.active-nav-item {
+  background-color: rgba(38, 50, 56, 0.1);
+}
+
+/* NEW */
+
+.container-b {
+  max-width: 192rem;
+  margin: 0 auto;
+  padding: 0 8rem;
+}
+
+@media only screen and (max-width: 100em) {
+  .container-b {
+    padding: 0 7rem;
+  }
+}
+
+@media only screen and (max-width: 90em) {
+  .container-b {
+    padding: 0 6.5rem;
+  }
+}
+
+@media only screen and (max-width: 83.75em) {
+}
+
+@media only screen and (max-width: 80em) {
+  .container-b {
+    padding: 0 5rem;
+  }
+}
+
+@media only screen and (max-width: 71.25em) {
+  .container-b {
+    padding: 0 4rem;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  .container-b {
+    padding: 0 4rem;
+  }
+}
+
+@media only screen and (max-width: 60.875em) {
+}
+
+@media only screen and (max-width: 55em) {
+  .container-b {
+    padding: 0 3rem;
+  }
+}
+
+@media only screen and (max-width: 38.4375em) {
+  .container-b {
+    padding: 0 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 27.5em) {
+}
+
+@media only screen and (max-width: 20em) {
+}

@@ -1,3 +1,4 @@
+import "./prices.css";
 import Banner from "./Banner";
 import PriceList from "./PriceList";
 

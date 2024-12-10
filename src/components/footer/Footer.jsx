@@ -1,3 +1,4 @@
+import "./footer.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FiClock, FiPhoneCall } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";

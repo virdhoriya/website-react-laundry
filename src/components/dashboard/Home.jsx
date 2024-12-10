@@ -217,31 +217,15 @@ const Home = () => {
                         style={{ padding: "5px", textAlign: "left" }}
                         className="flex items-center justify-center"
                       >
-                        {order_status == 1 && (
-                          <span className="inline-block px-4 rounded-xl bg-[#FEF7E7] text-[#F2B413] font-medium text-[1rem] leading-[2.4rem]">
-                            {order_status_name}
-                          </span>
-                        )}
-                        {order_status == 2 && (
-                          <span className="inline-block px-4 rounded-xl bg-[#E8E9EF] text-[#161F5F] font-medium text-[1rem] leading-[2.4rem]">
-                            In Process
-                          </span>
-                        )}
-                        {order_status == 3 && (
-                          <span className="inline-block px-4 rounded-xl bg-[#FAEEE7] text-[#CC5511] font-medium text-[1rem] leading-[2.4rem]">
-                            Picked Up
-                          </span>
-                        )}
-                        {order_status == 4 && (
-                          <span className="inline-block px-4 rounded-xl bg-[#EBF8FB] text-[#39B8D3] font-medium text-[1rem] leading-[2.4rem]">
-                            Out for Delivery
-                          </span>
-                        )}
-                        {order_status == 5 && (
-                          <span className="inline-block px-4 rounded-xl bg-[#EBFBF1] text-[#39D377] font-medium text-[1rem] leading-[2.4rem]">
-                            Delivered
-                          </span>
-                        )}
+                        <span
+                          className={`inline-block px-4 py-1 rounded-lg font-medium text-[1rem] leading-[2.4rem] order-status-label-${
+                            order_status >= 4 && order_status < 9
+                              ? 0
+                              : order_status
+                          }`}
+                        >
+                          {order_status_name}
+                        </span>
                       </td>
                       <td
                         style={{ padding: "5px" }}
@@ -260,7 +244,11 @@ const Home = () => {
                   );
                 })
               ) : (
-                <td>No record found !</td>
+                <tr>
+                  <td className="text-center col-span-full">
+                    No record found!
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>

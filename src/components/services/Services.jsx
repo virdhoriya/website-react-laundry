@@ -1,3 +1,4 @@
+import "./services.css";
 import BackgroundImage from "./BackgroundImage";
 import ChooseService from "./ChooseService";
 import ServiceContainer from "./ServiceContainer";
