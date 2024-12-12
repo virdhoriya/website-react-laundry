@@ -1,22 +1,67 @@
 import { FiPhoneCall } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
+import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
+import { useCallback, useState } from "react";
+
+const containerStyle = {
+  width: "880px",
+  height: "770px",
+};
+
+const center = {
+  lat: 23.052226216386774,
+  lng: 72.54493515783129,
+};
+
+const points = [
+  {
+    lat: 23.052226216386774,
+    lng: 72.54493515783129,
+  },
+];
 
 const Map = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: import.meta.env.VITE_GMAP_API_KEY,
+  });
+
+  const [map, setMap] = useState(null);
+
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+    setMap(map);
+  }, []);
+
+  const onUnmount = useCallback(function callback() {
+    setMap(null);
+  }, []);
+
   return (
     <section className="section-padding">
       <div className="content-container">
         <div className="flex items-center justify-between">
           <div>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71892.85888552133!2d72.52876078262105!3d23.012447965659952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e1!3m2!1sen!2sin!4v1727931836534!5m2!1sen!2sin"
-              width="980"
-              height="870"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-3xl"
-            ></iframe>
+            {isLoaded ? (
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={14}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+                options={{
+                  streetViewControl: false,
+                  mapTypeControl: false,
+                }}
+              >
+                {points.map((point, index) => (
+                  <MarkerF key={index} position={point} />
+                ))}
+              </GoogleMap>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className="flex-[0_0_31%]">
