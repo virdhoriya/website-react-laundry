@@ -8,7 +8,7 @@ const ContactUsForm = () => {
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
-    phone_number: "",
+    mobile_number: "",
     message: "",
   });
 
@@ -34,11 +34,15 @@ const ContactUsForm = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.message || "Message sent successfully!");
+        toast.success(data.message || "Message sent successfully!", {
+          style: {
+            maxWidth: "400px",
+          },
+        });
         setFormData({
           full_name: "",
           email: "",
-          phone_number: "",
+          mobile_number: "",
           message: "",
         });
       } else {
@@ -102,10 +106,10 @@ const ContactUsForm = () => {
                   />
                   <input
                     type="tel"
-                    name="phone_number"
-                    aria-label="Phone Number"
-                    placeholder="Phone Number"
-                    value={formData.phone_number}
+                    name="mobile_number"
+                    aria-label="Mobile Number"
+                    placeholder="Mobile Number"
+                    value={formData.mobile_number}
                     onChange={handleInputChange}
                   />
                   <textarea

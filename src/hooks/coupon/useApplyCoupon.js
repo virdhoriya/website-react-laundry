@@ -17,15 +17,18 @@ const useApplyCoupon = () => {
           order_Total: subTotal,
         }),
       });
+
       const data = await response.json();
-      if (!response.ok) {
+      if (response.ok) {
+        toast.success(data?.message);
+        return data?.data;
+      } else {
         toast.error(data.message || "Invalid coupon code.");
-        return;
+        return null;
       }
-      toast.success(data.message);
-      return data.data.discountAmount;
     } catch {
-      toast.error("Unable to apply coupon code!");
+      toast.error("Failed to apply coupon code!");
+      return null;
     }
   };
   return { applyCoupon };

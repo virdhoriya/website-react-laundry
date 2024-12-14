@@ -43,22 +43,32 @@ import useValidateToken from "./hooks/token/useValidateToken";
 import { addUser } from "./redux/slices/userSlice";
 import Admin from "./components/admin/Admin";
 import ScrollToTop from "./components/scroll/ScrollToTop";
+import useFetchShippingInfo from "./hooks/settings/useFetchShippingInfo";
+import useFetchCart from "./hooks/cart/useFetchCart";
 
 const App = () => {
-  const { loading, user } = useValidateToken();
   const dispatch = useDispatch();
+
+  const { loading: loadingUserValidation, user } = useValidateToken();
+  const { loading: loadingFetchCart } = useFetchCart();
+  const { loading: loadingShippingInfo } = useFetchShippingInfo();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(setAuthStatus(!!token));
 
-    if (user && !loading) {
+    if (user && !loadingUserValidation) {
       dispatch(addUser(user));
     }
-  }, [dispatch, user, loading]);
+  }, [dispatch, loadingUserValidation, user]);
 
-  if (loading) {
+  const isLoading =
+    loadingShippingInfo || loadingFetchCart || loadingUserValidation;
+
+  if (isLoading) {
     return <Loading />;
   }
+
   return (
     <Router>
       <Toaster />

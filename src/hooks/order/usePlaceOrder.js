@@ -1,10 +1,12 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 
 const usePlaceOrder = () => {
+  const [loading, setLoading] = useState(false);
   const baseURL = import.meta.env.VITE_BASE_URL;
   const token = localStorage.getItem("token");
-  const userObj = JSON.parse(localStorage.getItem("user"));
-  const user_id = userObj.user_id;
+  const user_id = useSelector((state) => state.user.user.user_id);
 
   const placeOrder = async (
     items,
@@ -16,6 +18,7 @@ const usePlaceOrder = () => {
     address_id
   ) => {
     try {
+      setLoading(true);
       const response = await fetch(`${baseURL}/orders`, {
         method: "POST",
         headers: {
@@ -32,7 +35,7 @@ const usePlaceOrder = () => {
           order_status: 1,
           payment_status: 1,
           address_id,
-          user_id
+          user_id,
         }),
       });
       const data = await response.json();
@@ -46,10 +49,12 @@ const usePlaceOrder = () => {
     } catch {
       toast.error("Failed to place an order!");
       return false;
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { placeOrder };
+  return { placeOrder, loading };
 };
 
 export default usePlaceOrder;

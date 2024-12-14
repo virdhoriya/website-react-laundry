@@ -7,7 +7,6 @@ import PayementMethod from "./PayementMethod";
 import OrderSummary from "./OrderSummary";
 
 const Cart = () => {
-  const [subTotal, setSubTotal] = useState(0);
   const [instruction, setInstruction] = useState("");
   const [paymentMethod, setPayementMethod] = useState(0);
   const [selectedAddId, setSelectAddId] = useState(0);
@@ -18,7 +17,7 @@ const Cart = () => {
         <div className="flex justify-between items-start">
           <div className="flex-[0_0_63%]">
             <div className="flex flex-col gap-24">
-              <Main setSubTotal={setSubTotal} />
+              <Main />
               <AddAddress setSelectAddId={setSelectAddId} />
               <AddInstruction
                 instruction={instruction}
@@ -29,7 +28,6 @@ const Cart = () => {
           </div>
           <div className="flex-[0_0_31%] border border-[#b9bccf4d] rounded-xl">
             <OrderSummary
-              subTotal={subTotal}
               instruction={instruction}
               paymentMethod={paymentMethod}
               selectedAddId={selectedAddId}

@@ -11,6 +11,7 @@ import { FaHome } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 
 const Navbar = () => {
+  const cartItem = useSelector((state) => state.cart.cartItemCount);
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isLoggedIn = localStorage.getItem("token");
@@ -140,7 +141,7 @@ const Navbar = () => {
                   aria-label="Shopping Cart"
                 />
                 <div className="cart-tag">
-                  <span>1</span>
+                  <span>{cartItem}</span>
                 </div>
               </Link>
               {isLoggedIn ? (
