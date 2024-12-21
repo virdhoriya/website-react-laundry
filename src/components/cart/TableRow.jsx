@@ -3,41 +3,53 @@ import PropTypes from "prop-types";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
 import useDeleteProduct from "../../hooks/newCart/useDeleteProduct";
-import useUpdateProductQuantity from "../../hooks/newCart/useUpdateProductQuantity";
 import { useDispatch } from "react-redux";
 import { addDescription, deleteItem } from "../../redux/slices/cartSlice";
 import { updateQty } from "../../redux/slices/cartSlice";
-import useAddItemDesc from "../../hooks/newCart/useAddItemDesc";
+import useUpdateCart from "../../hooks/newCart/useUpdateCart";
+import toast from "react-hot-toast";
 
 const TableRow = ({ item }) => {
   const dispatch = useDispatch();
   const { deleteProduct, loading: loadingDelProduct } = useDeleteProduct();
-  const { updateProductQuantity, loading: loadingUpdateQty } =
-    useUpdateProductQuantity();
-  const { addItemDesc, loading: loadingAddDesc } = useAddItemDesc();
+  const { updateCart } = useUpdateCart();
+
+  const [loadingQuantityUpdate, setLoadingQuantityUpdate] = useState(false);
+  const [loadingDescriptionSave, setLoadingDescriptionSave] = useState(false);
   const [quantity, setQuantity] = useState(item.quantity);
   const [isOpen, setIsOpen] = useState(false);
   const [isDescAdded, setIsDescAdded] = useState(false);
   const [itemDescription, setItemDescription] = useState("");
   const { cart_id, product_name, service_name, price, description } = item;
 
+  if (loadingQuantityUpdate) {
+    toast.success("Updating the qunatity");
+  }
+
   const handleUpClick = async () => {
+    setLoadingQuantityUpdate(true);
     let newQuantity = quantity + 1;
     setQuantity(newQuantity);
 
-    const result = await updateProductQuantity(cart_id, newQuantity);
+    const result = await updateCart(cart_id, {
+      quantity: newQuantity,
+    });
     if (result) {
-      dispatch(updateQty({ cart_id, newQuantity }));
+      dispatch(updateQty({ cart_id, quantity: newQuantity }));
     }
+    setLoadingQuantityUpdate(false);
   };
 
   const handleDownClick = async () => {
+    setLoadingQuantityUpdate(true);
     if (quantity > 1) {
       let newQuantity = quantity - 1;
       setQuantity(newQuantity);
-      const result = await updateProductQuantity(cart_id, newQuantity);
+      const result = await updateCart(cart_id, {
+        quantity: newQuantity,
+      });
       if (result) {
-        dispatch(updateQty({ cart_id, newQuantity }));
+        dispatch(updateQty({ cart_id, quantity: newQuantity }));
       }
     } else {
       const result = await deleteProduct(cart_id);
@@ -45,6 +57,7 @@ const TableRow = ({ item }) => {
         dispatch(deleteItem(cart_id));
       }
     }
+    setLoadingQuantityUpdate(false);
   };
 
   const handleDelClick = async () => {
@@ -55,12 +68,14 @@ const TableRow = ({ item }) => {
   };
 
   const handleSave = async () => {
-    const result = await addItemDesc(cart_id, itemDescription);
+    setLoadingDescriptionSave(true);
+    const result = await updateCart(cart_id, { description: itemDescription });
     if (result) {
       dispatch(addDescription({ cart_id, itemDescription }));
       setIsOpen(false);
       setIsDescAdded(true);
     }
+    setLoadingDescriptionSave(false);
   };
 
   useEffect(() => {
@@ -81,11 +96,17 @@ const TableRow = ({ item }) => {
       <td>
         <span className="flex justify-center items-center">
           <button className="inc-dec-btn overflow-hidden">
-            <span className="py-[1.1rem] pl-[1.2rem] cursor-pointer" onClick={handleDownClick}>
+            <span
+              className="py-[1.1rem] pl-[1.2rem] cursor-pointer"
+              onClick={handleDownClick}
+            >
               <HiOutlineMinus className="indec-icon" />
             </span>
             {quantity}
-            <span className="py-[1.1rem] pr-[1.2rem] cursor-pointer" onClick={handleUpClick}>
+            <span
+              className="py-[1.1rem] pr-[1.2rem] cursor-pointer"
+              onClick={handleUpClick}
+            >
               <HiOutlinePlus className="indec-icon" />
             </span>
           </button>
@@ -143,9 +164,9 @@ const TableRow = ({ item }) => {
               aria-label="save-description"
               className="save-description"
               onClick={handleSave}
-              disabled={loadingAddDesc}
+              disabled={loadingDescriptionSave}
             >
-              {loadingAddDesc ? (
+              {loadingDescriptionSave ? (
                 <div className="w-[3.5rem] flex justify-center items-center">
                   <span className="small-spinner animate-spin"></span>
                 </div>

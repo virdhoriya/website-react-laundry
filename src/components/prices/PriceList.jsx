@@ -1,10 +1,15 @@
-import useGetPrices from "../../hooks/prices/useGetPrices";
+import Shimmer from "./Shimmer";
+import { useSelector } from "react-redux";
+import useFetchPrices from "../../hooks/prices/useFetchPrices";
 
 const PriceList = () => {
-  const { prices, loading: loadingGerPrices } = useGetPrices();
+  const { prices, loading: loadingGerPrices } = useFetchPrices();
+  const price_pdf_url = useSelector(
+    (state) => state?.setting?.settings?.price_pdf_url
+  );
 
   return loadingGerPrices ? (
-    <h1 className="text-center">Loading...</h1>
+    <Shimmer />
   ) : (
     <section className="section-space">
       <div className="container container-x">
@@ -18,7 +23,7 @@ const PriceList = () => {
             </h2>
             <div className="relative">
               <a
-                href="http://35.154.167.170:3000/pdf/priceList.pdf"
+                href={price_pdf_url}
                 aria-label="Check price list pdf"
                 target="__blank"
                 rel="noopener noreferrer"

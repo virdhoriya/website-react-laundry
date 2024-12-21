@@ -19,8 +19,22 @@ const addressSlice = createSlice({
         (add) => add.address_id !== address_id
       );
     },
+    editAddress: (state, action) => {
+      const { formData, address_id } = action.payload;
+      const itemIndex = state.address.findIndex(
+        (address) => address.address_id === address_id
+      );
+
+      if (itemIndex !== -1) {
+        state.address[itemIndex] = {
+          ...state.address[itemIndex],
+          ...formData,
+        };
+      }
+    },
   },
 });
 
-export const { setAddress, addAddress, deleteAddress } = addressSlice.actions;
+export const { setAddress, addAddress, deleteAddress, editAddress } =
+  addressSlice.actions;
 export default addressSlice.reducer;

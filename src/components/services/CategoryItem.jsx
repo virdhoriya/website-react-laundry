@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
-import useAddToCart from "../../hooks/cart/useAddToCart";
+import useAddToCart from "../../hooks/newCart/useAddToCart";
 import toast from "react-hot-toast";
-import useUpdateCart from "../../hooks/cart/useUpdateCart";
-import useDeletCart from "../../hooks/cart/useDeletCart";
+import useUpdateCart from "../../hooks/newCart/useUpdateCart";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useReFetchCart from "../../hooks/newCart/useReFetchCart";
-import { updateQty } from "../../redux/slices/cartSlice";
+import { deleteItem, updateQty } from "../../redux/slices/cartSlice";
+import useDeleteProduct from "../../hooks/newCart/useDeleteProduct";
 
 const CategoryItem = ({ categoryItem, category_id }) => {
   const { loading: loadingReFetchCart, refetch: refetchCart } =
@@ -23,33 +23,33 @@ const CategoryItem = ({ categoryItem, category_id }) => {
   const isAuthenticated = useSelector((store) => store.auth.isAuthenticated);
 
   const { addToCart } = useAddToCart();
-  const { updateCart } = useUpdateCart();
-  const { deleteCart } = useDeletCart();
+  const { deleteProduct, loading: loadingDelProduct } = useDeleteProduct();
+  const { updateCart, loading: loadingUpdateCart } = useUpdateCart();
 
   const onIncClick = async () => {
     setItemCount(itemCount + 1);
-    const newQuantity = itemCount + 1;
-    const result = await updateCart(newQuantity, cartId);
+    const quantity = itemCount + 1;
+    const result = await updateCart(cartId, { quantity });
 
     if (result) {
-      dispatch(updateQty({ cart_id: cartId, newQuantity }));
+      dispatch(updateQty({ cart_id: cartId, quantity }));
     }
   };
 
   const onDecClick = async () => {
     if (itemCount > 0 && itemCount - 1 != 0) {
       setItemCount(itemCount - 1);
-      const newQuantity = itemCount - 1;
-      const result = await updateCart(newQuantity, cartId);
+      const quantity = itemCount - 1;
+      const result = await updateCart(cartId, { quantity });
 
       if (result) {
-        dispatch(updateQty({ cart_id: cartId, newQuantity }));
+        dispatch(updateQty({ cart_id: cartId, quantity }));
       }
     } else {
       setNumberBtn(false);
-      const result = await deleteCart(cartId);
+      const result = await deleteProduct(cartId);
       if (result) {
-        await refetchCart();
+        dispatch(deleteItem(cartId));
       }
     }
   };
@@ -66,7 +66,7 @@ const CategoryItem = ({ categoryItem, category_id }) => {
         itemCount,
       });
       if (result) {
-        setCartId(result);
+        setCartId(result?.cart_id);
         await refetchCart();
       } else {
         toast.error("Failed to add item into cart!");

@@ -30,7 +30,7 @@ const Cart = () => {
                 <PayementMethod setPayementMethod={setPayementMethod} />
               </div>
             </div>
-            <div className="flex-[0_0_31%] border border-[#b9bccf4d] rounded-xl sticky-summary">
+            <div className="flex-[0_0_31%] border border-[#b9bccf4d] rounded-xl sticky-summary relative">
               <OrderSummary
                 instruction={instruction}
                 paymentMethod={paymentMethod}

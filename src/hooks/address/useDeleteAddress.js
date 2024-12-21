@@ -22,7 +22,7 @@ const useDeleteAddress = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success(data?.message);
+        toast.success(data?.message || "Address deleted successfully");
         return data?.data;
       } else {
         return null;

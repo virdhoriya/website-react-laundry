@@ -1,27 +1,34 @@
 import { useEffect, useState } from "react";
-import useGetBanner from "../../hooks/useGetBanner";
 import Loading from "../loading/Loading";
+import useGetBanners from "../../hooks/banner/useFetchBanners";
 
 const Banner = () => {
-  const [activeBanner, setActiveBanner] = useState(0);
-  const [activeDot, setActiveDot] = useState(0);
-  const { banners } = useGetBanner();
+  const { loading, banners } = useGetBanners();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (banners.banner && banners.banner.length > 0) {
-      setActiveBanner(banners.banner[0]);
-      setActiveDot(0);
-    }
-  }, [banners]);
+    if (banners.length > 0) {
+      const intervalId = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % banners.length);
+      }, 10000);
 
-  const handleDot = (index) => {
-    setActiveDot(index);
-    setActiveBanner(banners.banner[index]);
+      return () => clearInterval(intervalId);
+    }
+  }, [banners.length]);
+
+  const handleDotClick = (index) => {
+    setActiveIndex(index);
   };
 
-  if (!banners?.banner || banners.banner.length === 0) {
+  if (loading) {
     return <Loading />;
   }
+
+  if (banners.length === 0) {
+    return;
+  }
+
+  const activeBanner = banners[activeIndex];
 
   return (
     <section className="bg-[#f7f8fd]">
@@ -30,31 +37,32 @@ const Banner = () => {
           <div className="inner-banner-container flex justify-start items-center">
             <div className="flex flex-col gap-40 laptop-l:gap-32 laptop-m:gap-24 laptop-s:gap-20 tab-l:gap-16">
               <div>
-                <h1>{activeBanner.title}</h1>
-                <p>{activeBanner.description}</p>
+                <h1>{activeBanner?.title || "No Title"}</h1>
+                <p>{activeBanner?.description || "No Description"}</p>
               </div>
               <div className="pagination-container">
                 <span>01</span>
                 <span className="dots">
-                  {banners.banner.map((ban, index) => {
+                  {banners.map((banner, index) => {
+                    const { banner_id } = banner;
                     return (
                       <span
-                        key={index}
-                        onClick={() => handleDot(index)}
-                        className={activeDot === index ? "active-dot" : ""}
+                        key={banner_id}
+                        onClick={() => handleDotClick(index)}
+                        className={activeIndex === index ? "active-dot" : ""}
                       ></span>
                     );
                   })}
                 </span>
-                <span>0{banners.banner.length}</span>
+                <span>0{banners.length}</span>
               </div>
             </div>
           </div>
 
           <div className="banner-img-container">
             <img
-              src={activeBanner.image}
-              alt="Banner Image"
+              src={activeBanner?.image}
+              alt={activeBanner?.title || "Banner Image"}
               className="banner-img"
             />
           </div>

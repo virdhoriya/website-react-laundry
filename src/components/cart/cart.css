@@ -126,7 +126,6 @@
   position: absolute;
   top: 2rem;
   right: 2rem;
-  z-index: 10;
 }
 
 .three-dots {
@@ -243,7 +242,6 @@
   align-self: start;
 }
 
-
 .applied-coupon {
   font-size: 1.6rem;
   line-height: normal;
@@ -253,4 +251,43 @@
   font-weight: 600;
 }
 
+/* View Coupons */
 
+.all-coupon-container {
+  background-color: rgb(145, 229, 219);
+  background-color: white;
+  border: 1px solid #b9bccf4d;
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.all-coupon-container h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--primary);
+}
+
+.coupon-table thead tr,
+.coupon-table tbody tr {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+/* .coupon-table th,
+.coupon-table td {
+  border: 1px solid black;
+} */
+
+.new-apply-btn {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 2.8rem;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+  border-radius: 99px;
+  padding: 0.4rem 1.5rem;
+}

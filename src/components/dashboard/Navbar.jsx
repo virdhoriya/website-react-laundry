@@ -51,7 +51,7 @@ const Navbar = () => {
               className="inline-block h-full w-full stroke-white p-4"
               aria-label="Shopping Cart"
             />
-            {cartItem && (
+            {cartItem > 0 && (
               <div className="cart-item">
                 <span>{cartItem}</span>
               </div>

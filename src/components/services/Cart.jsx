@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 const Cart = () => {
   const subTotal = useSelector((state) => state?.cart?.subTotal);
   const shippingCharge = useSelector(
-    (state) => state?.shipping?.shippingInfo?.shipping_charge
+    (state) => state?.setting?.settings?.shipping_charge
   );
   return (
     <>

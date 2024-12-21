@@ -32,10 +32,10 @@ const cartSlice = createSlice({
       );
     },
     updateQty: (state, action) => {
-      const { cart_id, newQuantity } = action.payload;
+      const { cart_id, quantity } = action.payload;
       const item = state.cartItems.find((item) => item.cart_id === cart_id);
       if (item) {
-        item.quantity = newQuantity;
+        item.quantity = quantity;
         state.subTotal = state.cartItems.reduce(
           (total, item) => total + item.price * item.quantity,
           0

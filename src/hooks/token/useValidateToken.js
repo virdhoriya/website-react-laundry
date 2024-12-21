@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/slices/userSlice";
 import { setAuthStatus } from "../../redux/slices/authSlice";
+import toast from "react-hot-toast";
 
 const useValidateToken = () => {
   const navigate = useNavigate();

@@ -7,9 +7,14 @@ const useAddAddress = () => {
   const token = localStorage.getItem("token");
 
   const addAddress = async (formData) => {
+    if (!token) {
+      toast.error("User is not authenticated!");
+      return null;
+    }
+
     const upDatedFormData = {
       ...formData,
-      address_type: Number(formData.address_type),
+      address_type: parseInt(formData.address_type),
     };
 
     try {

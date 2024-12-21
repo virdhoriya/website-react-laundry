@@ -317,6 +317,7 @@ h3 {
   border: none !important;
   font-size: 1.9rem;
 }
+
 .new-box:focus {
   outline: none;
 }

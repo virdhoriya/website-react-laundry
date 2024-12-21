@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,8 +40,8 @@ import Loading from "./components/loading/Loading";
 import useValidateToken from "./hooks/token/useValidateToken";
 import Admin from "./components/admin/Admin";
 import ScrollToTop from "./components/scroll/ScrollToTop";
-import useFetchShippingInfo from "./hooks/settings/useFetchShippingInfo";
-import useFetchCart from "./hooks/cart/useFetchCart";
+import useFetchSettings from "./hooks/settings/useFetchSettings";
+import useFetchCart from "./hooks/newCart/useFetchCart";
 
 const App = () => {
   return (
@@ -57,10 +57,10 @@ const MainComponent = () => {
   const location = useLocation();
   const { loading: loadingUserValidation } = useValidateToken();
   const { loading: loadingFetchCart } = useFetchCart();
-  const { loading: loadingShippingInfo } = useFetchShippingInfo();
+  const { loading: loadingSettings } = useFetchSettings();
 
   const isLoading =
-    loadingShippingInfo || loadingFetchCart || loadingUserValidation;
+    loadingSettings || loadingFetchCart || loadingUserValidation;
 
   if (isLoading) {
     return <Loading />;

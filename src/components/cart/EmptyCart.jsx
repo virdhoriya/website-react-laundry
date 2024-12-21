@@ -21,7 +21,7 @@ const EmptyCart = () => {
 
         <Link
           to="/services"
-          className="mt-4 flex gap-6 items-center px-8 py-4 border border-transparent text-3xl font-medium rounded-md text-white bg-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)] transition-colors duration-200"
+          className="mt-4 flex gap-6 items-center px-8 py-4 border border-transparent text-3xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 transition-colors duration-200"
           aria-label="Start shopping"
         >
           <FiShoppingCart className="h-12 w-auto" />
