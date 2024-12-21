@@ -4,7 +4,8 @@ import userReducer from "./slices/userSlice";
 import serviceReducer from "./slices/serviceSlice";
 import categoryReducer from "./slices/categorySlice";
 import cartReducer from "./slices/cartSlice";
-import shippingReducer from "./slices/shippingSlice";
+import settingReducer from "./slices/settingSlice";
+import addressReducer from "./slices/addressSlice";
 
 const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
     service: serviceReducer,
     category: categoryReducer,
     cart: cartReducer,
-    shipping: shippingReducer,
+    setting: settingReducer,
+    address: addressReducer,
   },
 });
 

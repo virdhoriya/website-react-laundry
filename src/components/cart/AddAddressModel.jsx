@@ -1,11 +1,16 @@
 import PropTypes from "prop-types";
 import { CgCloseR } from "react-icons/cg";
-import useAddressOperation from "../../hooks/address/useAddressOperation";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import useAddAddress from "../../hooks/address/useAddAddress";
+import useEditAddress from "../../hooks/address/useEditAddress";
+import { useDispatch } from "react-redux";
+import { editAddress as editAddressAction } from "../../redux/slices/addressSlice";
+import { addAddress as addAddressAction } from "../../redux/slices/addressSlice";
 
-const AddAddressModel = ({ setIsOpen, isOpen, address, flag }) => {
-  const { addAddress, editAddress } = useAddressOperation();
+const AddAddressModel = ({ setIsOpen, isOpen, address, isEditMode }) => {
+  const dispatch = useDispatch();
+  const { addAddress, loading: loadingAddAddress } = useAddAddress();
+  const { editAddress, loading: loadingEditAddress } = useEditAddress();
   const [formData, setFormData] = useState({
     full_name: "",
     phone_number: "",
@@ -29,29 +34,21 @@ const AddAddressModel = ({ setIsOpen, isOpen, address, flag }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!flag) {
-      await editAddress(formData, address.address_id);
-      setIsOpen(false);
-    } else {
-      const res = await addAddress(formData);
-      setFormData({
-        full_name: "",
-        phone_number: "",
-        address_type: "1",
-        building_number: "",
-        area: "",
-        landmark: "",
-        pincode: "",
-        city: "",
-        state: "",
-        country: "",
-      });
-      if (res) {
-        toast.success(res);
+
+    if (isEditMode) {
+      const { address_id } = address;
+      const result = await editAddress(formData, address_id);
+      if (result) {
+        dispatch(editAddressAction({ formData, address_id }));
         setIsOpen(false);
-      } else {
-        toast.error("Unable to add address");
+        return;
       }
+    }
+
+    const result = await addAddress(formData);
+    if (result) {
+      dispatch(addAddressAction(result));
+      setIsOpen(false);
     }
   };
 
@@ -90,19 +87,24 @@ const AddAddressModel = ({ setIsOpen, isOpen, address, flag }) => {
 
   return (
     <section
-      className={`fixed inset-0 bg-black/95 flex justify-center items-center z-50 ${
+      className={`fixed inset-0 bg-[#F7F8FD] flex justify-center items-center z-50 ${
         isOpen ? "block" : "hidden"
       }`}
     >
       <div className="w-[60rem] bg-white shadow-2xl px-12 py-12 pb-16 rounded-xl">
         <div className="mb-8 flex justify-between items-center">
-          <h2 className="text-[2.4rem] leading-[2.4rem]">add new address</h2>
+          <h2 className="text-[2.4rem] leading-[2.4rem]">
+            {isEditMode ? "Edit Address" : "Add New Address"}
+          </h2>
           <CgCloseR
             className="inline-block h-8 w-8 text-black cursor-pointer"
             onClick={onCloseBtnClick}
           />
         </div>
-        <form className="grid grid-cols-2 w-full gap-x-10 gap-y-12">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-2 w-full gap-x-10 gap-y-12"
+        >
           <div className="flex flex-col gap-3">
             <label
               htmlFor="full_name"
@@ -278,11 +280,27 @@ const AddAddressModel = ({ setIsOpen, isOpen, address, flag }) => {
 
           <div className="flex justify-start items-end row-start-6">
             <button
-              type="button"
-              className="text-white bg-blue-700 text-[1.4rem] font-medium px-6 py-4 rounded-md"
-              onClick={handleSubmit}
+              type="submit"
+              className="text-white bg-blue-700 text-[1.4rem] font-medium px-6 py-4 rounded-md flex gap-4 items-center"
+              disabled={loadingAddAddress || loadingEditAddress}
             >
-              Add Address
+              {isEditMode ? (
+                loadingEditAddress ? (
+                  <>
+                    <span className="inline-block h-10 w-10 rounded-full border-4 border-t-white border-white/30 animate-spin"></span>
+                    <span>Processing...</span>
+                  </>
+                ) : (
+                  "Edit Address"
+                )
+              ) : loadingAddAddress ? (
+                <>
+                  <span className="inline-block h-10 w-10 rounded-full border-4 border-t-white border-white/30 animate-spin"></span>
+                  <span>Processing...</span>
+                </>
+              ) : (
+                "Add Address"
+              )}
             </button>
           </div>
         </form>
@@ -307,6 +325,7 @@ AddAddressModel.propTypes = {
     state: PropTypes.string,
     country: PropTypes.string,
   }),
-  flag: PropTypes.bool.isRequired,
+  isEditMode: PropTypes.bool.isRequired,
 };
+
 export default AddAddressModel;

@@ -24,11 +24,6 @@ const useDeleteProduct = () => {
 
       const data = await response.json();
       if (response.ok) {
-        toast.success("Item removed successfull", {
-          style: {
-            maxWidth: "400px",
-          },
-        });
         return data;
       } else {
         toast.error("Failed to delete item from cart!");

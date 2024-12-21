@@ -13,7 +13,7 @@
 .cart-table thead tr,
 .cart-table tbody tr {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
+  grid-template-columns: 1.25fr 1fr 1fr 1fr 1fr;
 }
 
 .cart-table thead tr th {
@@ -34,13 +34,13 @@
 }
 
 .items-detail-cell h3 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--black);
   font-weight: 600;
 }
 
 .items-detail-cell p {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   color: var(--black);
 }
 
@@ -54,7 +54,7 @@
 }
 
 .description-cell {
-  padding: 0 2rem 2rem 2rem !important;
+  padding: 1rem 2rem 2rem 2rem !important;
 }
 
 .description-cell textarea {
@@ -82,6 +82,16 @@
   top: 47%;
   right: 2rem;
   transform: translateY(-50%);
+}
+
+.small-spinner {
+  display: inline-block;
+  height: 2.1rem;
+  width: 2.1rem;
+  border-radius: 50%;
+  border-width: 3px;
+  border-style: solid;
+  border-color: red white;
 }
 
 /* Addaddress */
@@ -116,7 +126,6 @@
   position: absolute;
   top: 2rem;
   right: 2rem;
-  z-index: 10;
 }
 
 .three-dots {
@@ -227,4 +236,58 @@
   }
 }
 
-/* Main */
+.sticky-summary {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+.applied-coupon {
+  font-size: 1.6rem;
+  line-height: normal;
+  color: var(--black);
+  border-radius: 4px;
+  padding: 0 1rem;
+  font-weight: 600;
+}
+
+/* View Coupons */
+
+.all-coupon-container {
+  background-color: rgb(145, 229, 219);
+  background-color: white;
+  border: 1px solid #b9bccf4d;
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.all-coupon-container h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--primary);
+}
+
+.coupon-table thead tr,
+.coupon-table tbody tr {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+/* .coupon-table th,
+.coupon-table td {
+  border: 1px solid black;
+} */
+
+.new-apply-btn {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 2.8rem;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+  border-radius: 99px;
+  padding: 0.4rem 1.5rem;
+}

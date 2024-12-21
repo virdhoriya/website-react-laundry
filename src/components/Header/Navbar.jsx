@@ -71,7 +71,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <div className="z-10 tab-m:hidden">
+            <div className="tab-m:hidden">
               <ul className="navbar">
                 <li className={`${pathname === "/" ? "active-nav" : ""}`}>
                   <Link to="/" title="Home" aria-label="Home">
@@ -131,7 +131,7 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <div className="flex justify-center items-center gap-8 z-10 laptop-l:gap-6">
+            <div className="flex justify-center items-center gap-8 laptop-l:gap-6">
               <Link
                 to="/cart"
                 className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]"
@@ -140,9 +140,13 @@ const Navbar = () => {
                   className="h-full w-full stroke-[var(--black)]"
                   aria-label="Shopping Cart"
                 />
-                <div className="cart-tag">
-                  <span>{cartItem}</span>
-                </div>
+                {cartItem ? (
+                  <div className="cart-tag">
+                    <span>{cartItem}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
               </Link>
               {isLoggedIn ? (
                 <span className="inline-block h-[4.6rem] w-[4.6rem] relative group laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]">

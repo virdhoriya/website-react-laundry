@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { TbSearch } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedServiceId } from "../../redux/slices/serviceSlice";
-import useFetchServices from "../../hooks/useFetchServices";
+import useFetchServices from "../../hooks/services/useFetchServices";
 import useFetchCategories from "../../hooks/services/useFetchCategories";
 import {
   setCategories,
@@ -14,13 +14,13 @@ import {
 import toast from "react-hot-toast";
 
 const ChooseService = () => {
-  const dispatch = useDispatch();
+  const { services, loading } = useFetchServices();
   const { fetchCategories } = useFetchCategories();
+  const dispatch = useDispatch();
   const selectedServiceId = useSelector(
     (state) => state.service.selectedServiceId
   );
   const [search, setSearch] = useState("");
-  const { services, loading } = useFetchServices();
 
   const handleServiceClick = async (id) => {
     dispatch(setSelectedServiceId(id));

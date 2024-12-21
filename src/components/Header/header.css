@@ -46,7 +46,6 @@
   font-weight: 500;
   text-align: center;
   color: #fff;
-  z-index: 99;
   background-color: var(--red);
 
   position: absolute;
@@ -64,7 +63,8 @@
   border: 1px solid #b9bccf4d;
   border-radius: 4px;
   padding: 0.9rem 1.8rem;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
+  z-index: 10;
 }
 
 .logout-container::before {
@@ -72,15 +72,16 @@
   display: inline-block;
   height: 1.5rem;
   width: 1.5rem;
-  z-index: -100;
   position: absolute;
   top: 0;
   right: 0;
-  background-color: var(--primary);
+  background-color: white;
   transform: rotate(45deg);
-  transform: translate(-12px, -5px) rotate(45deg);
-  border: 1px solid #b9bccf4d;
+  transform: translate(-14px, -8px) rotate(45deg);
+  border-top: 1px solid #b9bccf4d;
+  border-left: 1px solid #b9bccf4d;
   border-radius: 1px;
+  z-index: -1;
 }
 
 .logout {
@@ -101,6 +102,7 @@
   font-weight: 500;
   padding: 1.075rem 3rem;
   border-radius: 999px;
+  cursor: pointer;
 }
 
 .path-service {
@@ -192,7 +194,6 @@
 .nav-item .nav-icon {
   height: 1.8rem;
   width: 1.8rem;
-  /* display: none; */
 }
 
 .nav-item:hover {

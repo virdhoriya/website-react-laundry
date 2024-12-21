@@ -3,7 +3,7 @@ import CategoryItem from "./CategoryItem";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setSelectedCategoryId } from "../../redux/slices/categorySlice";
-import useFetchServiceItems from "../../hooks/useFetchServiceItems";
+import useFetchServiceItems from "../../hooks/services/useFetchServiceItems";
 
 const SelectClothes = () => {
   const dispatch = useDispatch();
