@@ -18,6 +18,12 @@ const cartSlice = createSlice({
     },
     addItem: (state, action) => {
       const newItem = action.payload;
+      state.cartItems.push(newItem);
+      state.cartItemCount = state.cartItems.length;
+      state.subTotal = state.cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
     },
     deleteItem: (state, action) => {
       const itemId = action.payload;
