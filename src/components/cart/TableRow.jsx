@@ -20,7 +20,7 @@ const TableRow = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDescAdded, setIsDescAdded] = useState(false);
   const [itemDescription, setItemDescription] = useState("");
-  const { cart_id, product_name, service_name, price, description } = item;
+  const { product_image, cart_id, product_name, service_name, price, description } = item;
 
   if (loadingQuantityUpdate) {
     toast.success("Updating the qunatity");
@@ -87,6 +87,9 @@ const TableRow = ({ item }) => {
 
   return (
     <tr className="relative">
+      <td className="text-center">
+        <img src={product_image} alt="Product Image" className="inline-block w-32 h-auto" />
+      </td>
       <td className="items-detail-cell space-y-1">
         <h3>{product_name}</h3>
         <p>{service_name}</p>
@@ -183,6 +186,7 @@ const TableRow = ({ item }) => {
 
 TableRow.propTypes = {
   item: PropTypes.shape({
+    product_image: PropTypes.string.isRequired,
     cart_id: PropTypes.number.isRequired,
     product_name: PropTypes.string.isRequired,
     service_name: PropTypes.string.isRequired,

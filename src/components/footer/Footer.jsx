@@ -73,11 +73,21 @@ const Footer = () => {
             <div className="tab-s:basis-[45%]">
               <h4 className="sitemap-title">Services</h4>
               <ul className="sitemap-list">
-                <li>Laundry Services</li>
-                <li>Terms & Condition</li>
-                <li>Privacy Policy</li>
-                <li>Shipping Policy</li>
-                <li>Refund Policy</li>
+                <li>
+                  <Link to="services">Laundry Services</Link>
+                </li>
+                <li>
+                  <Link to="/terms-condition">Terms & Condition</Link>
+                </li>
+                <li>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link to="/">Shipping Policy</Link>
+                </li>
+                <li>
+                  <Link to="/">Refund Policy</Link>
+                </li>
               </ul>
             </div>
 

@@ -123,7 +123,7 @@ const Navbar = () => {
                     Contact Us
                   </Link>
                 </li>
-                <li className={`${pathname === "/more" ? "active-nav" : ""}`}>
+                <li className={`hidden ${pathname === "/more" ? "active-nav" : ""}`}>
                   <Link to="/more" title="More" aria-label="More">
                     More
                   </Link>

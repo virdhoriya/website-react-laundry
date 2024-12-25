@@ -33,6 +33,10 @@ const PriceListView = lazy(() =>
 const WriteReview = lazy(() => import("./components/dashboard/WriteReview"));
 const SavedAddress = lazy(() => import("./components/dashboard/SavedAddress"));
 const ViewOrder = lazy(() => import("./components/dashboard/ViewOrder"));
+const TermsCondition = lazy(() => import("./components/t&c/TermsCondition"));
+const PrivacyPolicy = lazy(() =>
+  import("./components/privacy-policy/PrivacyPolicy")
+);
 import ProtectedRoute from "./components/protected/ProtectedRoute";
 import PublicRoute from "./components/protected/PublicRoute";
 import NotFound from "./components/NotFound";
@@ -136,6 +140,24 @@ const MainComponent = () => {
           />
 
           <Route path="/admin" element={<Admin />} />
+
+          <Route
+            path="/terms-condition"
+            element={
+              <Suspense fallback={<Loading />}>
+                <TermsCondition />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="privacy-policy"
+            element={
+              <Suspense fallback={<Loading />}>
+                <PrivacyPolicy />
+              </Suspense>
+            }
+          />
 
           <Route path="/" element={<Home />} />
           <Route
