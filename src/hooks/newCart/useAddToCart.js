@@ -1,6 +1,8 @@
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 const useAddToCart = () => {
+  const [loading, setLoading] = useState(false);
   const baseURL = import.meta.env.VITE_BASE_URL;
   const token = localStorage.getItem("token");
 
@@ -11,6 +13,7 @@ const useAddToCart = () => {
     itemCount,
   }) => {
     try {
+      setLoading(true);
       const response = await fetch(`${baseURL}/carts`, {
         method: "POST",
         headers: {
@@ -37,9 +40,11 @@ const useAddToCart = () => {
         },
       });
       return null;
+    } finally {
+      setLoading(false);
     }
   };
-  return { addToCart };
+  return { addToCart, loading };
 };
 
 export default useAddToCart;

@@ -47,14 +47,15 @@ const PriceListView = () => {
     let newRpp = e.target.value;
     setRpp(newRpp);
 
+    setCurrentPage(1);
     setRows(Math.ceil(totalRows / newRpp));
   };
 
   const handleSearch = (e) => {
+    setCurrentPage(1);
     e.preventDefault();
 
     let search = e.target.value;
-
     const filtered = priceList.filter((item) => {
       return (
         item.category_name.toLowerCase().includes(search.toLowerCase()) ||

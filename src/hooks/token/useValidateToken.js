@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../redux/slices/userSlice";
 import { setAuthStatus } from "../../redux/slices/authSlice";
+import { addUser } from "../../redux/slices/userSlice";
 import toast from "react-hot-toast";
 
 const useValidateToken = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const baseURL = import.meta.env.VITE_BASE_URL;
   const token = window.localStorage.getItem("token");
@@ -15,6 +13,12 @@ const useValidateToken = () => {
   useEffect(() => {
     const validateToken = async () => {
       try {
+        if (!token) {
+          dispatch(setAuthStatus(false));
+          setLoading(false);
+          return;
+        }
+
         const response = await fetch(`${baseURL}/auth/validate-token`, {
           method: "POST",
           headers: {
@@ -24,30 +28,28 @@ const useValidateToken = () => {
         });
 
         const data = await response.json();
+
         if (response.ok) {
           dispatch(addUser(data?.data));
           dispatch(setAuthStatus(true));
         } else {
           toast.error(data?.message || "Token validation failed!");
-          localStorage.clear();
-          dispatch(setAuthStatus(false));
+          handleLogout();
         }
       } catch {
         toast.error("Failed to validate user token.");
-        dispatch(setAuthStatus(false));
-        localStorage.clear();
       } finally {
         setLoading(false);
       }
     };
 
-    if (token) {
-      validateToken();
-    } else {
-      setLoading(false);
+    const handleLogout = () => {
+      localStorage.clear();
       dispatch(setAuthStatus(false));
-    }
-  }, [baseURL, dispatch, navigate, token]);
+    };
+
+    validateToken();
+  }, [baseURL, dispatch, token]);
 
   return { loading };
 };

@@ -6,14 +6,11 @@ import toast from "react-hot-toast";
 import useUpdateCart from "../../hooks/newCart/useUpdateCart";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import useReFetchCart from "../../hooks/newCart/useReFetchCart";
 import { deleteItem, updateQty } from "../../redux/slices/cartSlice";
 import useDeleteProduct from "../../hooks/newCart/useDeleteProduct";
+import { addItem } from "../../redux/slices/cartSlice";
 
 const CategoryItem = ({ categoryItem, category_id }) => {
-  const { loading: loadingReFetchCart, refetch: refetchCart } =
-    useReFetchCart();
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [itemCount, setItemCount] = useState(1);
@@ -22,33 +19,33 @@ const CategoryItem = ({ categoryItem, category_id }) => {
   const [modelIsOpen, setModelIsOpen] = useState(false);
   const isAuthenticated = useSelector((store) => store.auth.isAuthenticated);
 
-  const { addToCart } = useAddToCart();
+  const { addToCart, loading: loadingAddToCart } = useAddToCart();
   const { deleteProduct, loading: loadingDelProduct } = useDeleteProduct();
   const { updateCart, loading: loadingUpdateCart } = useUpdateCart();
 
   const onIncClick = async () => {
-    setItemCount(itemCount + 1);
     const quantity = itemCount + 1;
     const result = await updateCart(cartId, { quantity });
 
     if (result) {
+      setItemCount(quantity);
       dispatch(updateQty({ cart_id: cartId, quantity }));
     }
   };
 
   const onDecClick = async () => {
     if (itemCount > 0 && itemCount - 1 != 0) {
-      setItemCount(itemCount - 1);
       const quantity = itemCount - 1;
       const result = await updateCart(cartId, { quantity });
 
       if (result) {
+        setItemCount(quantity);
         dispatch(updateQty({ cart_id: cartId, quantity }));
       }
     } else {
-      setNumberBtn(false);
       const result = await deleteProduct(cartId);
       if (result) {
+        setNumberBtn(false);
         dispatch(deleteItem(cartId));
       }
     }
@@ -58,7 +55,6 @@ const CategoryItem = ({ categoryItem, category_id }) => {
     if (!isAuthenticated) {
       setModelIsOpen(true);
     } else {
-      setNumberBtn(true);
       const result = await addToCart({
         category_id,
         product_id,
@@ -67,7 +63,8 @@ const CategoryItem = ({ categoryItem, category_id }) => {
       });
       if (result) {
         setCartId(result?.cart_id);
-        await refetchCart();
+        setNumberBtn(true);
+        dispatch(addItem(result));
       } else {
         toast.error("Failed to add item into cart!");
       }
@@ -110,29 +107,44 @@ const CategoryItem = ({ categoryItem, category_id }) => {
             <p className="cat-item-price">₹{categoryItem.price}</p>
           </div>
           {numberBtn ? (
-            <button className="inc-dec-btn overflow-hidden">
-              <span
-                className="py-[1.1rem] pl-[1.2rem] cursor-pointer"
-                onClick={onDecClick}
-              >
-                <HiOutlineMinus className="indec-icon" />
-              </span>
-              {itemCount}
-              <span
-                className="py-[1.1rem] pr-[1.2rem] cursor-pointer"
-                onClick={onIncClick}
-              >
-                <HiOutlinePlus className="indec-icon" />
-              </span>
+            <button className="inc-dec-btn relative overflow-hidden">
+              {loadingUpdateCart || loadingDelProduct ? (
+                <span className="h-[4.1rem] w-[8.8rem] flex justify-center items-center">
+                  <span className="inline-block h-8 w-8 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin"></span>
+                </span>
+              ) : (
+                <>
+                  <span
+                    className="py-[1.1rem] pl-[1.2rem] cursor-pointer"
+                    onClick={onDecClick}
+                    aria-label="Decrease item count"
+                  >
+                    <HiOutlineMinus className="indec-icon" />
+                  </span>
+                  {itemCount}
+                  <span
+                    className="py-[1.1rem] pr-[1.2rem] cursor-pointer"
+                    onClick={onIncClick}
+                    aria-label="Increase item count"
+                  >
+                    <HiOutlinePlus className="indec-icon" />
+                  </span>
+                </>
+              )}
             </button>
           ) : (
             <button
               className="add-btn"
+              aria-label="Add to cart"
               onClick={() =>
                 handleBtnClick(categoryItem.product_id, categoryItem.service_id)
               }
             >
-              Add
+              {loadingAddToCart ? (
+                <span className="inline-block mt-[-7.5px] mb-[-7.5px] h-8 w-8 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin"></span>
+              ) : (
+                "Add"
+              )}
             </button>
           )}
         </div>

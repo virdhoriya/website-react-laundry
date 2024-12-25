@@ -32,11 +32,17 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
     code: "",
     status: "",
   });
-  const { applyCoupon } = useApplyCoupon();
+  const { applyCoupon, loading: loadingApplyCoupon } = useApplyCoupon();
   const { placeOrder, loading } = usePlaceOrder();
 
   const handleApplyClick = async (e) => {
     e.preventDefault();
+
+    if (!couponCode) {
+      toast.success("Coupon code should  not empty!");
+      return;
+    }
+
     const result = await applyCoupon(subTotal, couponCode.toUpperCase());
     if (result) {
       setDiscountValue(result?.discountAmount);
@@ -88,12 +94,11 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
   };
 
   const handleViewMoreClick = async () => {
-    toast.success("Showing all coupons ...");
+    setViewCoupon(!viewCoupon);
 
     if (!viewCoupon) {
       await getAllCoupon();
     }
-    setViewCoupon(!viewCoupon);
   };
 
   const applyBtnClick = async (code) => {
@@ -124,7 +129,7 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
           </div>
           {loadingAllCoupons ? (
             <div className="flex justify-center items-center">
-              <span className="spinner"></span>
+              <span className="inline-block h-16 w-16 rounded-full border-[5px] border-gray-300 border-r-indigo-500 animate-spin"></span>
             </div>
           ) : (
             <table className="coupon-table w-full">
@@ -205,7 +210,7 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
                 className={`apply-btn ${
                   isCouponApplied.status ? "disabled-apply-btn" : ""
                 }`}
-                disabled={isCouponApplied.status}
+                disabled={isCouponApplied.status || loadingApplyCoupon}
               >
                 Apply
               </button>
