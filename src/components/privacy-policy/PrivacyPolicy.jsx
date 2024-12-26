@@ -2,13 +2,13 @@ import "./privacypolicy.css";
 
 const PrivacyPolicy = () => {
   return (
-    <section className="section-privacy">
+    <section className="policies-space">
       <div className="secondary-container">
         <div className="flex justify-center items-center mb-28">
-          <h1 className="privacy-heading">privacy & policy</h1>
+          <h1 className="policies-heading">privacy & policy</h1>
         </div>
         <div>
-          <h2 className="privacy-subhead mb-16">privacy & policy</h2>
+          <h2 className="policies-sub-heading">privacy & policy</h2>
           <ul className="desc-list-item">
             <p>
               Sikka Cleaners is committed to protecting our visitors’ and
