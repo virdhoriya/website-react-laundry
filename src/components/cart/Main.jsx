@@ -8,7 +8,8 @@ const Main = () => {
     <table className="cart-table">
       <thead className="bg-[#f7f8fd]">
         <tr>
-          <th style={{ textAlign: "left" }}>Items</th>
+          <th>Product</th>
+          <th>Items</th>
           <th>Price</th>
           <th>Quantity</th>
           <th>Subtotal</th>
