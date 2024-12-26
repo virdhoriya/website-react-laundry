@@ -62,7 +62,7 @@ const Footer = () => {
                   <Link to="/prices">Prices</Link>
                 </li>
                 <li>
-                  <Link to="/">FAQ</Link>
+                  <Link to="/faq">FAQ</Link>
                 </li>
                 <li>
                   <Link to="/contact">Contact Us</Link>
@@ -82,11 +82,11 @@ const Footer = () => {
                 <li>
                   <Link to="/privacy-policy">Privacy Policy</Link>
                 </li>
-                <li>
+                <li className="hidden">
                   <Link to="/">Shipping Policy</Link>
                 </li>
                 <li>
-                  <Link to="/">Refund Policy</Link>
+                  <Link to="/refund-policy">Refund Policy</Link>
                 </li>
               </ul>
             </div>
