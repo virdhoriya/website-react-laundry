@@ -33,6 +33,7 @@ const PriceListView = lazy(() =>
 const RefundPolicy = lazy(() =>
   import("./components/refund-policy/RefundPolicy")
 );
+const Faq = lazy(() => import("./components/faq/Faq"));
 const WriteReview = lazy(() => import("./components/dashboard/WriteReview"));
 const SavedAddress = lazy(() => import("./components/dashboard/SavedAddress"));
 const ViewOrder = lazy(() => import("./components/dashboard/ViewOrder"));
@@ -167,6 +168,15 @@ const MainComponent = () => {
             element={
               <Suspense fallback={<Loading />}>
                 <RefundPolicy />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="faq"
+            element={
+              <Suspense fallback={<Loading />}>
+                <Faq />
               </Suspense>
             }
           />
