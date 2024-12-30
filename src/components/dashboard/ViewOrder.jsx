@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useGetOrderDetail from "../../hooks/dashboard/useGetOrderDetail";
 import dayjs from "dayjs";
+import useDownloadInvoice from "../../hooks/invoice/useDownloadInvoice";
+import { PiDownloadSimpleBold } from "react-icons/pi";
 
 const ViewOrder = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { getOrderDetail } = useGetOrderDetail();
   const [order, setOrder] = useState([]);
-
+  const { downloadInvoice, loading } = useDownloadInvoice();
   const ptMap = {
     1: "Cash on delivery",
     2: "Online payement",
@@ -19,6 +21,10 @@ const ViewOrder = () => {
     1: "pending payemtn",
     2: "full payement received",
     3: "partial payement received",
+  };
+
+  const hanldeInvoiceDownload = async () => {
+    await downloadInvoice(location.state.order_id);
   };
 
   useEffect(() => {
@@ -37,8 +43,18 @@ const ViewOrder = () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="text-3xl font-semibold py-7 px-6 rounded-2xl bg-white text-[var(--black)] border border-[#b9bccf4d]">
-        Order Details : #{location.state.order_id}
+      <div className="text-3xl font-semibold py-4 px-6 rounded-2xl leading-[4rem] bg-white text-[var(--black)] border border-[#b9bccf4d] flex items-center justify-between">
+        <span>Order Details : #{location.state.order_id}</span>
+        <span
+          className="flex justify-center items-center h-14 w-14 p-3 bg-gray-100 rounded-full border border-[#b9bccf4d] cursor-pointer"
+          onClick={hanldeInvoiceDownload}
+        >
+          {loading ? (
+            <span className="inline-block h-7 w-7 rounded-full border-2 border-indigo-100 border-t-indigo-600 border-r-indigo-600 animate-spin"></span>
+          ) : (
+            <PiDownloadSimpleBold className="h-full w-full fill-[var(--primary)]" />
+          )}
+        </span>
       </div>
       <div className="flex justify-between items-start">
         <div className="basis-[48.8%] space-y-8">

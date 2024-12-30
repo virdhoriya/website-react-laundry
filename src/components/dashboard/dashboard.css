@@ -136,12 +136,14 @@
 .orders-table thead tr,
 .orders-table tbody tr {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr 1.3fr 1fr 0.8fr 1fr 1fr 0.5fr;
+  /* grid-template-columns: 0.8fr 1.2fr 1.3fr 1fr 0.8fr 1fr 1fr 0.5fr; */
+  grid-template-columns: 0.8fr 1.2fr 1fr 0.8fr 0.8fr 0.8fr 1fr 0.5fr 0.5fr;
 }
 
 .orders-table thead th {
   font-size: 1.2rem;
-  padding: 1.2rem 2.2rem;
+  line-height: 2.4rem;
+  padding: 1rem 1.2rem;
   text-transform: uppercase;
   color: #676788;
   font-weight: 500;
@@ -150,7 +152,8 @@
 
 .orders-table tbody td {
   font-size: 1.2rem;
-  padding: 1.3rem 2.2rem;
+  line-height: 2.4rem;
+  padding: 1rem 1.2rem;
   text-transform: uppercase;
   color: #676788;
   font-weight: 400;
