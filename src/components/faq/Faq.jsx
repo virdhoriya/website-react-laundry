@@ -4,7 +4,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { faqData } from "./faqData";
 
 const Faq = () => {
-  console.log(faqData);
   return (
     <section className="pt-20 pb-24">
       <div className="faq-main-container">

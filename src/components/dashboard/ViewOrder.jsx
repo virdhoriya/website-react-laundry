@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useGetOrderDetail from "../../hooks/dashboard/useGetOrderDetail";
 import dayjs from "dayjs";
 import useDownloadInvoice from "../../hooks/invoice/useDownloadInvoice";
-import toast from "react-hot-toast";
 import { PiDownloadSimpleBold } from "react-icons/pi";
 
 const ViewOrder = () => {
@@ -25,10 +24,7 @@ const ViewOrder = () => {
   };
 
   const hanldeInvoiceDownload = async () => {
-    const result = await downloadInvoice(location.state.order_id);
-    if (result) {
-      toast.success("Invoice download successfull");
-    }
+    await downloadInvoice(location.state.order_id);
   };
 
   useEffect(() => {
@@ -50,7 +46,7 @@ const ViewOrder = () => {
       <div className="text-3xl font-semibold py-4 px-6 rounded-2xl leading-[4rem] bg-white text-[var(--black)] border border-[#b9bccf4d] flex items-center justify-between">
         <span>Order Details : #{location.state.order_id}</span>
         <span
-          className="flex justify-center items-center h-14 w-14 p-3 bg-gray-100 rounded-full border border-[#b9bccf4d]"
+          className="flex justify-center items-center h-14 w-14 p-3 bg-gray-100 rounded-full border border-[#b9bccf4d] cursor-pointer"
           onClick={hanldeInvoiceDownload}
         >
           {loading ? (

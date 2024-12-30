@@ -61,10 +61,7 @@ const Home = () => {
 
   const handleDownloadClick = async (order_id) => {
     setInvoice(order_id);
-    const result = await downloadInvoice(order_id);
-    if (result) {
-      console.log("Invoice downloaded successfully.");
-    }
+    await downloadInvoice(order_id);
   };
 
   useEffect(() => {

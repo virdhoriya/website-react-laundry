@@ -21,7 +21,7 @@ const useDownloadInvoice = () => {
         const url = data?.url;
         window.open(url, "_blank");
       } else {
-        toast.error(`Failed to download invoice. Status: ${response.status}`);
+        toast.error(`Failed to download invoice. Status`);
       }
     } catch {
       toast.error("An error occurred while downloading the invoice!");
