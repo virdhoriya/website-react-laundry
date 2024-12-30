@@ -19,11 +19,7 @@ const useDownloadInvoice = () => {
       const data = await response.json();
       if (response.ok) {
         const url = data?.url;
-        if (url) {
-          window.open(url, "_blank");
-        } else {
-          console.error("URL not found in the response.");
-        }
+        window.open(url, "_blank");
       } else {
         toast.error(`Failed to download invoice. Status: ${response.status}`);
       }
