@@ -14,6 +14,8 @@ import {
   FaEye,
 } from "react-icons/fa";
 import useGetOrders02 from "../../hooks/dashboard/useGetOrders02";
+import { IoMdDownload } from "react-icons/io";
+import useDownloadInvoice from "../../hooks/invoice/useDownloadInvoice";
 
 const Home = () => {
   const { getOrders } = useGetOrders();
@@ -27,6 +29,8 @@ const Home = () => {
   const [totalRows, setTotalRows] = useState(0);
   const [activeBtn, setActiveBtn] = useState(1);
   const [sortOrder, setSortOrder] = useState("asc");
+  const [invoice, setInvoice] = useState(0);
+  const { downloadInvoice, loading: loadingInvoice } = useDownloadInvoice();
   const navigate = useNavigate();
 
   const handlePageClick = async (page) => {
@@ -52,6 +56,14 @@ const Home = () => {
       if (result) {
         setOrders(result.result);
       }
+    }
+  };
+
+  const handleDownloadClick = async (order_id) => {
+    setInvoice(order_id);
+    const result = await downloadInvoice(order_id);
+    if (result) {
+      console.log("Invoice downloaded successfully.");
     }
   };
 
@@ -168,7 +180,7 @@ const Home = () => {
                   className="flex items-center justify-center gap-2 cursor-pointer"
                   onClick={() => handleUpDownClick("paid_amount")}
                 >
-                  <span>paid amount</span>
+                  <span>paid amt</span>
                   <span className="flex flex-col">
                     <IoCaretUp className="updown-icon" />
                     <IoCaretDown className="updown-icon" />
@@ -187,6 +199,7 @@ const Home = () => {
                 <th>
                   <span>View</span>
                 </th>
+                <th>...</th>
               </tr>
             </thead>
             <tbody>
@@ -239,6 +252,21 @@ const Home = () => {
                             })
                           }
                         />
+                      </td>
+                      <td
+                        style={{ padding: "5px" }}
+                        className="flex items-center justify-center"
+                      >
+                        {loadingInvoice && invoice === order_id ? (
+                          <span className="inline-block h-8 w-8 rounded-full border-[3px] border-indigo-100 border-t-indigo-600 border-r-indigo-600 animate-spin"></span>
+                        ) : (
+                          <button disabled={loadingInvoice}>
+                            <IoMdDownload
+                              className="inline-block h-9 w-9 cursor-pointer"
+                              onClick={() => handleDownloadClick(order_id)}
+                            />
+                          </button>
+                        )}
                       </td>
                     </tr>
                   );
