@@ -1,26 +1,35 @@
+import { useState, useCallback } from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
-import { useCallback, useState } from "react";
 
 const containerStyle = {
-  width: "880px",
-  height: "770px",
-};
-
-const center = {
-  lat: 23.052226216386774,
-  lng: 72.54493515783129,
+  width: "980px",
+  height: "870px",
 };
 
 const points = [
   {
-    lat: 23.052226216386774,
-    lng: 72.54493515783129,
+    lat: 23.095483542678874,
+    lng: 72.4947794841833,
+  },
+  {
+    lat: 23.057527246370075,
+    lng: 72.53463592067385,
+  },
+  {
+    lat: 23.054375676135088,
+    lng: 72.54428865138641,
   },
 ];
 
 const Map = () => {
+  const [activeBranch, setActiveBranch] = useState(0);
+
+  const handleBranchClick = (branch_id) => {
+    setActiveBranch(branch_id);
+  };
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: import.meta.env.VITE_GMAP_API_KEY,
@@ -28,9 +37,7 @@ const Map = () => {
 
   const [map, setMap] = useState(null);
 
-  const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+  const onLoad = useCallback((map) => {
     setMap(map);
   }, []);
 
@@ -43,10 +50,10 @@ const Map = () => {
       <div className="content-container">
         <div className="flex items-center justify-between">
           <div>
-            {isLoaded ? (
+            {isLoaded && (
               <GoogleMap
                 mapContainerStyle={containerStyle}
-                center={center}
+                center={points[activeBranch]}
                 zoom={14}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
@@ -59,15 +66,16 @@ const Map = () => {
                   <MarkerF key={index} position={point} />
                 ))}
               </GoogleMap>
-            ) : (
-              <></>
             )}
           </div>
 
           <div className="flex-[0_0_31%]">
             <div className="flex flex-col gap-36">
               <div className="flex flex-col gap-12">
-                <div className="flex items-center gap-8">
+                <div
+                  className="flex items-center gap-8 cursor-pointer"
+                  onClick={() => handleBranchClick(1)}
+                >
                   <SlLocationPin className="h-12 w-12 fill-[var(--secondary)]" />
                   <h4 className="text-[2.6rem] leading-[2.6rem] font-bold">
                     Memnagar Branch
@@ -86,7 +94,10 @@ const Map = () => {
               </div>
 
               <div className="flex flex-col gap-12">
-                <div className="flex items-center gap-8">
+                <div
+                  className="flex items-center gap-8 cursor-pointer"
+                  onClick={() => handleBranchClick(2)}
+                >
                   <SlLocationPin className="h-12 w-12 fill-[var(--secondary)]" />
                   <h4 className="text-[2.6rem] leading-[2.6rem] font-bold">
                     Naranpura Branch
@@ -104,7 +115,10 @@ const Map = () => {
               </div>
 
               <div className="flex flex-col gap-12">
-                <div className="flex items-center gap-8">
+                <div
+                  className="flex items-center gap-8 cursor-pointer"
+                  onClick={() => handleBranchClick(0)}
+                >
                   <SlLocationPin className="h-12 w-12 fill-[var(--secondary)]" />
                   <h4 className="text-[2.6rem] leading-[2.6rem] font-bold">
                     Workshop
