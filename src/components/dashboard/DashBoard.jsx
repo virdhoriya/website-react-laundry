@@ -14,7 +14,7 @@ const DashBoard = () => {
               <Sidebar />
             </div>
           </div>
-          <div className="grow py-14 px-12 bg-[rgba(239,243,255,0.8)]">
+          <div className="grow py-14 px-12 bg-[rgba(239,243,255,0.8)] relative">
             <Outlet />
           </div>
         </div>
