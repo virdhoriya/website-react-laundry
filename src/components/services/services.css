@@ -180,6 +180,7 @@
   line-height: 1.6rem;
   font-weight: 600;
   color: #b9bccf;
+  cursor: pointer;
 
   border: 1.2px solid #b9bccf;
   border-radius: 6px;

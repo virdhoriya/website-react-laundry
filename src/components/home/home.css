@@ -116,7 +116,7 @@
       rgba(22, 31, 95, 0.9),
       rgba(22, 31, 95, 0.9)
     ),
-    url("./chooseus-bg.png");
+    url("/chooseus-bg.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

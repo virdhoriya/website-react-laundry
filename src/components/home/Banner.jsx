@@ -61,6 +61,7 @@ const Banner = () => {
 
           <div className="banner-img-container">
             <img
+              key={activeBanner?.image}
               src={activeBanner?.image}
               alt={activeBanner?.title || "Banner Image"}
               className="banner-img"
