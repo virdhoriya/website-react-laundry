@@ -6,7 +6,7 @@
       rgba(22, 31, 95, 0.95),
       rgba(22, 31, 95, 0.95)
     ),
-    url("./footer-bg.png");
+    url("/footer-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

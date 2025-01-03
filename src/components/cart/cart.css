@@ -292,3 +292,17 @@
   border-radius: 99px;
   padding: 0.4rem 1.5rem;
 }
+
+
+/* new btn for express delivery charge */
+
+.edc-btn {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: -5px 0;
+  border-radius: 2.5px;
+}

@@ -8,9 +8,10 @@ import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { clearCart } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosRemoveCircle } from "react-icons/io";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import useGetAllCoupon from "../../hooks/coupon/useGetAllCoupon";
+import { IconButton } from "@mui/material";
 
 const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
   const dispatch = useDispatch();
@@ -25,6 +26,11 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
   const shippingCharge = parseInt(
     useSelector((state) => state?.setting?.settings?.shipping_charge)
   );
+  const express_charge = parseInt(
+    useSelector((state) => state.setting.settings.express_delivery_charge)
+  );
+
+  console.log("Express : ", express_charge);
   const navigate = useNavigate();
   const [couponCode, setCouponCode] = useState("");
   const [discountValue, setDiscountValue] = useState(0);
@@ -32,6 +38,7 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
     code: "",
     status: "",
   });
+  const [isExpDel, setExpDel] = useState(false);
   const { applyCoupon, loading: loadingApplyCoupon } = useApplyCoupon();
   const { placeOrder, loading } = usePlaceOrder();
 
@@ -249,6 +256,38 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
               <p>Shipping Charge</p>
               <h5>₹{shippingCharge}</h5>
             </div>
+            <div className="place-center relative">
+              <div className="flex justify-center items-center gap-3">
+                <p>Express Delivery Charge</p>
+                {isExpDel && (
+                  <div className="relative group my-[-6px]">
+                    <IconButton onClick={() => setExpDel(false)}>
+                      <IoIosRemoveCircle className="h-9 w-9 fill-[var(--secondary)]" />
+                    </IconButton>
+
+                    <div
+                      role="tooltip"
+                      className="absolute z-10 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[var(--secondary)] text-white rounded-md shadow-sm px-3 py-2 text-lg text-nowrap"
+                      style={{
+                        top: "-30px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                      }}
+                    >
+                      remove
+                      <div className="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {isExpDel ? (
+                <h5>₹{express_charge}</h5>
+              ) : (
+                <button className="edc-btn" onClick={() => setExpDel(true)}>
+                  add
+                </button>
+              )}
+            </div>
             <span className="line"></span>
             <div className="place-center total-container">
               <p>Total</p>
@@ -256,7 +295,8 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
                 ₹
                 {Number(subTotal) -
                   Number(discountValue) +
-                  Number(shippingCharge)}
+                  Number(shippingCharge) +
+                  (isExpDel && express_charge)}
               </h5>
             </div>
             <button

@@ -17,11 +17,6 @@ const Sidebar = () => {
       route: "/dashboard/price-list",
     },
     {
-      icon: <MdReviews />,
-      label: "Write a Review",
-      route: "/dashboard/write-review",
-    },
-    {
       icon: <FaLocationDot />,
       label: "Saved Addresses",
       route: "/dashboard/saved-addresses",
@@ -41,11 +36,7 @@ const Sidebar = () => {
               >
                 {item.icon}
               </span>
-              <span
-                className={`${
-                  item.route === path ? "active-label" : ""
-                }`}
-              >
+              <span className={`${item.route === path ? "active-label" : ""}`}>
                 {item.label}
               </span>
             </Link>

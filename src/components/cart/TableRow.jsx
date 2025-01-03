@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { addDescription, deleteItem } from "../../redux/slices/cartSlice";
 import { updateQty } from "../../redux/slices/cartSlice";
 import useUpdateCart from "../../hooks/newCart/useUpdateCart";
-import toast from "react-hot-toast";
 
 const TableRow = ({ item }) => {
   const dispatch = useDispatch();
@@ -20,11 +19,14 @@ const TableRow = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDescAdded, setIsDescAdded] = useState(false);
   const [itemDescription, setItemDescription] = useState("");
-  const { product_image, cart_id, product_name, service_name, price, description } = item;
-
-  if (loadingQuantityUpdate) {
-    toast.success("Updating the qunatity");
-  }
+  const {
+    product_image,
+    cart_id,
+    product_name,
+    service_name,
+    price,
+    description,
+  } = item;
 
   const handleUpClick = async () => {
     setLoadingQuantityUpdate(true);
@@ -88,7 +90,11 @@ const TableRow = ({ item }) => {
   return (
     <tr className="relative">
       <td className="text-center">
-        <img src={product_image} alt="Product Image" className="inline-block w-32 h-auto" />
+        <img
+          src={product_image}
+          alt="Product Image"
+          className="inline-block max-w-32 max-h-40 h-auto"
+        />
       </td>
       <td className="items-detail-cell space-y-1">
         <h3>{product_name}</h3>
@@ -99,19 +105,27 @@ const TableRow = ({ item }) => {
       <td>
         <span className="flex justify-center items-center">
           <button className="inc-dec-btn overflow-hidden">
-            <span
-              className="py-[1.1rem] pl-[1.2rem] cursor-pointer"
-              onClick={handleDownClick}
-            >
-              <HiOutlineMinus className="indec-icon" />
-            </span>
-            {quantity}
-            <span
-              className="py-[1.1rem] pr-[1.2rem] cursor-pointer"
-              onClick={handleUpClick}
-            >
-              <HiOutlinePlus className="indec-icon" />
-            </span>
+            {loadingQuantityUpdate ? (
+              <span className="h-[4.1rem] w-[9.1rem] flex justify-center items-center">
+                <span className="inline-block h-10 w-10 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin"></span>
+              </span>
+            ) : (
+              <>
+                <span
+                  className="py-[1.1rem] pl-[1.2rem] cursor-pointer"
+                  onClick={() => handleDownClick(cart_id)}
+                >
+                  <HiOutlineMinus className="indec-icon" />
+                </span>
+                {quantity}
+                <span
+                  className="py-[1.1rem] pr-[1.2rem] cursor-pointer"
+                  onClick={() => handleUpClick(cart_id)}
+                >
+                  <HiOutlinePlus className="indec-icon" />
+                </span>
+              </>
+            )}
           </button>
         </span>
       </td>

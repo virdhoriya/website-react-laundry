@@ -5,6 +5,8 @@ const Cart = () => {
   const shippingCharge = useSelector(
     (state) => state?.setting?.settings?.shipping_charge
   );
+  const isAuthenticated = useSelector((state) => state?.auth?.isAuthenticated);
+
   return (
     <>
       <div className="card-container">
@@ -16,7 +18,7 @@ const Cart = () => {
           </div>
           <div className="place-center">
             <p>Shipping Charge</p>
-            <h5>₹{shippingCharge ? shippingCharge : 0}</h5>
+            <h5>₹{!isAuthenticated || !subTotal ? 0 : shippingCharge}</h5>
           </div>
           <span className="line"></span>
           <div className="place-center total-container">

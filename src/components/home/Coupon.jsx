@@ -1,4 +1,3 @@
-import CouponShimmer from "./CouponShimmer";
 import { useSelector } from "react-redux";
 
 const Coupon = () => {
@@ -6,9 +5,11 @@ const Coupon = () => {
     (state) => state?.setting?.settings?.home_promotion_banner_website
   );
 
-  if (coupon) {
-    coupon = JSON.parse(coupon);
+  if (!coupon) {
+    return null;
   }
+
+  coupon = JSON.parse(coupon);
 
   return (
     <section className="space-xl">
@@ -54,7 +55,7 @@ const Coupon = () => {
             </article>
           </div>
         ) : (
-          <CouponShimmer />
+          ""
         )}
       </div>
     </section>
