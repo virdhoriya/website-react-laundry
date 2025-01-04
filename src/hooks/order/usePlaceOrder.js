@@ -15,7 +15,8 @@ const usePlaceOrder = () => {
     coupon_code,
     shipping_charges,
     payment_type,
-    address_id
+    address_id,
+    express_delivery_charges
   ) => {
     try {
       setLoading(true);
@@ -36,6 +37,7 @@ const usePlaceOrder = () => {
           payment_status: 1,
           address_id,
           user_id,
+          express_delivery_charges,
         }),
       });
       const data = await response.json();
