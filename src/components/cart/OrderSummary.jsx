@@ -30,7 +30,6 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
     useSelector((state) => state.setting.settings.express_delivery_charge)
   );
 
-  console.log("Express : ", express_charge);
   const navigate = useNavigate();
   const [couponCode, setCouponCode] = useState("");
   const [discountValue, setDiscountValue] = useState(0);
@@ -76,6 +75,7 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
       return;
     }
     let newSubTotal = subTotal - discountValue;
+    let expresssCharge = isExpDel ? express_charge : 0;
     const result = await placeOrder(
       items,
       newSubTotal,
@@ -83,7 +83,8 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
       isCouponApplied.code,
       shippingCharge,
       paymentMethod,
-      selectedAddId
+      selectedAddId,
+      expresssCharge
     );
     if (result) {
       dispatch(clearCart());
