@@ -1,30 +1,18 @@
-import { useEffect, useState } from "react";
-import CategoryItem from "./CategoryItem";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setSelectedCategoryId } from "../../redux/slices/categorySlice";
 import useFetchServiceItems from "../../hooks/services/useFetchServiceItems";
+import ProductShimmer from "./ProductShimmer";
+import CategoryItem from "./CategoryItem";
 
 const SelectClothes = () => {
   const dispatch = useDispatch();
-  const { fetchServiceItems } = useFetchServiceItems();
   const categories = useSelector((store) => store.category.categories);
   const service_id = useSelector((state) => state.service.selectedServiceId);
   const category_id = useSelector((state) => state.category.selectedCategoryId);
-  const [categoryItemsList, setCategoryItemsList] = useState([]);
-
-  useEffect(() => {
-    if (service_id && category_id) {
-      const getProducts = async () => {
-        const result = await fetchServiceItems(category_id, service_id);
-        if (result && result.length > 0) {
-          setCategoryItemsList(result);
-        }
-      };
-      getProducts();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category_id, service_id]);
+  const { loading } = useFetchServiceItems(service_id, category_id);
+  const categoryItemsList = useSelector(
+    (state) => state?.product?.filteredProducts
+  );
 
   const handleCategoryClick = (category_id) => {
     dispatch(setSelectedCategoryId(category_id));
@@ -32,36 +20,43 @@ const SelectClothes = () => {
 
   return (
     <div className="select-clothes-container">
-      <h4 className="service-title">Select Cloths</h4>
+      <h4 className="service-title">Select Clothes</h4>
       <div className="flex items-center gap-16 laptop-l:gap-12 laptop-m:gap-8">
-        {categories.length > 0
-          ? categories.map((category) => {
-              const { category_name, category_category_id } = category;
-              return (
-                <span
-                  key={category_category_id}
-                  className={`category-tags ${
-                    category_id === category_category_id ? "active-tag" : ""
-                  }`}
-                  onClick={() => handleCategoryClick(category_category_id)}
-                >
-                  {category_name}
-                </span>
-              );
-            })
-          : "No category Found"}
+        {categories.length > 0 ? (
+          categories.map((category) => {
+            const { category_name, category_category_id } = category;
+            return (
+              <span
+                key={category_category_id}
+                className={`category-tags ${
+                  category_id === category_category_id ? "active-tag" : ""
+                }`}
+                onClick={() => handleCategoryClick(category_category_id)}
+              >
+                {category_name}
+              </span>
+            );
+          })
+        ) : (
+          <p>No category found!</p>
+        )}
       </div>
       <div className="flex flex-col gap-12 laptop-l:gap-10 laptop-m:gap-8">
-        {categories.length > 0 &&
-          categoryItemsList.map((categoryItem) => {
-            return (
-              <CategoryItem
-                key={categoryItem.product_id}
-                categoryItem={categoryItem}
-                category_id={category_id}
-              />
-            );
-          })}
+        {loading ? (
+          Array(5)
+            .fill(0)
+            .map((_, index) => <ProductShimmer key={index} />)
+        ) : categories.length > 0 && categoryItemsList.length > 0 ? (
+          categoryItemsList.map((categoryItem) => (
+            <CategoryItem
+              key={categoryItem.product_id}
+              categoryItem={categoryItem}
+              category_id={category_id}
+            />
+          ))
+        ) : (
+          <p>No products found for this category!</p>
+        )}
       </div>
     </div>
   );
