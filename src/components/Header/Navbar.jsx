@@ -11,15 +11,15 @@ import { FaHome } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 
 const Navbar = () => {
-  const cartItem = useSelector((state) => state.cart.cartItemCount);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const isLoggedIn = localStorage.getItem("token");
-  const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(false);
+  const cartItem = useSelector((state) => state.cart.cartItemCount);
+  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
   let profile_image = useSelector((state) => state.user.user.image);
+  const [isOpen, setIsOpen] = useState(false);
   if (!profile_image) {
-    profile_image = "./default_avatar.png";
+    profile_image = "/default_pfp.png";
   }
 
   const onLogoutClick = () => {
@@ -47,15 +47,13 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`py-4 laptop-l:py-3 laptop-m:py-2 ${
-          pathname === "/services" ? "path-service" : "bg-[#F7F8FD]"
+        className={`py-4 laptop-l:py-3 tab-m:py-2 ${
+          pathname === "/services" ? "path-service" : "bg-gray-200"
         }`}
       >
-        <div
-          className={`${pathname === "/contact" ? "container-b" : "container"}`}
-        >
+        <div className="container-b">
           <div className="flex items-center justify-between">
-            <div>
+            <Link to="/" title="sikke cleaners" aria-label="sikke cleaners">
               {pathname === "/services" ? (
                 <img
                   src="/menu.png"
@@ -69,76 +67,86 @@ const Navbar = () => {
                   className="h-16 w-96 laptop-l:h-14 laptop-l:w-80 laptop-m:h-12 laptop-m:w-72 laptop:h-10 laptop:w-64 laptop-s:w-56 laptop-s:h-auto"
                 />
               )}
-            </div>
+            </Link>
 
             <div className="tab-m:hidden">
               <ul className="navbar">
-                <li className={`${pathname === "/" ? "active-nav" : ""}`}>
-                  <Link to="/" title="Home" aria-label="Home">
+                <li>
+                  <Link
+                    to="/"
+                    title="Home"
+                    aria-label="Home"
+                    className={`${pathname === "/" ? "active-nav" : ""}`}
+                  >
                     Home
                   </Link>
                 </li>
-                <li
-                  className={`${pathname === "/services" ? "active-nav" : ""}`}
-                >
+                <li>
                   <Link
                     to="/services"
                     title="Our Service"
                     aria-label="Our Service"
+                    className={`${
+                      pathname === "/services" ? "active-nav" : ""
+                    }`}
                   >
                     Our Service
                   </Link>
                 </li>
-                <li
-                  className={`${
-                    pathname === "/corporate-services" ? "active-nav" : ""
-                  }`}
-                >
+                <li>
                   <Link
                     to="/corporate-services"
                     title="Corporate Services"
                     aria-label="Corporate Services"
+                    className={`${
+                      pathname === "/corporate-services" ? "active-nav" : ""
+                    }`}
                   >
                     Corporate Services
                   </Link>
                 </li>
-                <li className={`${pathname === "/prices" ? "active-nav" : ""}`}>
-                  <Link to="/prices" title="Price List" aria-label="Price List">
+                <li>
+                  <Link
+                    to="/prices"
+                    title="Price List"
+                    aria-label="Price List"
+                    className={`${pathname === "/prices" ? "active-nav" : ""}`}
+                  >
                     Price List
                   </Link>
                 </li>
-                <li className={`${pathname === "/about" ? "active-nav" : ""}`}>
-                  <Link to="/about" title="About Us" aria-label="About Us">
+                <li>
+                  <Link
+                    to="/about"
+                    title="About Us"
+                    aria-label="About Us"
+                    className={`${pathname === "/about" ? "active-nav" : ""}`}
+                  >
                     About Us
                   </Link>
                 </li>
-                <li
-                  className={`${pathname === "/contact" ? "active-nav" : ""}`}
-                >
+                <li>
                   <Link
                     to="/contact"
                     title="Contact Us"
                     aria-label="Contact Us"
+                    className={`${pathname === "/contact" ? "active-nav" : ""}`}
                   >
                     Contact Us
-                  </Link>
-                </li>
-                <li className={`hidden ${pathname === "/more" ? "active-nav" : ""}`}>
-                  <Link to="/more" title="More" aria-label="More">
-                    More
                   </Link>
                 </li>
               </ul>
             </div>
 
-            <div className="flex justify-center items-center gap-8 laptop-l:gap-6">
+            <div className="flex justify-center items-center gap-8 laptop-l:gap-6 tab:gap-4">
               <Link
                 to="/cart"
-                className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]"
+                className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:h-[3.6rem] tab-m:w-[3.6rem] tab-m:border"
               >
                 <LuShoppingCart
                   className="h-full w-full stroke-[var(--black)]"
                   aria-label="Shopping Cart"
+                  title="cart"
                 />
                 {cartItem ? (
                   <div className="cart-tag">
@@ -149,7 +157,7 @@ const Navbar = () => {
                 )}
               </Link>
               {isLoggedIn ? (
-                <span className="inline-block h-[4.6rem] w-[4.6rem] relative group laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem]">
+                <span className="inline-block h-[4.6rem] w-[4.6rem] relative group laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:hidden">
                   <img
                     src={profile_image}
                     alt="Avatar"
@@ -160,27 +168,33 @@ const Navbar = () => {
                     <div className="logout-container flex flex-col items-start gap-4">
                       <span
                         className="flex items-center justify-center gap-4 cursor-pointer"
-                        onClick={onLogoutClick}
-                      >
-                        <FiLogOut className="h-[2rem] w-[2rem] stroke-[#676788]" />
-                        <span className="logout">logout</span>
-                      </span>
-                      <span
-                        className="flex items-center justify-center gap-4 cursor-pointer"
                         onClick={onProfileClick}
                       >
                         <CgProfile className="h-[2rem] w-[2rem] text-[#676788]" />
                         <span className="logout">Profile</span>
                       </span>
+                      <span
+                        className="flex items-center justify-center gap-4 cursor-pointer"
+                        onClick={onLogoutClick}
+                      >
+                        <FiLogOut className="h-[2rem] w-[2rem] stroke-[#676788]" />
+                        <span className="logout">logout</span>
+                      </span>
                     </div>
                   </div>
                 </span>
               ) : (
-                <Link to="/login" className="login">
+                <Link
+                  to="/login"
+                  className="login"
+                  role="button"
+                  title="login"
+                  aria-label="login"
+                >
                   Login
                 </Link>
               )}
-              <div className="h-[3.8rem] w-[3.8rem] justify-center items-center hidden tab-m:flex">
+              <div className="h-[3.8rem] w-[3.8rem] justify-center items-center hidden tab-m:flex tab:h-[3.2rem] tab:w-[3.2rem]">
                 <div
                   className={`hamburger ${isOpen ? "active-mobile-nav" : ""}`}
                   onClick={toggleOpen}

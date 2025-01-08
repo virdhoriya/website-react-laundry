@@ -9,12 +9,32 @@
 
 /* Navbar */
 
-.navbar {
-  display: flex;
-  gap: 3.2rem;
+.container-b {
+  max-width: 192rem;
+  margin: 0 auto;
+  padding: 0 8rem;
 }
 
-.navbar li {
+.path-service {
+  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3rem);
+  -webkit-backdrop-filter: blur(3rem);
+}
+
+.path-service .navbar li a {
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.navbar li a {
+  display: inline-block;
   font-size: 2rem;
   line-height: 2.6rem;
   font-weight: 500;
@@ -23,10 +43,6 @@
   padding-bottom: 2px;
   transition: all 0.3s;
   border-bottom: 4px solid transparent;
-}
-
-.navbar li:hover {
-  border-color: var(--secondary);
 }
 
 .navbar .active-nav {
@@ -105,17 +121,6 @@
   cursor: pointer;
 }
 
-.path-service {
-  background-color: #f9f9f9;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(3rem);
-  -webkit-backdrop-filter: blur(3rem);
-}
-
-.path-service .navbar li {
-  color: white;
-}
-
 .hamburger {
   flex-basis: 70%;
   display: flex;
@@ -128,7 +133,7 @@
   height: 4px;
   width: 100%;
   background-color: var(--primary);
-  border-radius: 2px;
+  border-radius: 1.5px;
   transition: all 0.2s;
 }
 
@@ -204,17 +209,29 @@
   background-color: rgba(38, 50, 56, 0.1);
 }
 
-/* NEW */
-
-.container-b {
-  max-width: 192rem;
-  margin: 0 auto;
-  padding: 0 8rem;
+@media only screen and (max-width: 120em) {
 }
 
 @media only screen and (max-width: 100em) {
   .container-b {
     padding: 0 7rem;
+  }
+
+  .navbar {
+    gap: 3rem;
+  }
+
+  .navbar li a {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    padding-bottom: 2px;
+    border-bottom: 3px solid transparent;
+  }
+
+  .login {
+    font-size: 1.8rem;
+    padding: 1rem 2.4rem;
+    font-weight: normal;
   }
 }
 
@@ -225,11 +242,34 @@
 }
 
 @media only screen and (max-width: 83.75em) {
+  .navbar {
+    gap: 2.5rem;
+  }
+
+  .login {
+    font-size: 1.7rem;
+  }
 }
 
 @media only screen and (max-width: 80em) {
   .container-b {
     padding: 0 5rem;
+  }
+
+  .navbar {
+    gap: 2rem;
+  }
+
+  .navbar li a {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    padding-bottom: 1px;
+    border-bottom: 3px solid transparent;
+  }
+
+  .login {
+    font-size: 1.6rem;
+    padding: 1.025rem 2rem;
   }
 }
 
@@ -237,15 +277,46 @@
   .container-b {
     padding: 0 4rem;
   }
+
+  .navbar {
+    gap: 1.8rem;
+  }
+
+  .navbar li a {
+    font-size: 1.4rem;
+  }
+
+  .login {
+    font-size: 1.4rem;
+    padding: 1.125rem 2rem;
+  }
 }
 
 @media only screen and (max-width: 64em) {
   .container-b {
-    padding: 0 4rem;
+    padding: 0 3.5rem;
   }
 }
 
 @media only screen and (max-width: 60.875em) {
+  .container-b {
+    padding: 0 3rem;
+  }
+
+  .login {
+    font-size: 1.4rem;
+    padding: 1.025rem 2rem;
+  }
+
+  .cart-tag {
+    height: 2rem;
+    width: 2rem;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 500;
+    position: absolute;
+    transform: translate(34%, -27%);
+  }
 }
 
 @media only screen and (max-width: 55em) {
@@ -258,10 +329,20 @@
   .container-b {
     padding: 0 2.5rem;
   }
+
+  .hamburger {
+    flex-basis: 80%;
+  }
 }
 
 @media only screen and (max-width: 27.5em) {
+  .container-b {
+    padding: 0 2rem;
+  }
 }
 
 @media only screen and (max-width: 20em) {
+  .container-b {
+    padding: 0 1rem;
+  }
 }
