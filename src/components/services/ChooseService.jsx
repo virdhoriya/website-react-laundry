@@ -21,6 +21,7 @@ const ChooseService = () => {
     (state) => state.service.selectedServiceId
   );
   const [search, setSearch] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleServiceClick = async (id) => {
     dispatch(setSelectedServiceId(id));
@@ -116,14 +117,30 @@ const ChooseService = () => {
                   <TbSearch className="h-12 w-12 stroke-[#687182] laptop-l:h-10 laptop-l:w-10 laptop-m:h-8 laptop-m:w-8 laptop-s:h-6 laptop-s:w-6 tab-s:h-4 tab-s:w-6" />
                 </label>
 
-                <input
-                  id="search"
-                  type="text"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search here..."
-                  className="flex-grow focus:outline-none text-[1.8rem] text-[var(--black)] leading-[2rem] laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:leading-normal laptop-s:text-[1.2rem] tab-s:text-[1.2rem]"
-                />
+                <div className="flex-grow relative">
+                  <input
+                    id="search"
+                    type="text"
+                    autoComplete="off"
+                    value={search}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search here..."
+                    className="w-full h-full focus:outline-none text-[1.8rem] text-[var(--black)] leading-[2rem] laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:leading-normal laptop-s:text-[1.2rem] tab-s:text-[1.2rem] rounded-md px-4 bg-gray-100"
+                  />
+                  <div
+                    className={`${
+                      isFocused ? "search-container" : "hidden opacity-0"
+                    }`}
+                  >
+                    <button className="cateory-option">men</button>
+                    <button className="cateory-option">women</button>
+                    <button className="cateory-option">kids</button>
+                    <button className="cateory-option">household</button>
+                  </div>
+                </div>
+
                 <button type="submit" className="search-button">
                   Search
                 </button>

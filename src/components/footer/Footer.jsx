@@ -6,6 +6,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const admin = import.meta.env.VITE_BASE_URL.replace(":3000", "/dashboard");
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -40,9 +41,11 @@ const Footer = () => {
                 &copy; 2024 Sikka Cleaners All rights reserved.
               </p>
               <a
-                href="http://35.154.167.170/"
+                href={admin}
                 target="__blank"
                 rel="noopener noreferrer"
+                title="admin login"
+                aria-label="admin login"
                 className="border border-[var(--secondary)] rounded-full p-[1.2rem] text-[1.4rem] font-semibold leading-[1.4rem font-semibold] laptop-m:p-4 laptop-s:p-3 laptop-s:text-[1.3rem] laptop-s:font-medium"
               >
                 Admin Login

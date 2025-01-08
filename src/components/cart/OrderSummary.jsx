@@ -88,7 +88,7 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
     );
     if (result) {
       dispatch(clearCart());
-      navigate("/order", { state: { result } });
+      navigate("/order", { state: { result, paymentMethod } });
     }
   };
 

@@ -60,7 +60,6 @@ const Filter = () => {
           <Select
             value={selectedProduct}
             sx={{ fontSize: "16px", position: "relative" }}
-            disableRipple
             onClick={(e) => e.stopPropagation()}
             MenuProps={{
               PaperProps: {
