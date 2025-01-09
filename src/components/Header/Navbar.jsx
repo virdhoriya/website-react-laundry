@@ -164,7 +164,7 @@ const Navbar = () => {
                     className="h-full w-full rounded-full border-[1.5px] border-black/45 laptop-l:border"
                     loading="lazy"
                   />
-                  <div className="hidden group-hover:inline-block">
+                  <div className="hidden group-hover:inline-block z-10">
                     <div className="logout-container flex flex-col items-start gap-4">
                       <span
                         className="flex items-center justify-center gap-4 cursor-pointer"
@@ -210,18 +210,21 @@ const Navbar = () => {
       </nav>
       <div
         className={`mobile-nav-cover ${isOpen ? "animate-nav-cover" : ""}`}
+        onClick={toggleOpen}
       ></div>
       <div
-        className={`mobile-nav-container space-y-8 shadow-2xl hidden tab-m:block ${
-          isOpen ? "animate-nav-container" : ""
+        className={`mobile-nav-container space-y-8 shadow-2xl ${
+          isOpen ? "animate-nav-container overflow-hidden" : ""
         }`}
       >
-        <div className="relative flex flex-col rounded-xl bg-transparent p-4 text-[var(--primary)]">
+        <div
+          className={`relative flex flex-col rounded-xl bg-transparent p-4 text-[var(--primary)]`}
+        >
           <div className="p-4 flex items-center justify-between">
             <h5 className="block font-sans text-[1.8rem] antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
               Sidebar
             </h5>
-            <RxCross2 className="h-9 w-9" onClick={toggleOpen} />
+            <RxCross2 className="h-9 w-9 cursor-pointer" onClick={toggleOpen} />
           </div>
           <nav className="flex flex-col gap-2 p-2 font-sans text-[1.4rem] font-medium text-[var(--primary)]">
             <Link

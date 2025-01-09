@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 const useVerifyPayement = () => {
   const [loading, setLoading] = useState(false);
   const baseURL = import.meta.env.VITE_BASE_URL;
+  const token = localStorage.getItem("token");
 
   const verifyPayement = async (param) => {
     try {
@@ -12,18 +13,20 @@ const useVerifyPayement = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(param),
       });
 
-      const data = await response.json();
       if (response.ok) {
-        toast.success(data?.message);
+        return { status: true };
       } else {
         toast.success("Failed to verify payement!");
+        return { status: false };
       }
     } catch {
       toast.error("Failed to verify payement");
+      return { status: false };
     } finally {
       setLoading(false);
     }
