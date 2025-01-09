@@ -44,7 +44,7 @@ const AddAddress = ({ setSelectAddId }) => {
             className="address-btn flex items-center gap-4"
             onClick={handleAddAddressClick}
           >
-            <FaPlus className="inline-block h-[1.6rem] w-[1.6rem] fill-[var(--red)]" />
+            <FaPlus className="inline-block h-[1.6rem] w-[1.6rem] fill-[var(--secondary)]" />
             <span>Add New Address</span>
           </button>
         </div>

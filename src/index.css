@@ -23,20 +23,12 @@ body {
 }
 
 :root {
-  --light-blue-bg: #f0f2fa;
-  --dark-white-bg: #f7f8fd;
-
-  --grey: #393b43;
-  --heading: #080914;
-
-  --red: #ff2e17;
-
-  --white: #fff;
-
-  --bg: #f0f2fa;
   --primary: #161f5f;
-  --black: #080914;
   --secondary: #ff2e17;
+
+  --black: #080914;
+  --grey: #393b43;
+  --white: #fff;
 
   --navbar: #f7f8fd;
 }

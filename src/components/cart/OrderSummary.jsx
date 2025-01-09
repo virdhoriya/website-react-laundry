@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import usePlaceOrder from "../../hooks/order/usePlaceOrder";
 import { useNavigate } from "react-router-dom";
 import useApplyCoupon from "../../hooks/coupon/useApplyCoupon";
@@ -11,7 +11,9 @@ import { useDispatch } from "react-redux";
 import { IoIosArrowDown, IoIosRemoveCircle } from "react-icons/io";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import useGetAllCoupon from "../../hooks/coupon/useGetAllCoupon";
-import { IconButton } from "@mui/material";
+import { Backdrop, CircularProgress, IconButton } from "@mui/material";
+import useGetTransactionId from "../../hooks/payement/useGetTransactionId";
+import useVerifyPayement from "../../hooks/payement/useVerifyPayement";
 
 const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
   const dispatch = useDispatch();
@@ -39,13 +41,18 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
   });
   const [isExpDel, setExpDel] = useState(false);
   const { applyCoupon, loading: loadingApplyCoupon } = useApplyCoupon();
-  const { placeOrder, loading } = usePlaceOrder();
+  const { placeOrder, loading: placingOrder } = usePlaceOrder();
+  const { getTransactionId, loading: loadingTransactionId } =
+    useGetTransactionId();
+  const { verifyPayement, loading: verifyingPayement } = useVerifyPayement();
+  const user = useSelector((state) => state?.user?.user);
+  const [open, setOpen] = useState(false);
 
   const handleApplyClick = async (e) => {
     e.preventDefault();
 
     if (!couponCode) {
-      toast.success("Coupon code should  not empty!");
+      toast.error("Coupon code should  not empty!");
       return;
     }
 
@@ -74,21 +81,100 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
       toast.error("Please select Shipping Address");
       return;
     }
-    let newSubTotal = subTotal - discountValue;
-    let expresssCharge = isExpDel ? express_charge : 0;
-    const result = await placeOrder(
-      items,
-      newSubTotal,
-      instruction,
-      isCouponApplied.code,
-      shippingCharge,
-      paymentMethod,
-      selectedAddId,
-      expresssCharge
-    );
-    if (result) {
-      dispatch(clearCart());
-      navigate("/order", { state: { result, paymentMethod } });
+
+    if (paymentMethod === 1) {
+      let newSubTotal = subTotal - discountValue;
+      let expresssCharge = isExpDel ? express_charge : 0;
+      const result = await placeOrder(
+        items,
+        newSubTotal,
+        instruction,
+        isCouponApplied.code,
+        shippingCharge,
+        paymentMethod,
+        selectedAddId,
+        expresssCharge
+      );
+      if (result) {
+        dispatch(clearCart());
+        navigate("/order", { state: { result, paymentMethod } });
+      }
+    }
+
+    if (paymentMethod === 2) {
+      let finalTotal =
+        Number(subTotal) -
+        Number(discountValue) +
+        Number(shippingCharge) +
+        (isExpDel && express_charge);
+
+      const razorpay_order_id = await getTransactionId(finalTotal);
+
+      if (!razorpay_order_id) {
+        return;
+      } else {
+        const { first_name, last_name, mobile_number } = user;
+        try {
+          const options = {
+            key: import.meta.env.RAZORPAY_KEY,
+            amount: finalTotal * 100,
+            currency: "INR",
+            name: "sikka cleaners",
+            description: "Order Payment",
+            order_id: razorpay_order_id,
+            handler: async function (response) {
+              const res = await verifyPayement(response);
+              if (!res.status) {
+                return;
+              }
+
+              let newSubTotal = subTotal - discountValue;
+              let expresssCharge = isExpDel ? express_charge : 0;
+              const result = await placeOrder(
+                items,
+                newSubTotal,
+                instruction,
+                isCouponApplied.code,
+                shippingCharge,
+                paymentMethod,
+                selectedAddId,
+                expresssCharge,
+                razorpay_order_id,
+                finalTotal
+              );
+              if (result) {
+                dispatch(clearCart());
+                navigate("/order", { state: { result, paymentMethod } });
+              }
+            },
+            prefill: {
+              name: first_name + " " + last_name,
+              email: "user@gmail.com",
+              contact: mobile_number,
+            },
+            theme: {
+              color: "#161F5F",
+            },
+          };
+
+          const razorpay = new window.Razorpay(options);
+
+          // Remove any previously attached event listener to avoid duplicates
+          razorpay.off("payment.failed");
+
+          // Attach the event listener
+          razorpay.on("payment.failed", function (response) {
+            alert(`Payment failed: ${response.error.description}`);
+            console.log("Response Razorpay : ", response);
+          });
+
+          razorpay.open();
+        } catch {
+          toast.error(
+            "Failed to initiate online payement please try again letter!"
+          );
+        }
+      }
     }
   };
 
@@ -121,6 +207,14 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
       setViewCoupon(false);
     }
   };
+
+  useEffect(() => {
+    if (loadingTransactionId || verifyingPayement || placingOrder) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [loadingTransactionId, verifyingPayement, placingOrder]);
 
   return (
     <>
@@ -303,19 +397,19 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
             <button
               className="checkout-btn"
               onClick={handleCheckout}
-              disabled={loading}
+              disabled={placingOrder}
             >
-              {loading ? (
-                <div className="flex justify-center items-center">
-                  <span className="spinner"></span>
-                </div>
-              ) : (
-                "checkout"
-              )}
+              checkout
             </button>
           </div>
         </div>
       )}
+      <Backdrop
+        sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
+        open={open}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </>
   );
 };

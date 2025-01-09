@@ -28,7 +28,7 @@ py-14 px-12 .rating-star-container {
 .submit-review {
   display: inline-block;
   line-height: normal;
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   font-size: 1.4rem;
   text-transform: uppercase;
   color: var(--white);

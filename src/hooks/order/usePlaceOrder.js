@@ -16,8 +16,15 @@ const usePlaceOrder = () => {
     shipping_charges,
     payment_type,
     address_id,
-    express_delivery_charges
+    express_delivery_charges,
+    transaction_id = "",
+    paid_amount = 0
   ) => {
+    let payment_status = 1;
+    if (payment_type === 2 && transaction_id) {
+      payment_status = 2;
+    }
+
     try {
       setLoading(true);
       const response = await fetch(`${baseURL}/orders`, {
@@ -34,10 +41,12 @@ const usePlaceOrder = () => {
           shipping_charges,
           payment_type,
           order_status: 1,
-          payment_status: 1,
+          payment_status,
           address_id,
           user_id,
           express_delivery_charges,
+          transaction_id,
+          paid_amount,
         }),
       });
       const data = await response.json();
