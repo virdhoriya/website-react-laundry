@@ -159,13 +159,10 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
 
           const razorpay = new window.Razorpay(options);
 
-          // Remove any previously attached event listener to avoid duplicates
           razorpay.off("payment.failed");
 
-          // Attach the event listener
           razorpay.on("payment.failed", function (response) {
             alert(`Payment failed: ${response.error.description}`);
-            console.log("Response Razorpay : ", response);
           });
 
           razorpay.open();
