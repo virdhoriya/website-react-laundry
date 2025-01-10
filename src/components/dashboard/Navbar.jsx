@@ -31,7 +31,7 @@ const Navbar = () => {
   let cartItem = parseInt(useSelector((state) => state.cart.cartItemCount));
   let profile_image = useSelector((state) => state.user.user.image);
   if (!profile_image) {
-    profile_image = "./default_avatar.png";
+    profile_image = "/default_pfp.png";
   }
   return (
     <div className="flex">

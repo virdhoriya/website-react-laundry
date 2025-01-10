@@ -159,12 +159,6 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
 
           const razorpay = new window.Razorpay(options);
 
-          razorpay.off("payment.failed");
-
-          razorpay.on("payment.failed", function (response) {
-            alert(`Payment failed: ${response.error.description}`);
-          });
-
           razorpay.open();
         } catch {
           toast.error(

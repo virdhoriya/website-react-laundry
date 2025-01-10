@@ -38,14 +38,6 @@
     font-size: 2rem;
   }
 
-  .card {
-    padding: 3.8rem;
-  }
-
-  .card-title {
-    font-size: 2.6rem;
-  }
-
   .caption {
     font-size: 2.4rem;
     line-height: 2.4rem;
@@ -263,15 +255,6 @@
     width: auto;
   }
 
-  .card {
-    padding: 3rem;
-  }
-
-  .caption {
-    font-size: 2rem;
-    line-height: 2rem;
-  }
-
   .benefits-container figure img {
     max-height: 4rem;
     max-width: 4rem;
@@ -410,23 +393,30 @@
     padding: 0 9rem;
   }
 
+  .section-title {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 3.2rem;
+    line-height: 4.4rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    padding: 1rem 1.2rem;
+  }
+
   .steps-container {
     max-width: 18rem;
-  }
-
-  .card {
-    padding: 2.6rem;
-  }
-
-  .card-title {
-    font-size: 2rem;
-    letter-spacing: normal;
-  }
-
-  .card-description {
-    font-size: 1.6rem;
-    letter-spacing: normal;
-    line-height: 2.4rem;
   }
 
   .footer-container {
@@ -511,17 +501,22 @@
   }
 
   .section-title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   h2 {
-    font-size: 3.2rem;
-    line-height: 4.4rem;
+    font-size: 2.8rem;
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    line-height: 1.5;
   }
 
   .btn {
-    font-size: 1.6rem;
-    padding: 1.3rem 1.8rem;
+    font-size: 1.4rem;
+    padding: 1.1rem 1.4rem;
   }
 
   .logout-container {
@@ -680,19 +675,18 @@
     padding: 0 7rem;
   }
 
-  .card {
-    padding: 2rem;
+  .section-title {
+    font-size: 1.2rem;
   }
 
-  .card-title {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+  h2 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
   }
 
-  .card-description {
-    font-size: 1.4rem;
-    line-height: 1.9rem;
-    letter-spacing: normal;
+  .btn {
+    font-size: 1.2rem;
+    padding: 1rem 1.2rem;
   }
 
   .sitemap-list {
@@ -803,26 +797,6 @@
     padding: 0 6rem;
   }
 
-  .section-title,
-  .content {
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-  }
-
-  h2 {
-    font-size: 2.8rem;
-    line-height: 3.4rem;
-  }
-
-  .btn {
-    font-size: 1.5rem;
-    padding: 1.1rem 1.6rem;
-  }
-
-  h3 {
-    font-size: 2rem;
-  }
-
   .steps-title {
     font-size: 1.6rem;
   }
@@ -877,11 +851,6 @@
     padding: 0 3rem;
   }
 
-  h2 {
-    font-size: 2.6rem;
-    line-height: 3.2rem;
-  }
-
   .steps-image {
     max-height: 6rem;
   }
@@ -897,19 +866,6 @@
   .arrow-image {
     display: inline-block;
     max-width: 6rem;
-  }
-
-  .card {
-    padding: 1.5rem;
-  }
-
-  .card-title {
-    margin-bottom: 0.25rem;
-    font-weight: 600;
-  }
-
-  .card-description {
-    line-height: normal;
   }
 
   .benefits-container figure img {
@@ -1078,6 +1034,20 @@
   .space-xl {
     padding: 2.5rem 0;
   }
+
+  .section-title {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+  }
 }
 
 /*****************/
@@ -1090,10 +1060,15 @@
   }
 
   .secondary-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 
   .space-xl {
     padding: 2rem 0;
+  }
+
+  .content {
+    font-size: 1.2rem;
+    line-height: 2rem;
   }
 }
