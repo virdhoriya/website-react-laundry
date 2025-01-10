@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "title": "Quality",
+      "description": "We use advanced methods and products for wash and dry-clean to enhance your clothes newness and shine."
+    },
+    {
+      "title": "Affordable",
+      "description": "At Dry Cleaners Point, we charge a reasonable amount for laundry and dry-cleaning, which is not heavy on your pocket."
+    },
+    {
+      "title": "Care of Clothes",
+      "description": "We take utmost care of your clothes while dry-cleaning or laundry and take essential precautions."
+    },
+    {
+      "title": "Pick & Drop",
+      "description": "Hence, we value your time and provide the facility of instant pick up and drop off clothes at your doorstep."
+    },
+    {
+      "title": "On Time Delivery",
+      "description": "We make sure that you get your clothes right on time if you have to attend an important meeting, party, interview, etc."
+    },
+    {
+      "title": "Environment Friendly",
+      "description": "We use machines and equipment that are completely environment friendly in terms of less water consumption."
+    }
+  ]
+}

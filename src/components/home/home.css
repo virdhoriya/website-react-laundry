@@ -112,10 +112,7 @@
 /* Choose us */
 
 .choose-us-container {
-  background-image: linear-gradient(
-      rgba(22, 31, 95, 0.9),
-      rgba(22, 31, 95, 0.9)
-    ),
+  background-image: linear-gradient(rgba(4, 9, 46, 0.92), rgba(4, 9, 46, 0.92)),
     url("/chooseus-bg.png");
   background-position: center;
   background-size: cover;
@@ -123,22 +120,24 @@
 }
 
 .card {
-  border: 1px solid var(--white);
-  border-radius: 8px;
-  padding: 5rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3rem;
+  padding: 6rem 4.5rem;
 }
 
 .card-title {
   font-size: 2.8rem;
+  line-height: 1;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
 
 .card-description {
   font-size: 1.8rem;
-  letter-spacing: 0.6px;
-  line-height: 2.8rem;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
 /* Benefits */
@@ -286,9 +285,34 @@
     height: 1.8rem;
     width: 1.8rem;
   }
+
+  .card {
+    border-radius: 2rem;
+    padding: 5rem 3.5rem;
+  }
+
+  .card-title {
+    font-size: 2.6rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.8px;
+  }
 }
 
 @media only screen and (max-width: 90em) {
+  .card {
+    border-radius: 1.5rem;
+    padding: 4.5rem 3rem;
+  }
+
+  .card-title {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-description {
+    font-size: 1.6rem;
+    letter-spacing: 0.25px;
+  }
 }
 
 @media only screen and (max-width: 83.75em) {
@@ -322,6 +346,21 @@
 }
 
 @media only screen and (max-width: 80em) {
+  .card {
+    border-radius: 1rem;
+    padding: 4rem 2.5rem;
+  }
+
+  .card-title {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-description {
+    font-size: 1.4rem;
+    line-height: 1.72;
+  }
 }
 
 @media only screen and (max-width: 71.25em) {
@@ -355,6 +394,10 @@
     height: 1.4rem;
     width: 1.4rem;
   }
+
+  .card-title {
+    font-size: 1.8rem;
+  }
 }
 
 @media only screen and (max-width: 64em) {
@@ -374,6 +417,19 @@
 
   .banner-img {
     width: 30rem;
+  }
+
+  .card {
+    border-radius: 0.5rem;
+    padding: 3rem 2rem;
+  }
+
+  .card-title {
+    margin-bottom: 1rem;
+  }
+
+  .card-description {
+    letter-spacing: normal;
   }
 }
 
@@ -434,10 +490,22 @@
   .inner-banner-container p {
     font-size: 1.2rem;
   }
+
+  .card {
+    padding: 2.5rem 2rem;
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+  }
 }
 
 @media only screen and (max-width: 20em) {
   .banner-img {
     width: 18rem;
+  }
+
+  .card-description {
+    font-size: 1.2rem;
   }
 }

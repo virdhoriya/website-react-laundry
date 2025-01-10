@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import Coupon from "./Coupon";
 import Services from "./Services";
 import WelcomeTo from "./WelcomeTo";
-import Steps from "./Steps";
+// import Steps from "./Steps";
 import ChooseUs from "./ChooseUs";
 import Benefits from "./Benefits";
 import Testimonials from "./Testimonials";
@@ -16,7 +16,7 @@ const Home = () => {
       <Coupon />
       <Services />
       <WelcomeTo />
-      <Steps />
+      {/* <Steps /> */}
       <ChooseUs />
       <Benefits />
       <Testimonials />
