@@ -92,7 +92,7 @@ const Profile = () => {
           id_proof,
         } = result.user;
         setFormData({ first_name, last_name, email, mobile_number, gender });
-        const imageUrl = image ? image : "/default_avatar.png";
+        const imageUrl = image ? image : "/default_pfp.png";
         id_proof && setDocPreview(id_proof);
         setPreview(imageUrl);
         setLoading(false);
