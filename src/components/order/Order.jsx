@@ -40,31 +40,15 @@ const Order = () => {
           </h2>
           <p className="text-[1.5rem] leading-[2.6rem] font-normal text-[var(--black)]">
             Your order{" "}
-            <span className="font-medium text-gray-900">{`#${orderData.order_id}`}</span>{" "}
+            <span className="font-bold text-[var(--primary)]">{`#${orderData.order_id}`}</span>{" "}
             will be processed within 24 hours during working days. We will
             notify you by email once your order has been shipped.
           </p>
           <div className="rounded-lg border border-gray-50 bg-[#F9FAFB] p-8 mb-6 flex flex-col gap-6 text-[1.5rem]">
             <dl className="flex items-center justify-between gap-12">
-              <dt className="font-medium mb-1 text-gray-500">Date</dt>
-              <dd className="font-medium text-[var(--black)]">{orderDate}</dd>
-            </dl>
-            <dl className="flex items-center justify-between gap-12">
-              <dt className="font-medium mb-1 text-gray-500">Payment Method</dt>
-              <dd className="font-medium text-[var(--black)] sm:text-end">
-                {payementMap[1]}
-              </dd>
-            </dl>
-            <dl className="flex items-center justify-between gap-12">
               <dt className="font-medium mb-1 text-gray-500">Name</dt>
               <dd className="font-medium text-[var(--black)] sm:text-end">
                 {orderData?.user?.first_name + " " + orderData?.user?.last_name}
-              </dd>
-            </dl>
-            <dl className="flex items-center justify-between gap-12">
-              <dt className="font-medium mb-1 text-gray-500">Address</dt>
-              <dd className="font-medium text-[var(--black)] sm:text-end">
-                {orderData.address_details}
               </dd>
             </dl>
             <dl className="flex items-center justify-between gap-12">
@@ -74,11 +58,38 @@ const Order = () => {
               </dd>
             </dl>
             <dl className="flex items-center justify-between gap-12">
+              <dt className="font-medium mb-1 text-gray-500">Address</dt>
+              <dd className="font-medium text-[var(--black)] sm:text-end">
+                {orderData.address_details}
+              </dd>
+            </dl>
+            <dl className="flex items-center justify-between gap-12">
+              <dt className="font-medium mb-1 text-gray-500">Date</dt>
+              <dd className="font-medium text-[var(--black)]">{orderDate}</dd>
+            </dl>
+            <dl className="flex items-center justify-between gap-12">
+              <dt className="font-medium mb-1 text-gray-500">Payment Method</dt>
+              <dd className="font-medium text-[var(--black)] sm:text-end">
+                {payementMap[location?.state?.paymentMethod] || "N/A"}
+              </dd>
+            </dl>
+
+            <dl className="flex items-center justify-between gap-12">
               <dt className="font-medium mb-1 text-gray-500">Total Amount</dt>
               <dd className="font-medium text-[var(--black)] sm:text-end">
                 ₹ {orderData.total}
               </dd>
             </dl>
+            {orderData.transaction_id && (
+              <dl className="flex items-center justify-between gap-12">
+                <dt className="font-medium mb-1 text-gray-500">
+                  Transaction Id
+                </dt>
+                <dd className="font-medium text-[var(--black)] sm:text-end">
+                  {orderData.transaction_id}
+                </dd>
+              </dl>
+            )}
           </div>
           <div className="flex items-center gap-8">
             <Link

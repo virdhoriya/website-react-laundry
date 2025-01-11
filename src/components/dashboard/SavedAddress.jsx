@@ -57,7 +57,7 @@ const SavedAddress = () => {
               className="new-address-btn address-btn flex items-center gap-4 rounded-full"
               onClick={handleAddClick}
             >
-              <FaPlus className="inline-block h-[1.6rem] w-[1.6rem] fill-[var(--red)]" />
+              <FaPlus className="inline-block h-[1.6rem] w-[1.6rem] fill-[var(--secondary)]" />
               <span className="leading-[1.8rem]">Add New Address</span>
             </button>
           </div>

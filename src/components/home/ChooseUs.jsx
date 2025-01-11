@@ -1,54 +1,24 @@
+import data from "../../utils/home/chooseus.json";
+
 const ChooseUs = () => {
   return (
     <section className="space-xl choose-us-container text-white">
       <div className="secondary-container">
         <p className="section-title">WHY CHOOSE US</p>
-        <h2 className="text-white mb-20 laptop-l:mb-16 laptop:mb-12 tab-l:mb-10">Sikka Cleaners is best in Town</h2>
+        <h2 className="text-white mb-20 laptop-l:mb-16 laptop:mb-12 laptop-s:mb-10 tab-l:mb-8">
+          Sikka Cleaners is best in Town
+        </h2>
 
-        <div className="grid grid-cols-3 gap-20 laptop-l:gap-16 laptop:gap-14 tab-l:gap-10 tab-s:gap-8 tab:grid-cols-2 mb-l:grid-cols-1">
-          <div className="card">
-            <h3 className="card-title text-white">Quality</h3>
-            <p className="card-description">
-              We use advanced methods and products for wash and dry-clean to
-              enhance your clothes newness and shine.
-            </p>
-          </div>
-
-          <div className="card">
-            <h3 className="card-title text-white">Affordable</h3>
-            <p className="card-description">
-                At Dry Cleaners Point, we charge a reasonable amount for laundry and dry-cleaning, which is not heavy on your pocket.
-            </p>
-          </div>
-          
-          <div className="card">
-            <h3 className="card-title text-white">Care of Clothes</h3>
-            <p className="card-description">
-                We take utmost care of your clothes while dry-cleaning or laundry and take essential precautions.
-            </p>
-          </div>
-
-          <div className="card">
-            <h3 className="card-title text-white">Pick & Drop</h3>
-            <p className="card-description">
-                Hence, we value your time and provide the facility of instant pick up and drop off clothes at your doorstep.
-            </p>
-          </div>
-
-          <div className="card">
-            <h3 className="card-title text-white">On Time Delivery</h3>
-            <p className="card-description">
-                We make sure that you get your clothes right on time if you have to attend an important meeting, party, interview, etc.
-            </p>
-          </div>
-
-          <div className="card">
-            <h3 className="card-title text-white">Environment Friendly</h3>
-            <p className="card-description">
-                We use machines and equipment that are completely environment friendly in terms of less water consumption.
-            </p>
-          </div>
-
+        <div className="grid grid-cols-3 justify-between gap-20 laptop-l:gap-16 laptop-md:gap-14 tab-l:gap-10 tab-s:grid-cols-2 tab-s:gap-8 mb-l:grid-cols-1">
+          {data.cards.map((card, index) => {
+            const { title, description } = card;
+            return (
+              <div className="card" key={index}>
+                <h3 className="card-title text-white">{title}</h3>
+                <p className="card-description">{description}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
