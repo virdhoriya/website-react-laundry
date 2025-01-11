@@ -2,26 +2,24 @@ import { Link } from "react-router-dom";
 
 const Benefits = () => {
   return (
-    <section className="space-xl bg-[#EFF3FF] benefits-container">
+    <section className="space-xl benefits-container">
       <div className="secondary-container">
-        <div className="flex justify-between items-center gap-16 tab:flex-col">
-          <div>
-            <img
-              src="/laundry-benefits.png"
-              alt="Laundry-benefits"
-              className="max-w-[65.9rem] w-full h-auto laptop-l:max-w-[55rem] laptop-m:max-w-[48rem] laptop-s:max-w-[40rem] tab-l:max-w-[38rem] tab-m:max-w-[35rem] tab-s:max-w-[30rem]"
-            />
-          </div>
-          <div className="px-28 laptop-l:px-20 laptop-s:px-16 tab-l:px-12 tab-s:px-0">
+        <div className="flex justify-around items-center gap-24 tab-l:gap-12 tab:flex-col mb:items-stretch">
+          <img
+            src="/laundry-benefits.png"
+            alt="Laundry-benefits"
+            className="laundry-benefits-img"
+          />
+          <div className="px-20 laptop-l:px-14 laptop-md:px-12 laptop:px-10 tab-l:px-12 tab-s:px-0 mb:px-4">
             <p className="section-title">Why Should You Believe Us?</p>
             <h2>Our Laundry Benefits</h2>
             <Link
               to="/about"
-              className="btn my-20 laptop-l:my-16 laptop-s:my-12 tab-l:my-8"
+              className="btn my-20 laptop-l:my-16 laptop-md:my-12 laptop-s:my-12 tab-l:my-8"
             >
               Contact Us
             </Link>
-            <div className="grid grid-cols-2 gap-x-44 gap-y-36 laptop-m:gap-y-28 laptop-m:gap-x-20 laptop-s:gap-y-24 laptop-s:gap-x-16 tab-l:gap-y-20 tab-l:gap-x-16 tab-s:gap-x-12 tab-s:gap-y-16">
+            <div className="grid grid-cols-2 gap-x-44 gap-y-36 laptop-l:gap-x-36 laptop-l:gap-y-28 laptop-m:gap-y-28 laptop-m:gap-x-20 laptop:gap-y-24 laptop:gap-x-[5.5rem] laptop-s:gap-20 tab-l:gap-16 mb-l:gap-12 mb:justify-between">
               <figure>
                 <img src="/safe-chemicals.png" alt="safe-chemicals" />
                 <figcaption className="caption">Safe Chemicals</figcaption>

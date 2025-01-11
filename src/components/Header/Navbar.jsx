@@ -139,23 +139,26 @@ const Navbar = () => {
             </div>
 
             <div className="flex justify-center items-center gap-8 laptop-l:gap-6 tab:gap-4">
-              <Link
-                to="/cart"
-                className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:h-[3.6rem] tab-m:w-[3.6rem] tab-m:border"
-              >
-                <LuShoppingCart
-                  className="h-full w-full stroke-[var(--black)]"
-                  aria-label="Shopping Cart"
-                  title="cart"
-                />
-                {cartItem ? (
-                  <div className="cart-tag">
-                    <span>{cartItem}</span>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </Link>
+              {isLoggedIn && (
+                <Link
+                  to="/cart"
+                  className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:h-[3.6rem] tab-m:w-[3.6rem] tab-m:border"
+                >
+                  <LuShoppingCart
+                    className="h-full w-full stroke-[var(--black)]"
+                    aria-label="Shopping Cart"
+                    title="cart"
+                  />
+                  {cartItem ? (
+                    <div className="cart-tag">
+                      <span>{cartItem}</span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </Link>
+              )}
+
               {isLoggedIn ? (
                 <span className="inline-block h-[4.6rem] w-[4.6rem] relative group laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:hidden">
                   <img
