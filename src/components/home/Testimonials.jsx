@@ -1,7 +1,7 @@
 import data from "../../utils/home/testimonials.json";
 
 const Testimonials = () => {
-  const testimonials = data.testimonials;
+  const testimonials = data?.testimonials;
   return (
     <section className="space-xl">
       <div className="secondary-container">

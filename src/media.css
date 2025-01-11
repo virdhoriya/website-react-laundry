@@ -38,12 +38,6 @@
     font-size: 2rem;
   }
 
-  .caption {
-    font-size: 2.4rem;
-    line-height: 2.4rem;
-    margin-top: 3.5rem;
-  }
-
   .footer-container {
     padding: 7rem 0;
   }
@@ -253,11 +247,6 @@
   .steps-image {
     max-height: 10rem;
     width: auto;
-  }
-
-  .benefits-container figure img {
-    max-height: 4rem;
-    max-width: 4rem;
   }
 
   .sitemap-title {
@@ -535,17 +524,6 @@
   .steps-image {
     max-height: 8rem;
     padding-bottom: 2.5rem;
-  }
-
-  .caption {
-    font-size: 1.8rem;
-    line-height: 1.8rem;
-    margin-top: 3rem;
-  }
-
-  .benefits-container figure img {
-    max-height: 3.6rem;
-    max-width: 3.6rem;
   }
 
   .sitemap-title {
@@ -866,16 +844,6 @@
   .arrow-image {
     display: inline-block;
     max-width: 6rem;
-  }
-
-  .benefits-container figure img {
-    max-height: 3rem;
-    max-width: 3rem;
-  }
-
-  .caption {
-    font-size: 1.6rem;
-    margin-top: 2rem;
   }
 
   .footer-container {
