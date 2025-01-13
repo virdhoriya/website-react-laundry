@@ -9,35 +9,35 @@ const Footer = () => {
   const admin = import.meta.env.VITE_BASE_URL.replace(":3000", "/dashboard");
   return (
     <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-detail-container">
-          <div className="flex justify-between gap-12 tab-s:flex-wrap tab-s:gap-20">
-            <div className="basis-[22%] laptop-s:basis-[20%] flex flex-col justify-center items-start gap-12 laptop-m:gap-10 laptop:gap-8 laptop-s:gap-6 tab-s:basis-[45%]">
+      <div className="footer-space">
+        <div className="secondary-container">
+          <div className="flex justify-between tab-s:grid tab-s:grid-cols-2 tab-s:grid-rows-2 tab-s:gap-x-10 gap-y-20 tab:gap-x-8 tab:gap-y-16 mb-l:grid-cols-1 mb-l:gap-12 mb-l:justify-center mobile-footer">
+            <div className="basis-[22%] flex flex-col justify-center items-start gap-12 laptop-l:basis-1/5 laptop-l:gap-10 laptop-m:gap-8 laptop-s:gap-6 tab-s:px-10 tab:px-0">
               <img
                 src="footer-logo.png"
                 alt="Logo"
                 className="footer-logo"
                 loading="lazy"
               />
-              <div className="flex items-center gap-10 laptop:gap-8 laptop-s:gap-6">
+              <div className="flex items-center gap-10 laptop-l:gap-8 laptop-m:gap-6 laptop-s:gap-4">
                 <a
                   href="https://www.facebook.com/sikkacleaners/"
                   target="__blank"
                   rel="noopener noreferrer"
-                  className="h-[3.1rem] w-[3.1rem] p-3 border border-white/40 rounded-xl laptop-l:h-[2.6rem] laptop-l:w-[2.6rem] laptop-m:h-[2.3rem] laptop-m:w-[2.3rem] laptop:h-[1.8rem] laptop:w-[1.8rem] laptop-s:h-[1.3rem] laptop-s:w-[1.3rem]"
+                  className="social-link"
                 >
-                  <FaFacebookF className="h-full w-full" />
+                  <FaFacebookF className="social-icon" />
                 </a>
                 <a
                   href="https://www.instagram.com/sikka_cleaners/"
                   target="__blank"
-                  className="h-[3.1rem] w-[3.1rem] p-3 border border-white/40 rounded-xl laptop-l:h-[2.6rem] laptop-l:w-[2.6rem] laptop-m:h-[2.3rem] laptop-m:w-[2.3rem] laptop:h-[1.8rem] laptop:w-[1.8rem] laptop-s:h-[1.3rem] laptop-s:w-[1.3rem]"
+                  className="social-link"
                   rel="noopener noreferrer"
                 >
-                  <RiInstagramFill className="h-full w-full" />
+                  <RiInstagramFill className="social-icon" />
                 </a>
               </div>
-              <p className="laptop-m:text-[1.4rem] laptop-s:text-[1.2rem]">
+              <p className="text-[1.6rem] leading-[1.25] laptop-l:text-[1.4rem] laptop-m:text-[1.3rem] laptop-s:text-lg">
                 &copy; 2024 Sikka Cleaners All rights reserved.
               </p>
               <a
@@ -46,13 +46,13 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 title="admin login"
                 aria-label="admin login"
-                className="border border-[var(--secondary)] rounded-full p-[1.2rem] text-[1.4rem] font-semibold leading-[1.4rem font-semibold] laptop-m:p-4 laptop-s:p-3 laptop-s:text-[1.3rem] laptop-s:font-medium"
+                className="border border-[var(--secondary)] rounded-full p-[1.2rem] text-[1.4rem] font-semibold leading-[1.4] laptop-l:p-4 laptop-l:font-medium laptop-m:text-[1.2rem] laptop-s:p-3 laptop:text-lg"
               >
                 Admin Login
               </a>
             </div>
 
-            <div className="tab-s:basis-[45%]">
+            <div className="tab-s:px-10 tab:px-0">
               <h4 className="sitemap-title">Explore</h4>
               <ul className="sitemap-list">
                 <li>
@@ -73,7 +73,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="tab-s:basis-[45%]">
+            <div className="tab-s:px-10 tab:px-0">
               <h4 className="sitemap-title">Services</h4>
               <ul className="sitemap-list">
                 <li>
@@ -94,27 +94,37 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="basis-1/4 text-[1.8rem] leading-[2.6rem] laptop-m:text-[1.6rem] laptop-m:leading-normal laptop-m:tracking-[1px] laptop-s:text-[1.4rem] laptop-s:tracking-[0.5px] tab-l:tracking-[0.1px] tab-s:basis-[45%]">
+            <div className="basis-[30%] text-[1.8rem] leading-[2.6rem] laptop-l:basis-1/4 laptop-m:text-[1.6rem] laptop-m:leading-normal laptop-m:tracking-[1px] tab-s:px-10 tab:px-0">
               <h4 className="sitemap-title">contact</h4>
-              <div className="flex flex-col gap-8 laptop:gap-6 tab-l:gap-5">
-                <div className="flex items-center gap-4">
-                  <FiPhoneCall className="block h-[2.4rem] w-[2.4rem] laptop-m:h-[2rem] laptop-m:w-[2rem]" />
-                  <p>9879400838</p>
+              <div className="contact flex flex-col gap-8 laptop-m:gap-6">
+                <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:gap-3 laptop-s:text-[1.25rem] laptop-s:gap-2">
+                  <FiPhoneCall className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2rem] laptop-l:w-[2rem] laptop-m:h-[1.8rem] laptop-m:w-[1.8rem] laptop-s:h-6 laptop-s:w-6" />
+                  <a
+                    href="tel:9879400838"
+                    className="border-b border-white laptop-m:border-b-[0.5px] laptop-m:tracking-normal"
+                  >
+                    9879400838
+                  </a>
                   <span className="block">|</span>
-                  <p>9825600838</p>
+                  <a
+                    href="tel:9825600838"
+                    className="border-b border-white laptop-m:border-b-[0.5px] laptop-m:tracking-normal"
+                  >
+                    9825600838
+                  </a>
                 </div>
-                <a
-                  href="mailto:sikkacleaners@gmail.com"
-                  className="flex items-center gap-4"
-                >
+                <a className="flex items-center justify-start gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-m:gap-3 laptop-s:text-[1.25rem]">
                   <span className="block">
-                    <MdOutlineEmail className="block h-[2.4rem] w-[2.4rem] laptop-m:h-[2rem] laptop-m:w-[2rem]" />
+                    <MdOutlineEmail className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2.2rem] laptop-l:w-[2.2rem] laptop-m:h-8 laptop-m:w-8 laptop-s:h-6 laptop-s:w-6" />
                   </span>
-                  <p>sikkacleaners@gmail.com</p>
+                  <a href="mailto:sikkacleaners@gmail.com">
+                    sikkacleaners@gmail.com
+                  </a>
                 </a>
-                <div className="flex items-center gap-4">
+
+                <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-s:text-[1.25rem]">
                   <span className="block">
-                    <FiClock className="block h-[2.4rem] w-[2.4rem] laptop-m:h-[2rem] laptop-m:w-[2rem]" />
+                    <FiClock className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2rem] laptop-l:w-[2rem] laptop-m:h-[1.8rem] laptop-m:w-[1.8rem] laptop-s:h-6 laptop-s:w-6" />
                   </span>
                   <p>Mon to Sat: 9.00am - 9.00pm, Sun: 9.00am - 12.00pm</p>
                 </div>
