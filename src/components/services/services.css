@@ -5,12 +5,13 @@
 }
 
 .section-services h1 {
-  color: #fff;
+  color: var(--white);
   font-size: 6rem;
   line-height: 8rem;
   text-align: center;
   font-weight: bold;
   padding: 8.5rem 0;
+  letter-spacing: 1px;
 }
 
 .service-container {
@@ -24,7 +25,7 @@
 .service-name {
   color: var(--black);
   font-size: 1.6rem;
-  line-height: 1.6rem;
+  line-height: 1;
   font-weight: 700;
 }
 
@@ -295,4 +296,143 @@
 
 .cateory-option:hover {
   background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media only screen and (max-width: 100em) {
+  .section-services h1 {
+    font-size: 4.8rem;
+    line-height: 1.33;
+    padding: 9.5rem 0 11.5rem 0;
+    letter-spacing: 0.8px;
+  }
+
+  .service-container {
+    padding: 0.6rem 0.8rem;
+    border-bottom-width: 2.5px;
+  }
+
+  .active-service::before {
+    bottom: -2.5px;
+    height: 2.5px;
+  }
+
+  .service-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .search-button {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 1.2rem 2.4rem;
+    letter-spacing: normal;
+  }
+}
+
+@media only screen and (max-width: 90em) {
+  .section-services h1 {
+    font-size: 4.2rem;
+    padding: 8.5rem 0 10.5rem 0;
+  }
+
+  .service-name {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .service-container {
+    padding: 0.5rem 0.7rem;
+    border-bottom-width: 2px;
+  }
+
+  .active-service::before {
+    bottom: -2px;
+    height: 2px;
+  }
+
+  .search-button {
+    font-size: 1.2rem;
+    padding: 1.15rem 2.2rem;
+    letter-spacing: normal;
+  }
+}
+
+@media only screen and (max-width: 83.75em) {
+}
+
+@media only screen and (max-width: 80em) {
+  .section-services h1 {
+    font-size: 3.6rem;
+    padding: 6.5rem 0 9.5rem 0;
+    letter-spacing: 0.6px;
+  }
+}
+
+@media only screen and (max-width: 71.25em) {
+  .section-services {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .section-services h1 {
+    font-size: 3.4rem;
+    padding: 6rem 0 9rem 0;
+    letter-spacing: 0.6px;
+  }
+
+  .service-container {
+    padding: 0.5rem;
+  }
+
+  .service-name {
+    font-size: 1.2rem;
+  }
+
+  .search-button {
+    font-size: 1rem;
+    padding: 0.95rem 1.5rem;
+    margin: -2px 0 -2px 0;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+}
+
+@media only screen and (max-width: 60.875em) {
+  .section-services {
+    padding: 2rem 0;
+  }
+
+  .section-services h1 {
+    font-size: 2.8rem;
+    padding: 5rem 0 7rem 0;
+    letter-spacing: 0.25px;
+  }
+
+  .service-container {
+    padding: 0.25rem;
+  }
+
+  .service-name {
+    font-size: 1.1rem;
+  }
+
+  .search-button {
+    margin: 0;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    margin: -2.5px 0;
+  }
+}
+
+@media only screen and (max-width: 55em) {
+}
+
+@media only screen and (max-width: 38.4375em) {
+}
+
+@media only screen and (max-width: 27.5em) {
+}
+
+@media only screen and (max-width: 20em) {
 }

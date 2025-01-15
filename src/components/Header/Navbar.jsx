@@ -142,10 +142,20 @@ const Navbar = () => {
               {isLoggedIn && (
                 <Link
                   to="/cart"
-                  className="relative inline-block bg-white border-[1.5px] border-black/25 h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:h-[3.6rem] tab-m:w-[3.6rem] tab-m:border"
+                  className={`
+                    ${
+                      pathname === "/services"
+                        ? "bg-transparent border-white/25"
+                        : "bg-white border-black/25 "
+                    }
+                  relative inline-block border-[1.5px] h-[4.6rem] w-[4.6rem] rounded-full p-4 laptop-l:h-[4.2rem] laptop-l:w-[4.2rem] laptop:h-[4rem] laptop:w-[4rem] tab-l:h-[3.8rem] tab-l:w-[3.8rem] tab-m:h-[3.6rem] tab-m:w-[3.6rem] tab-m:border`}
                 >
                   <LuShoppingCart
-                    className="h-full w-full stroke-[var(--black)]"
+                    className={`h-full w-full ${
+                      pathname === "/services"
+                        ? "stroke-[var(--white)]"
+                        : "stroke-[var(--black)]"
+                    }`}
                     aria-label="Shopping Cart"
                     title="cart"
                   />
@@ -164,7 +174,11 @@ const Navbar = () => {
                   <img
                     src={profile_image}
                     alt="Avatar"
-                    className="h-full w-full rounded-full border-[1.5px] border-black/45 laptop-l:border"
+                    className={`h-full w-full rounded-full border-[1.5px] laptop-l:border ${
+                      pathname === "/services"
+                        ? "border-white/45"
+                        : "border-black/45"
+                    }`}
                     loading="lazy"
                   />
                   <div className="hidden group-hover:inline-block z-10">
@@ -199,7 +213,9 @@ const Navbar = () => {
               )}
               <div className="h-[3.8rem] w-[3.8rem] justify-center items-center hidden tab-m:flex tab:h-[3.2rem] tab:w-[3.2rem]">
                 <div
-                  className={`hamburger ${isOpen ? "active-mobile-nav" : ""}`}
+                  className={`hamburger ${
+                    pathname === "/services" ? "white-hamburger" : ""
+                  } ${isOpen ? "active-mobile-nav" : ""}`}
                   onClick={toggleOpen}
                 >
                   <span></span>
