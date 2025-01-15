@@ -14,7 +14,7 @@ const Benefits = () => {
             <p className="section-title">Why Should You Believe Us?</p>
             <h2>Our Laundry Benefits</h2>
             <Link
-              to="/about"
+              to="/contact"
               className="btn my-20 laptop-l:my-16 laptop-md:my-12 laptop-s:my-12 tab-l:my-8"
             >
               Contact Us

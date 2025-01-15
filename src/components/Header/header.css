@@ -18,12 +18,11 @@
 .path-service {
   background-color: #f9f9f9;
   background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(3rem);
-  -webkit-backdrop-filter: blur(3rem);
 }
 
 .path-service .navbar li a {
   color: white;
+  letter-spacing: 0.75px;
 }
 
 .navbar {
@@ -134,8 +133,12 @@
   height: 4px;
   width: 100%;
   background-color: var(--primary);
-  border-radius: 1.5px;
+  border-radius: 1px;
   transition: all 0.2s;
+}
+
+.white-hamburger span {
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .active-mobile-nav span:first-child {
@@ -225,6 +228,10 @@
     gap: 3rem;
   }
 
+  .path-service .navbar li a {
+    letter-spacing: 0.5px;
+  }
+
   .navbar li a {
     font-size: 1.6rem;
     line-height: 2.6rem;
@@ -243,6 +250,10 @@
   .container-b {
     padding: 0 6.5rem;
   }
+
+  .path-service .navbar li a {
+    letter-spacing: 0.25px;
+  }
 }
 
 @media only screen and (max-width: 83.75em) {
@@ -252,6 +263,10 @@
 
   .login {
     font-size: 1.7rem;
+  }
+
+  .path-service .navbar li a {
+    letter-spacing: 0.15px;
   }
 }
 
@@ -274,6 +289,11 @@
   .login {
     font-size: 1.6rem;
     padding: 1.025rem 2rem;
+  }
+
+  .cart-tag {
+    height: 2.2rem;
+    width: 2.2rem;
   }
 }
 
