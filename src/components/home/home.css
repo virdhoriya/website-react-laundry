@@ -274,7 +274,7 @@
   display: inline-block;
   height: 85%;
   width: 100%;
-  background-image: url("back-mobile.png");
+  background-image: url("/back-mobile.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
