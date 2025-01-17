@@ -94,9 +94,9 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="basis-[30%] text-[1.8rem] leading-[2.6rem] laptop-l:basis-1/4 laptop-m:text-[1.6rem] laptop-m:leading-normal laptop-m:tracking-[1px] tab-s:px-10 tab:px-0">
+            <div className="basis-[30%] text-[1.8rem] leading-[2.2rem] laptop-l:basis-1/4 laptop-m:text-[1.6rem] laptop-m:leading-normal laptop-m:tracking-[1px] tab-s:px-10 tab:px-0">
               <h4 className="sitemap-title">contact</h4>
-              <div className="contact flex flex-col gap-8 laptop-m:gap-6">
+              <div className="contact flex flex-col gap-9 laptop-m:gap-6">
                 <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:gap-3 laptop-s:text-[1.25rem] laptop-s:gap-2">
                   <FiPhoneCall className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2rem] laptop-l:w-[2rem] laptop-m:h-[1.8rem] laptop-m:w-[1.8rem] laptop-s:h-6 laptop-s:w-6" />
                   <a

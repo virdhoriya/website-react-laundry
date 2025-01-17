@@ -318,7 +318,7 @@
 
   .login {
     font-size: 1.4rem;
-    padding: 1.025rem 2rem;
+    padding: 0.9rem 2rem;
   }
 
   .cart-tag {
@@ -344,7 +344,16 @@
   }
 
   .hamburger {
-    flex-basis: 80%;
+    flex-basis: 75%;
+  }
+
+  .login {
+    font-size: 1.3rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .hamburger span {
+    height: 3.5px;
   }
 }
 
@@ -357,5 +366,18 @@
 @media only screen and (max-width: 20em) {
   .container-b {
     padding: 0 1rem;
+  }
+
+  .login {
+    font-size: 1.2rem;
+    padding: 0.65rem 1.25rem;
+  }
+
+  .hamburger {
+    flex-basis: 66%;
+  }
+
+  .hamburger span {
+    height: 3px;
   }
 }
