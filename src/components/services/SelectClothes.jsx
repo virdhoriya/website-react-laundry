@@ -21,7 +21,7 @@ const SelectClothes = () => {
   return (
     <div className="select-clothes-container">
       <h4 className="service-title">Select Clothes</h4>
-      <div className="flex items-center gap-16 laptop-l:gap-12 laptop-m:gap-8">
+      <div className="flex items-center gap-14 laptop-l:gap-12 laptop-md:gap-10">
         {categories.length > 0 ? (
           categories.map((category) => {
             const { category_name, category_category_id } = category;

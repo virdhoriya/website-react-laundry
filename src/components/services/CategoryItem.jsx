@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteItem, updateQty } from "../../redux/slices/cartSlice";
 import useDeleteProduct from "../../hooks/newCart/useDeleteProduct";
 import { addItem } from "../../redux/slices/cartSlice";
+import { Button } from "@mui/material";
 
 const CategoryItem = ({ categoryItem, category_id }) => {
   const navigate = useNavigate();
@@ -99,23 +100,23 @@ const CategoryItem = ({ categoryItem, category_id }) => {
         <img
           src={categoryItem.product.image}
           alt="Service Image"
-          className="h-32 w-32 rounded-2xl laptop-l:h-28 laptop-l:w-28 laptop-m:h-24 laptop-m:w-24 laptop:h-20 laptop:w-20"
+          className="h-32 w-32 rounded-2xl laptop-l:h-28 laptop-l:w-28 laptop-l:rounded-xl laptop-md:h-24 laptop-md:w-24 laptop-md:rounded-lg laptop:h-20 laptop:w-20"
         />
         <div className="flex-grow flex justify-between items-center">
-          <div className="flex flex-col gap-6 laptop-l:gap-4">
+          <div className="flex flex-col gap-6 laptop-md:gap-5">
             <h5 className="cat-item-name">{categoryItem.product.name}</h5>
             <p className="cat-item-price">₹{categoryItem.price}</p>
           </div>
           {numberBtn ? (
             <button className="inc-dec-btn relative overflow-hidden">
               {loadingUpdateCart || loadingDelProduct ? (
-                <span className="h-[4.1rem] w-[8.8rem] flex justify-center items-center">
-                  <span className="inline-block h-8 w-8 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin"></span>
+                <span className="h-[4.1rem] w-[8.8rem] flex justify-center items-center laptop-l:h-14 laptop-l:w-[7.5rem] laptop-md:h-[3.2rem] laptop-md:w-[6.2rem]">
+                  <span className="inline-block h-8 w-8 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin laptop-l:h-6 laptop-l:w-6 laptop-l:border-[3px]"></span>
                 </span>
               ) : (
                 <>
                   <span
-                    className="py-[1.1rem] pl-[1.2rem] cursor-pointer"
+                    className="py-[1.1rem] pl-[1.2rem] laptop-l:pl-3 laptop-l:py-[0.8rem] cursor-pointer"
                     onClick={onDecClick}
                     aria-label="Decrease item count"
                   >
@@ -123,7 +124,7 @@ const CategoryItem = ({ categoryItem, category_id }) => {
                   </span>
                   {itemCount}
                   <span
-                    className="py-[1.1rem] pr-[1.2rem] cursor-pointer"
+                    className="py-[1.1rem] pr-[1.2rem] laptop-l:pr-3 laptop-l:py-[0.8rem] cursor-pointer "
                     onClick={onIncClick}
                     aria-label="Increase item count"
                   >
@@ -136,12 +137,13 @@ const CategoryItem = ({ categoryItem, category_id }) => {
             <button
               className="add-btn"
               aria-label="Add to cart"
+              disabled={loadingAddToCart}
               onClick={() =>
                 handleBtnClick(categoryItem.product_id, categoryItem.service_id)
               }
             >
               {loadingAddToCart ? (
-                <span className="inline-block mt-[-7.5px] mb-[-7.5px] h-8 w-8 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin"></span>
+                <span className="inline-block mt-[-7.5px] mb-[-7.5px] h-8 w-8 rounded-full border-4 border-gray-200 border-t-[var(--secondary)] animate-spin laptop-l:h-6 laptop-l:w-6 laptop-l:border-[3px] laptop-l:-mt-2 laptop-l:-mb-2 laptop-md:mx-[1px]"></span>
               ) : (
                 "Add"
               )}
@@ -161,13 +163,13 @@ const CategoryItem = ({ categoryItem, category_id }) => {
             <div className="flex justify-between">
               <button
                 onClick={handelLoginClick}
-                className="py-4 px-8 rounded-xl bg-indigo-500 text-white font-medium hover:bg-indigo-400"
+                className="py-4 px-12 rounded-xl bg-indigo-500 text-white font-medium hover:bg-indigo-400"
               >
                 Login
               </button>
               <button
                 onClick={closeModal}
-                className="py-4 px-8 rounded-xl bg-[#e4e6eb] font-medium"
+                className="py-4 px-12 rounded-xl bg-[#e4e6eb] font-medium"
               >
                 Cancel
               </button>

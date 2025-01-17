@@ -19,11 +19,6 @@ const Login = () => {
     password: "",
   });
 
-  const handleViewClick = (e) => {
-    e.preventDefault();
-    setShowPassword(!showPassword);
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -131,16 +126,16 @@ const Login = () => {
                   value={formdata.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="absolute top-1/2 right-4 -translate-y-1/2"
-                  onClick={handleViewClick}
+                <span
+                  className="absolute inline-block top-1/2 right-4 -translate-y-1/2 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
                     <IoMdEyeOff className="h-8 w-8 fill-indigo-400" />
                   ) : (
                     <IoMdEye className="h-8 w-8 fill-indigo-400" />
                   )}
-                </button>
+                </span>
               </div>
               {errors.password && (
                 <p className="pt-2 text-base font-medium text-red-500">

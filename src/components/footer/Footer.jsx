@@ -113,14 +113,14 @@ const Footer = () => {
                     9825600838
                   </a>
                 </div>
-                <a className="flex items-center justify-start gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-m:gap-3 laptop-s:text-[1.25rem]">
+                <div className="flex items-center justify-start gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-m:gap-3 laptop-s:text-[1.25rem]">
                   <span className="block">
                     <MdOutlineEmail className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2.2rem] laptop-l:w-[2.2rem] laptop-m:h-8 laptop-m:w-8 laptop-s:h-6 laptop-s:w-6" />
                   </span>
                   <a href="mailto:sikkacleaners@gmail.com">
                     sikkacleaners@gmail.com
                   </a>
-                </a>
+                </div>
 
                 <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-s:text-[1.25rem]">
                   <span className="block">
