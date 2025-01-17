@@ -47,7 +47,7 @@ const Filter = () => {
   }, [products, searchQuery]);
 
   return (
-    <div className="filter flex flex-col gap-12 laptop-l:gap-10 laptop-m:gap-8">
+    <div className="filter flex flex-col gap-12 laptop-l:gap-10 laptop-md:gap-8">
       <div className="flex justify-between items-center">
         <h5 className="text-filters">Filters</h5>
         <h5 className="text-clear cursor-pointer" onClick={handleClearAll}>
@@ -59,19 +59,37 @@ const Filter = () => {
         <FormControl fullWidth>
           <Select
             value={selectedProduct}
-            sx={{ fontSize: "16px", position: "relative" }}
+            sx={{
+              fontSize: "16px",
+              position: "relative",
+              "@media (max-width: 100em)": { fontSize: "15px" },
+              "@media (max-width: 90em)": { fontSize: "14px" },
+
+              ".MuiSelect-select": {
+                padding: "16px",
+                "@media (max-width: 100em)": {
+                  padding: "14px",
+                },
+                "@media (max-width: 90em)": {
+                  padding: "12px",
+                },
+              },
+            }}
             onClick={(e) => e.stopPropagation()}
             MenuProps={{
               PaperProps: {
-                sx: { maxHeight: 300 },
+                sx: {
+                  maxHeight: 300,
+                  "@media (max-width: 90em)": { maxHeight: 205 },
+                },
               },
             }}
           >
             <div
-              className="px-8 py-5 flex items-center justify-center gap-4"
+              className="hidden px-8 py-5 items-center justify-center gap-4 text-2xl laptop-l:px-7 laptop-l:py-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <MdSearch className="h-10 w-10 fill-gray-400 mx-2" />
+              <MdSearch className="h-10 w-10 fill-gray-400 mx-2 laptop-l:h-8 laptop-l:w-8 laptop-l:mx-1" />
               <input
                 type="text"
                 placeholder="Search product..."
@@ -85,6 +103,17 @@ const Filter = () => {
                     fontSize: "16px",
                     padding: "12px 20px",
                     textTransform: "capitalize",
+                    "@media (max-width: 100em)": {
+                      fontSize: "14px",
+                    },
+                    "@media (max-width: 90em)": {
+                      fontSize: "14px",
+                      padding: "10px 17.5px",
+                    },
+                    "@media (max-width: 38.4375em)": {
+                      fontSize: "12px",
+                      padding: "8px 16px",
+                    },
                   }}
                   key={item.product.name}
                   value={item.product.name}
@@ -95,7 +124,18 @@ const Filter = () => {
               ))
             ) : (
               <MenuItem
-                sx={{ fontSize: "16px", padding: "12px 20px" }}
+                sx={{
+                  fontSize: "16px",
+                  padding: "12px 20px",
+                  "@media (max-width: 80em)": {
+                    fontSize: "14px",
+                    padding: "10px 18px",
+                  },
+                  "@media (max-width: 38.4375em)": {
+                    fontSize: "12px",
+                    padding: "8px 16px",
+                  },
+                }}
                 disabled
               >
                 No product found!
@@ -112,7 +152,7 @@ const Filter = () => {
                   <span>{name}</span>
                   <RxCross2
                     onClick={() => handleRemove(item)}
-                    className="h-8 w-8 cursor-pointer"
+                    className="h-8 w-8 cursor-pointer laptop-l:h-7 laptop-l:w-7"
                   />
                 </span>
               );

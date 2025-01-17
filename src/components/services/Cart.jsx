@@ -11,7 +11,7 @@ const Cart = () => {
     <>
       <div className="card-container">
         <h5 className="cart-title">cart</h5>
-        <div className="px-12 py-12 flex flex-col gap-10 laptop-l:px-10 laptop-l:gap-9 laptop-m:px-8 laptop-m:py-10 laptop-m:gap-8">
+        <div className="p-12 flex flex-col gap-10 laptop-l:p-10 laptop-md:p-8 laptop-md:gap-8 laptop-m:px-8 laptop-m:py-10 laptop-m:gap-8">
           <div className="place-center">
             <p>Sub Total</p>
             <h5>₹{subTotal ? subTotal : 0}</h5>

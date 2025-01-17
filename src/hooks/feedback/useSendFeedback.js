@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 const useSendFeedback = () => {
   const [loading, setLoading] = useState(false);
   const baseURL = import.meta.env.VITE_BASE_URL;
+  const token = window.localStorage.getItem("token");
 
   const sendFeedBack = async (param) => {
     if (!param || typeof param !== "object") {
@@ -17,6 +18,7 @@ const useSendFeedback = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(param),
       });

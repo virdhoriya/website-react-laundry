@@ -23,11 +23,6 @@ const Signup = () => {
     otp: "",
   });
 
-  const handleViewClick = (e) => {
-    e.preventDefault();
-    setShowPassword(!showPassword);
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -249,22 +244,22 @@ const Signup = () => {
                     onChange={handleChange}
                     className="text-xl block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
                   />
-                  <button
-                    className="absolute top-1/2 right-4 -translate-y-1/2"
-                    onClick={handleViewClick}
+                  <span
+                    className="absolute inline-block cursor-pointer top-1/2 right-4 -translate-y-1/2"
+                    onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
                       <IoMdEyeOff className="h-8 w-8 fill-indigo-400" />
                     ) : (
                       <IoMdEye className="h-8 w-8 fill-indigo-400" />
                     )}
-                  </button>
-                  {errors.password && (
-                    <p className="pt-2 text-base font-medium text-red-500">
-                      {errors.password}
-                    </p>
-                  )}
+                  </span>
                 </div>
+                {errors.password && (
+                  <p className="pt-2 text-base font-medium text-red-500">
+                    {errors.password}
+                  </p>
+                )}
               </div>
 
               <div>
