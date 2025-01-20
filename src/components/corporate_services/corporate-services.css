@@ -85,9 +85,6 @@
   }
 }
 
-@media only screen and (max-width: 90em) {
-}
-
 @media only screen and (max-width: 83.75em) {
   .sm-services {
     border-top-left-radius: 0.75rem;
@@ -110,9 +107,6 @@
     font-size: 1.8rem;
     letter-spacing: 0.25px;
   }
-}
-
-@media only screen and (max-width: 80em) {
 }
 
 @media only screen and (max-width: 71.25em) {
@@ -139,9 +133,6 @@
     font-size: 1.6rem;
     letter-spacing: normal;
   }
-}
-
-@media only screen and (max-width: 64em) {
 }
 
 @media only screen and (max-width: 60.875em) {
@@ -204,8 +195,4 @@
   .sm-services {
     border-radius: 0.25rem;
   }
-
-}
-
-@media only screen and (max-width: 20em) {
 }
