@@ -64,34 +64,6 @@
   .search-button {
     padding: 1.05rem 2.1rem;
   }
-
-  .price-list-container h2 {
-    font-size: 3.6rem;
-    line-height: normal;
-  }
-
-  .price-list-btn {
-    font-size: 1.8rem;
-    padding: 1.4rem 1.8rem;
-  }
-
-  .tag {
-    font-size: 1.8rem;
-    line-height: normal;
-    padding: 1.3rem 2.7rem;
-    letter-spacing: 1px;
-  }
-
-  .card-service-list li {
-    padding-left: 3.5rem;
-    font-size: 1.8rem;
-    line-height: 2.8rem;
-  }
-
-  .card-service-list li::before {
-    height: 1.8rem;
-    width: 1.8rem;
-  }
 }
 
 /*****************/
@@ -99,39 +71,6 @@
 /*****************/
 
 @media only screen and (max-width: 90em) {
-  .container-x {
-    padding: 0 6rem;
-  }
-
-  .price-list-container {
-    border-radius: 2rem;
-  }
-
-  .price-list-container h2 {
-    font-size: 2.8rem;
-  }
-
-  .price-list-btn {
-    font-size: 1.6rem;
-    padding: 1.1rem 1.5rem;
-  }
-
-  .tag {
-    font-size: 1.6rem;
-    font-weight: 500;
-    padding: 1rem 1.6rem;
-  }
-
-  .card-service-list li {
-    padding-left: 3rem;
-    font-size: 1.6rem;
-    line-height: 2.6rem;
-  }
-
-  .card-service-list li::before {
-    height: 1.8rem;
-    width: 1.8rem;
-  }
 }
 
 /*****************/
@@ -264,35 +203,6 @@
   .tertiary-container {
     padding: 0 5rem;
   }
-
-  .container-x {
-    padding: 0 5rem;
-  }
-
-  .price-list-container h2 {
-    font-size: 2.4rem;
-  }
-
-  .price-list-btn {
-    font-size: 1.4rem;
-    padding: 0.9rem 1.3rem;
-  }
-
-  .tag {
-    font-size: 1.4rem;
-    padding: 0.8rem 1.2rem;
-  }
-
-  .card-service-list li {
-    padding-left: 2.5rem;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-  }
-
-  .card-service-list li::before {
-    height: 1.6rem;
-    width: 1.6rem;
-  }
 }
 
 /*****************/
@@ -385,14 +295,6 @@
     font-size: 1rem;
     letter-spacing: normal;
   }
-
-  .container-x {
-    padding: 0 4rem;
-  }
-
-  .price-list-container {
-    border-radius: 1rem;
-  }
 }
 
 /*****************/
@@ -428,31 +330,6 @@
     padding: 5rem 0 8rem 0;
   }
 
-  .price-list-container h2 {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-
-  .price-list-btn {
-    font-size: 1.2rem;
-    padding: 0.8rem 1rem;
-  }
-
-  .tag {
-    font-size: 1.2rem;
-    padding: 0.7rem 1rem;
-  }
-
-  .card-service-list li {
-    padding-left: 2.5rem;
-    font-size: 1.2rem;
-    line-height: 1.8rem;
-  }
-
-  .card-service-list li::before {
-    height: 1.4rem;
-    width: 1.4rem;
-  }
 }
 
 /*****************/
@@ -540,10 +417,6 @@
 
   .search-button {
     padding: 0 1rem;
-  }
-
-  .container-x {
-    padding: 0 3rem;
   }
 
   .price-list-container h2 {

@@ -215,9 +215,6 @@
   background-color: rgba(38, 50, 56, 0.1);
 }
 
-@media only screen and (max-width: 120em) {
-}
-
 @media only screen and (max-width: 100em) {
   .container-b {
     padding: 0 7rem;
@@ -365,7 +362,7 @@
 
 @media only screen and (max-width: 20em) {
   .container-b {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 
   .login {
