@@ -6,6 +6,3 @@
 
 # unneccesary dependencies
 .DS_Store
-
-# public
-public/
