@@ -58,7 +58,7 @@ const App = () => {
         toastOptions={{
           className: "toast",
           style: {
-            fontSize: "18px",
+            fontSize: "16px",
             borderRadius: "10px",
             fontWeight: "500",
             maxWidth: "500px",

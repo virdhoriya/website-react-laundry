@@ -146,6 +146,10 @@
   background-color: #eff3ff;
 }
 
+.benefits-container figure {
+  text-align: center;
+}
+
 .benefits-container figure img {
   display: inline-block;
   max-height: 4.8rem;

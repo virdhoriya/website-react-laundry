@@ -11,13 +11,6 @@ const useValidateToken = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    toast("virji dhoriya");
-    toast.success("virji dhoriya", {
-      className: "toast-success",
-    });
-    toast.error("virji dhoriya", {
-      className: "toast-error",
-    });
     const validateToken = async () => {
       try {
         if (!token) {
