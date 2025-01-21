@@ -21,11 +21,15 @@ const useValidateOtp = () => {
       if (response.ok) {
         return { success: true };
       } else {
-        toast.error(data.message);
+        toast.error(data.message, {
+          className: "toast-error",
+        });
         return { success: false };
       }
     } catch {
-      toast.error("Failed to validate otp!");
+      toast.error("Failed to validate otp!", {
+        className: "toast-error",
+      });
       return { success: false };
     }
   };

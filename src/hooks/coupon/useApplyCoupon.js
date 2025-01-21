@@ -23,14 +23,27 @@ const useApplyCoupon = () => {
 
       const data = await response.json();
       if (response.ok) {
-        toast.success(data?.message);
+        toast.success(data?.message || "Coupon applied successfully.", {
+          className: "toast-success",
+        });
         return data?.data;
       } else {
-        toast.error(data.message || "Invalid coupon code.");
+        toast.error(
+          data.message ||
+            "Invalid coupon code. Please check the code and try again.",
+          {
+            className: "toast-error",
+          }
+        );
         return null;
       }
     } catch {
-      toast.error("Failed to apply coupon code!");
+      toast.error(
+        "There was an issue applying the coupon. Please try again later.",
+        {
+          className: "toast-error",
+        }
+      );
       return null;
     } finally {
       setLoading(false);

@@ -34,11 +34,12 @@ const useAddToCart = () => {
         return null;
       }
     } catch {
-      toast.error("Error occur while adding item into cart!", {
-        style: {
-          maxWidth: "400px",
-        },
-      });
+      toast.error(
+        "An unexpected error occurred while adding the item to the cart. Please try again.",
+        {
+          className: "toast-error",
+        }
+      );
       return null;
     } finally {
       setLoading(false);

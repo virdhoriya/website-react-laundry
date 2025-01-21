@@ -52,7 +52,9 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
     e.preventDefault();
 
     if (!couponCode) {
-      toast.error("Coupon code should  not empty!");
+      toast.error("Coupon code should  not empty!", {
+        className: "toast-error",
+      });
       return;
     }
 
@@ -68,17 +70,23 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
 
   const handleCheckout = async () => {
     if (!paymentMethod && !selectedAddId) {
-      toast.error("Please select Payment Method and Shipping Address");
+      toast.error("Please select Payment Method and Shipping Address", {
+        className: "toast-error",
+      });
       return;
     }
 
     if (!paymentMethod) {
-      toast.error("Please select Payment Method");
+      toast.error("Please select Payment Method", {
+        className: "toast-error",
+      });
       return;
     }
 
     if (!selectedAddId) {
-      toast.error("Please select Shipping Address");
+      toast.error("Please select Shipping Address", {
+        className: "toast-error",
+      });
       return;
     }
 
@@ -162,7 +170,10 @@ const OrderSummary = ({ instruction, paymentMethod, selectedAddId }) => {
           razorpay.open();
         } catch {
           toast.error(
-            "Failed to initiate online payement please try again letter!"
+            "Failed to initiate online payement please try again letter!",
+            {
+              className: "toast-error",
+            }
           );
         }
       }

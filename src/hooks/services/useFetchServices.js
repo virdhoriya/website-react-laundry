@@ -12,14 +12,26 @@ const useFetchServices = () => {
         const response = await fetch(`${baseURL}/web/services`, {
           method: "GET",
         });
+
         const data = await response.json();
         if (response.ok) {
           setServices(data?.data?.services);
         } else {
-          toast.error("Failed to fetch services!");
+          toast.error(
+            data?.message ||
+              "We encountered an issue while fetching services. Please try again.",
+            {
+              className: "toast-error",
+            }
+          );
         }
       } catch {
-        toast.error("Failed to fetch services!");
+        toast.error(
+          "Failed to fetch services. Please check your connection and try again.",
+          {
+            className: "toast-error",
+          }
+        );
       } finally {
         setLoading(false);
       }

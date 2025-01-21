@@ -35,9 +35,7 @@ const ContactUsForm = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message || "Message sent successfully!", {
-          style: {
-            maxWidth: "400px",
-          },
+          className: "toast-success",
         });
         setFormData({
           full_name: "",
@@ -46,10 +44,14 @@ const ContactUsForm = () => {
           message: "",
         });
       } else {
-        toast.error("Failed to send message!");
+        toast.error("Failed to send message!", {
+          className: "toast-error",
+        });
       }
     } catch {
-      toast.error("Failed to send message!");
+      toast.error("Failed to send message!", {
+        className: "toast-error",
+      });
     } finally {
       setLoading(false);
     }

@@ -21,11 +21,18 @@ const useVerifyPayement = () => {
       if (response.ok) {
         return { status: true };
       } else {
-        toast.success("Failed to verify payement!");
+        toast.success("Payment verification failed. Please try again later.", {
+          className: "toast-error",
+        });
         return { status: false };
       }
     } catch {
-      toast.error("Failed to verify payement");
+      toast.error(
+        "An error occurred while verifying the payment. Please check your connection.",
+        {
+          className: "toast-error",
+        }
+      );
       return { status: false };
     } finally {
       setLoading(false);

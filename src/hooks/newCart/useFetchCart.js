@@ -29,10 +29,14 @@ const useFetchCart = () => {
         if (response.ok) {
           dispatch(setCart(data?.data));
         } else {
-          toast.error("Failed to fetch cart data!");
+          toast.error("Failed to fetch your cart. Please try again.", {
+            className: "toast-error",
+          });
         }
       } catch {
-        toast.error("Failed to fetch cart data!");
+        toast.error("Failed to fetch your cart. Check your connection.", {
+          className: "toast-error",
+        });
       } finally {
         setLoading(false);
       }

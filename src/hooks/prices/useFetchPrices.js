@@ -16,10 +16,21 @@ const useFetchPrices = () => {
         if (response.ok) {
           setPrices(data?.data);
         } else {
-          toast.error("Failed to get prices data!");
+          toast.error(
+            data?.message ||
+              "Failed to retrieve pricing information. Please try again later.",
+            {
+              className: "toast-error",
+            }
+          );
         }
       } catch {
-        toast.error("Failed to get prices data!");
+        toast.error(
+          "There was an issue retrieving pricing data. Please check your connection.",
+          {
+            className: "toast-error",
+          }
+        );
       } finally {
         setLoading(false);
       }

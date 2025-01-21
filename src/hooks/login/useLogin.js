@@ -22,20 +22,28 @@ const useLogin = () => {
       const data = await response.json();
 
       if (data.statusCode == 200) {
-        toast.success(data.message);
+        toast.success(data.message || "user login successful!", {
+          className: "toast-success",
+        });
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("user", JSON.stringify(data.data.user));
         navigate("/");
         return data.data;
       } else {
-        toast.error(data.message, {
-          style: {
-            maxWidth: "800px",
-          },
-        });
+        toast.error(
+          "Invalid credentials. Please check your username and password.",
+          {
+            className: "toast-error",
+          }
+        );
       }
     } catch {
-      toast.error("Login failed. Please check your credentials and try again.");
+      toast.error(
+        "Oops! Something went wrong during the login process. Please try again.",
+        {
+          className: "toast-error",
+        }
+      );
     }
   };
 

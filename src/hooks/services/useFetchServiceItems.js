@@ -30,14 +30,21 @@ const useFetchServiceItems = (service_id, category_id) => {
         if (response.ok) {
           dispatch(setPruducts(data?.data));
         } else {
-          toast.error("Failed to fetch selected category items!", {
-            style: { maxWidth: "400px" },
-          });
+          toast.error(
+            data?.message ||
+              "There was an issue retrieving the products. Please try again later.",
+            {
+              className: "toast-error",
+            }
+          );
         }
       } catch {
-        toast.error("Failed to fetch selected category items!", {
-          style: { maxWidth: "400px" },
-        });
+        toast.error(
+          "Failed to load products. Please check your connection and try again.",
+          {
+            className: "toast-error",
+          }
+        );
       } finally {
         setLoading(false);
       }

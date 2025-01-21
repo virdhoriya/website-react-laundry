@@ -51,14 +51,18 @@ const usePlaceOrder = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success("Order placed successfully!");
+        toast.success("Order placed successfully!", {
+          className: "toast-success",
+        });
         return data.data;
       } else {
         toast.error(data.message);
         return false;
       }
     } catch {
-      toast.error("Failed to place an order!");
+      toast.error("Failed to place an order!", {
+        className: "toast-error",
+      });
       return false;
     } finally {
       setLoading(false);
