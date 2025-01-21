@@ -4,10 +4,10 @@ import Map from "./Map";
 
 const Contact = () => {
   return (
-    <div>
+    <>
       <ContactUsForm />
       <Map />
-    </div>
+    </>
   );
 };
 
