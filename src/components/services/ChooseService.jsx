@@ -31,7 +31,9 @@ const ChooseService = () => {
     e.preventDefault();
     if (search) {
       setSearch("");
-      toast.success(search);
+      toast.success(search, {
+        className: "toast-success",
+      });
     }
   };
 

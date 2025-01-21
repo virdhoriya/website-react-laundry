@@ -28,11 +28,15 @@ const useUpdateCart = () => {
       if (response.ok) {
         return data;
       } else {
-        toast.error("Failed to update cart!");
+        toast.error("Failed to update cart!", {
+          className: "toast-error",
+        });
         return null;
       }
     } catch {
-      toast.error("An error occurred while updating the cart!");
+      toast.error("An error occurred while updating the cart!", {
+        className: "toast-error",
+      });
       return null;
     } finally {
       setLoading(false);

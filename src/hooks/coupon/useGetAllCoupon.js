@@ -22,11 +22,18 @@ const useGetAllCoupon = () => {
       if (response.ok) {
         setCoupons(data?.data);
       } else {
-        toast.error("Failed to get coupon codes!");
+        toast.error("Failed to fetch coupons. Please try again later.", {
+          className: "toast-error",
+        });
         setCoupons([]);
       }
     } catch {
-      toast.error("Failed to get coupon codes!");
+      toast.error(
+        "Network error. Please check your connection and try again.",
+        {
+          className: "toast-error",
+        }
+      );
       setCoupons([]);
     } finally {
       setLoading(false);

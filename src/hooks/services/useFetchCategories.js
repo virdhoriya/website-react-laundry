@@ -14,10 +14,21 @@ const useFetchCategories = () => {
       if (response.ok) {
         return data?.data;
       } else {
-        toast.error("Failed to fetch categories!");
+        toast.error(
+          data?.message ||
+            "We encountered an issue while fetching categories. Please try again.",
+          {
+            className: "toast-error",
+          }
+        );
       }
     } catch {
-      toast.error("Failed to fetch categories !");
+      toast.error(
+        "Failed to fetch categories. Please check your connection and try again.",
+        {
+          className: "toast-error",
+        }
+      );
     }
   };
 

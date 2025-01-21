@@ -14,10 +14,17 @@ const useGenerateOtp = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.message);
+        toast.success(data.message || "OTP sent successfully.", {
+          className: "toast-success",
+        });
         return { success: true };
       } else {
-        toast.error(data.message);
+        toast.error(
+          data.message || "Failed to send OTP. Please try again later.",
+          {
+            className: "toast-error",
+          }
+        );
         return { success: false };
       }
     } catch {
