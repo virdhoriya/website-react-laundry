@@ -54,7 +54,17 @@ import useFetchCart from "./hooks/newCart/useFetchCart";
 const App = () => {
   return (
     <Router>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          className: "toast",
+          style: {
+            fontSize: "16px",
+            borderRadius: "10px",
+            fontWeight: "500",
+            maxWidth: "500px",
+          },
+        }}
+      />
       <ScrollToTop />
       <MainComponent />
     </Router>

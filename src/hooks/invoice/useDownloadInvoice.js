@@ -21,10 +21,21 @@ const useDownloadInvoice = () => {
         const url = data?.url;
         window.open(url, "_blank");
       } else {
-        toast.error(`Failed to download invoice. Status`);
+        toast.error(
+          data?.message ||
+            "Oops! Something went wrong while trying to download the invoice. Please try again.",
+          {
+            className: "toast-error",
+          }
+        );
       }
     } catch {
-      toast.error("An error occurred while downloading the invoice!");
+      toast.error(
+        "We encountered an issue while fetching the invoice. Please try again later.",
+        {
+          className: "toast-error",
+        }
+      );
     } finally {
       setLoading(false);
     }

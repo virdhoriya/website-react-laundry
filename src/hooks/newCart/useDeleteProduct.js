@@ -26,11 +26,15 @@ const useDeleteProduct = () => {
       if (response.ok) {
         return data;
       } else {
-        toast.error("Failed to delete item from cart!");
+        toast.error("Failed to delete item from cart!", {
+          className: "toast-error",
+        });
         return null;
       }
     } catch {
-      toast.error("Failed to delete item from cart!");
+      toast.error("Failed to delete item from cart!", {
+        className: "toast-error",
+      });
       return null;
     } finally {
       setLoading(false);

@@ -14,12 +14,12 @@ const Benefits = () => {
             <p className="section-title">Why Should You Believe Us?</p>
             <h2>Our Laundry Benefits</h2>
             <Link
-              to="/about"
+              to="/contact"
               className="btn my-20 laptop-l:my-16 laptop-md:my-12 laptop-s:my-12 tab-l:my-8"
             >
               Contact Us
             </Link>
-            <div className="grid grid-cols-2 gap-x-44 gap-y-36 laptop-l:gap-x-36 laptop-l:gap-y-28 laptop-m:gap-y-28 laptop-m:gap-x-20 laptop:gap-y-24 laptop:gap-x-[5.5rem] laptop-s:gap-20 tab-l:gap-16 mb-l:gap-12 mb:justify-between">
+            <div className="grid grid-cols-2 gap-x-44 gap-y-36 justify-center laptop-l:gap-x-36 laptop-l:gap-y-28 laptop-m:gap-y-28 laptop-m:gap-x-20 laptop:gap-y-24 laptop:gap-x-[5.5rem] laptop-s:gap-20 tab-l:gap-16 mb-l:gap-12 mb:justify-between">
               <figure>
                 <img src="/safe-chemicals.png" alt="safe-chemicals" />
                 <figcaption className="caption">Safe Chemicals</figcaption>

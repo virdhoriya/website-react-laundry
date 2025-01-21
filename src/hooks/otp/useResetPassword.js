@@ -19,11 +19,15 @@ const useResetPassword = () => {
       if (response.ok) {
         return { success: true };
       } else {
-        toast.error(data.message);
+        toast.error(data.message, {
+          className: "toast-error",
+        });
         return { success: false };
       }
     } catch {
-      toast.error("Failed to reset password!");
+      toast.error("Failed to reset password!", {
+        className: "toast-error",
+      });
       return { success: false };
     }
   };

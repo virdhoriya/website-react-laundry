@@ -8,8 +8,8 @@ const useSignup = () => {
   const signup = async (formData) => {
     let newFormData = {
       ...formData,
-      gender: Number(formData.gender)
-    }
+      gender: Number(formData.gender),
+    };
     try {
       const response = await fetch(`${baseURL}/auth/signup`, {
         method: "POST",
@@ -22,15 +22,27 @@ const useSignup = () => {
       const data = await response.json();
       if (response.ok) {
         navigate("/");
-        toast.success(data.message);
+        toast.success(data.message || "Signup successful!", {
+          className: "toast-success",
+        });
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("user", JSON.stringify(data.data.user));
       } else {
-        toast.error(data.message);
+        toast.error(
+          data.message ||
+            "An error occurred during signup. Please try again later.",
+          {
+            className: "toast-error",
+          }
+        );
       }
-      // eslint-disable-next-line no-unused-vars
-    } catch (error) {
-      toast.error("An error occurred during signup. Please try again.");
+    } catch {
+      toast.error(
+        "Failed to signup. Please check your connection and try again.",
+        {
+          className: "toast-error",
+        }
+      );
     }
   };
 
@@ -49,11 +61,21 @@ const useSignup = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message);
+        toast.success(data.message || "OTP sent successfully!", {
+          className: "toast-success",
+        });
+      } else {
+        toast.error(
+          data?.message || "Unable to send OTP. Please try again later.",
+          {
+            className: "toast-error",
+          }
+        );
       }
-      // eslint-disable-next-line no-unused-vars
-    } catch (error) {
-      toast.error("Unable to send Otp");
+    } catch {
+      toast.error("Failed to send OTP. Please try again later.", {
+        className: "toast-error",
+      });
     }
   };
 

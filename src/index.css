@@ -10,6 +10,17 @@
   box-sizing: inherit;
 }
 
+:root {
+  --primary: #161f5f;
+  --secondary: #ff2e17;
+
+  --black: #080914;
+  --grey: #393b43;
+  --white: #fff;
+
+  --navbar: #f7f8fd;
+}
+
 html {
   font-size: 62.5%;
   /* 1rem = 10px */
@@ -22,13 +33,19 @@ body {
   box-sizing: border-box;
 }
 
-:root {
-  --primary: #161f5f;
-  --secondary: #ff2e17;
+.toast {
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  --black: #080914;
-  --grey: #393b43;
-  --white: #fff;
+.toast-success {
+  background-color: white;
+  color: var(--primary);
+  box-shadow: 0 4px 8px rgba(22, 31, 95, 0.2);
+}
 
-  --navbar: #f7f8fd;
+.toast-error {
+  background-color: white;
+  color: var(--secondary);
+  box-shadow: 0 4px 8px rgba(255, 46, 23, 0.2);
 }

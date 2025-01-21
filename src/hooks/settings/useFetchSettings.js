@@ -18,10 +18,21 @@ const useFetchSettings = () => {
         if (response.ok) {
           dispatch(setSettings(data?.data));
         } else {
-          toast.error("Failed to fetch shipping charge");
+          toast.error(
+            data?.message ||
+              "Failed to retrieve settings. Please try again later.",
+            {
+              className: "toast-error",
+            }
+          );
         }
       } catch {
-        toast.error("Failed to fetch shipping charge information!");
+        toast.error(
+          "An unexpected error occurred while fetching settings. Please check your network connection and try again.",
+          {
+            className: "toast-error",
+          }
+        );
       } finally {
         setLoading(false);
       }

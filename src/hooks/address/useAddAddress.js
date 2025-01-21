@@ -29,10 +29,14 @@ const useAddAddress = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success(data?.message);
+        toast.success(data?.message, {
+          className: "toast-success",
+        });
         return data?.data?.result;
       } else {
-        toast.error("Failed to add address!");
+        toast.error("Failed to add address!", {
+          className: "toast-error",
+        });
         return null;
       }
     } catch {

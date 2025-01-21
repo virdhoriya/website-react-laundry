@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import useSignup from "../../hooks/signup/useSignup";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 const Signup = () => {
   const { signup, generateOtp } = useSignup();
   const [mvalidation, setMvalidation] = useState("");
   const [errors, setErrors] = useState({});
   const [isError, setIsError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -232,15 +234,27 @@ const Signup = () => {
                 >
                   Password
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="text-xl block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="text-xl block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
+                  />
+                  <span
+                    className="absolute inline-block cursor-pointer top-1/2 right-4 -translate-y-1/2"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <IoMdEyeOff className="h-8 w-8 fill-indigo-400" />
+                    ) : (
+                      <IoMdEye className="h-8 w-8 fill-indigo-400" />
+                    )}
+                  </span>
+                </div>
                 {errors.password && (
                   <p className="pt-2 text-base font-medium text-red-500">
                     {errors.password}

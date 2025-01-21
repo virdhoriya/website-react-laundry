@@ -6,11 +6,14 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/slices/userSlice";
 import { setAuthStatus } from "../../redux/slices/authSlice";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 const Login = () => {
   const dispatch = useDispatch();
   const { login } = useLogin();
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+
   const [formdata, setFormData] = useState({
     username: "",
     password: "",
@@ -113,16 +116,26 @@ const Login = () => {
                   </Link>
                 </div>
               </div>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="password"
-                  className="text-xl block font-medium w-full rounded-md py-4 px-6 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
+                  className="text-xl block font-medium w-full rounded-md py-4 px-6 pr-14 text-gray-900 shadow-sm placeholder:text-gray-400 leading-6 border-blue-300 border-[1.5px] focus:border-blue-600 focus:outline-none tracking-wide"
                   value={formdata.password}
                   onChange={handleChange}
                 />
+                <span
+                  className="absolute inline-block top-1/2 right-4 -translate-y-1/2 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <IoMdEyeOff className="h-8 w-8 fill-indigo-400" />
+                  ) : (
+                    <IoMdEye className="h-8 w-8 fill-indigo-400" />
+                  )}
+                </span>
               </div>
               {errors.password && (
                 <p className="pt-2 text-base font-medium text-red-500">

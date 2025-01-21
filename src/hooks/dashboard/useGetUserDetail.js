@@ -16,10 +16,20 @@ const useGetUserDetail = () => {
       if (response.ok) {
         return data.data;
       } else {
-        toast.error("Failed to fetch user deatil!");
+        toast.error(
+          "Unable to retrieve user details. Please try again later.",
+          {
+            className: "toast-error",
+          }
+        );
       }
     } catch {
-      toast.error("Failed to fetch user deatil!");
+      toast.error(
+        "Failed to fetch user information. Please check your connection.",
+        {
+          className: "toast-error",
+        }
+      );
     }
   };
 

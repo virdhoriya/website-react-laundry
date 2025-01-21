@@ -34,7 +34,7 @@ const FeedbackModel = ({ order_id, setModelIsOpen }) => {
       rating,
       comment: message,
       order_id: order_id,
-      is_publish: 2,
+      is_publish: 1,
     };
     const result = await sendFeedBack(param);
     if (result) {

@@ -8,7 +8,9 @@ const useGetTransactionId = () => {
 
   const getTransactionId = async (amount) => {
     if (!amount) {
-      toast.error("Amount is required to generate the transaction id.");
+      toast.error("Amount is required to generate the transaction ID.", {
+        className: "toast-error",
+      });
       return;
     }
 
@@ -26,12 +28,19 @@ const useGetTransactionId = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error("Failed to create order !");
+        toast.error("Failed to create order. Please try again.", {
+          className: "toast-error",
+        });
         return;
       }
       return data?.razorpay_order_id;
     } catch {
-      toast.error("Failed to create order !");
+      toast.error(
+        "An error occurred while creating the order. Please check your connection.",
+        {
+          className: "toast-error",
+        }
+      );
       return;
     } finally {
       setLoading(false);

@@ -17,11 +17,18 @@ const useGetOrders = () => {
       if (response.ok) {
         return data?.data;
       } else {
-        toast.error("Failed to fetch orders!");
+        toast.error(
+          "Failed to fetch orders. Please check your connection and try again.",
+          {
+            className: "toast-error",
+          }
+        );
         return false;
       }
     } catch {
-      toast.error("Failed to fetch orders!");
+      toast.error("Failed to retrieve your orders. Please try again later.", {
+        className: "toast-error",
+      });
       return false;
     }
   };
