@@ -200,7 +200,15 @@
     width: 30rem;
     place-self: center;
     padding: 1.5rem !important;
-    box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.05);
+    /* box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.05); */
+  }
+
+  .sitemap-list {
+    align-items: center;
+  }
+
+  .sitemap-title {
+    text-align: center;
   }
 }
 

@@ -1,11 +1,10 @@
 const StatsDisplay = () => {
   return (
     <section className="section-space">
-      <div className="secondary-container pr-none relative">
+      <div className="secondary-container padding-adjustment relative bg-gray-400">
         <img src="/shirt-collection.png" alt="Shirts Collection" />
         <div className="status-container flex items-center justify-center gap-16 text-white bg-primary py-[7.6rem] w-[150.7rem] rounded-xl">
           <div className="flex  justify-center items-center gap-8">
-            {/* <h2 className="text-white">25+</h2> */}
             <h2 className="text-white flex items-center gap-2">
               25<span className="relative -top-[4px]">+</span>
             </h2>
