@@ -1,7 +1,24 @@
-/* StatsDisplay */
+.decorateive-star::before {
+  content: "";
+  display: inline-block;
+  height: 16rem;
+  width: 16rem;
+  background-image: url("/star-icon2.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(95%, -15%);
+  display: none;
+}
 
-.pr-none {
-  padding-right: 0;
+.about-image {
+  aspect-ratio: 16 / 10;
+}
+
+.padding-adjustment {
   padding-bottom: 11.1rem;
 }
 
@@ -11,7 +28,12 @@
   right: 0;
 }
 
-/* History */
+.video-container {
+  width: 100%;
+  height: 71.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+}
 
 .year {
   position: absolute;
@@ -44,4 +66,97 @@
   position: absolute;
   top: -125%;
   left: 49%;
+}
+
+@media only screen and (max-width: 100em) {
+  .decorateive-star::before {
+    height: 12.5rem;
+    width: 12.5rem;
+  }
+
+  .video-container {
+    height: 40vw;
+  }
+}
+
+@media only screen and (max-width: 90em) {
+  .decorateive-star::before {
+    height: 10rem;
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width: 83.75em) {
+  .decorateive-star::before {
+    height: 8rem;
+    width: 8rem;
+  }
+
+  .video-container {
+    height: 37.5vw;
+    border-radius: 1rem;
+  }
+}
+
+@media only screen and (max-width: 80em) {
+}
+
+@media only screen and (max-width: 71.25em) {
+  .video-container {
+    height: 40vw;
+    border-radius: 0.75rem;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  .decorateive-star::before {
+    height: 6rem;
+    width: 6rem;
+  }
+}
+
+@media only screen and (max-width: 60.875em) {
+  .video-container {
+    height: 40vw;
+    border-radius: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 55em) {
+  .decorateive-star::before {
+    display: none;
+  }
+
+  .about-image {
+    display: inline-block;
+    max-width: 41rem;
+    justify-self: center;
+  }
+
+  .video-container {
+    height: 42.5vw;
+  }
+}
+
+@media only screen and (max-width: 38.4375em) {
+  .video-container {
+    height: 47.5vw;
+  }
+
+  .about-image {
+    display: block;
+    width: 100%;
+    max-width: 41rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 27.5em) {
+  .video-container {
+    height: 50vw;
+    border-radius: 0.25rem;
+  }
+}
+
+@media only screen and (max-width: 20em) {
 }

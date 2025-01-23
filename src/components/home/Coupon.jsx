@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import dayjs from "dayjs";
 
 const Coupon = () => {
   let { home_promotion_banner_website, home_banner_image } = useSelector(
@@ -50,7 +51,7 @@ const Coupon = () => {
                 </button>
               </div>
               <span className="laptop-m:text-[1.4rem] laptop-s:text-[1.2rem] tab-s:text-[1rem] tab:text-[0.8rem] mb-l:text-[0.6rem]">
-                Valid till: {offer_validity}
+                Valid till: {dayjs(offer_validity).format("DD MMM YYYY")}
               </span>
             </div>
           </article>

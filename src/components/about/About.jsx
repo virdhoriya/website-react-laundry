@@ -1,5 +1,5 @@
 import Banner from "./Banner";
-import StatsDisplay from "./StatsDisplay";
+// import StatsDisplay from "./StatsDisplay";
 import Details from "./Details";
 import Video from "./Video";
 import History from "./History";
@@ -9,7 +9,7 @@ const About = () => {
   return (
     <div>
       <Banner />
-      <StatsDisplay />
+      {/* <StatsDisplay /> */}
       <Details />
       <Video />
       <History />

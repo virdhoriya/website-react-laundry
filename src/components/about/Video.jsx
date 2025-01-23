@@ -2,16 +2,17 @@ const Video = () => {
   return (
     <section className="section-space">
       <div className="secondary-container">
-        <iframe
-          width="1620"
-          height="714"
-          src="https://www.youtube.com/embed/EJr3uAQwGek?si=LpLkJhiFZpNFja_7"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+        <div className="video-container">
+          <iframe
+            width="100%"
+            height="100%"
+            className="rounded-3xl laptop-m:rounded-2xl laptop-s:rounded-xl tab-m:rounded-lg mb-l:rounded"
+            src="https://www.youtube.com/embed/Hr5iLG7sUa0?rel=0&modestbranding=1"
+            title="Customer review on sikka cleaners"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
       </div>
     </section>
   );
