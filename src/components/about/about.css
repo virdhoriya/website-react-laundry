@@ -22,10 +22,27 @@
   padding-bottom: 11.1rem;
 }
 
+.shirt-collection-image {
+  max-width: 100%;
+  border-radius: 2.5rem;
+}
+
 .status-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  color: var(--white);
+  background-color: var(--primary);
+  padding: 7.6rem 0;
+  width: 92.5%;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+
   position: absolute;
   bottom: 0;
   right: 0;
+  transform: translate(15rem, 50%);
 }
 
 .video-container {
@@ -106,6 +123,23 @@
     height: 4rem;
     top: -90%;
   }
+
+  .padding-adjustment {
+    padding-bottom: 7.3rem;
+  }
+
+  .shirt-collection-image {
+    border-radius: 2rem;
+  }
+
+  .status-container {
+    gap: 3rem;
+    padding: 4.5rem 0;
+    width: 90%;
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    transform: translate(12rem, 50%);
+  }
 }
 
 @media only screen and (max-width: 90em) {
@@ -131,6 +165,18 @@
   .active-time::before {
     top: -100%;
   }
+
+  .padding-adjustment {
+    padding-bottom: 6.3rem;
+  }
+
+  .shirt-collection-image {
+    border-radius: 1.5rem;
+  }
+
+  .status-container {
+    padding: 3.5rem 0;
+  }
 }
 
 @media only screen and (max-width: 83.75em) {
@@ -142,6 +188,14 @@
   .video-container {
     height: 37.5vw;
     border-radius: 1rem;
+  }
+
+  .padding-adjustment {
+    padding-bottom: 5.9rem;
+  }
+
+  .status-container {
+    transform: translate(10rem, 50%);
   }
 }
 
@@ -162,6 +216,18 @@
   .active-time::before {
     top: -125%;
   }
+
+  .shirt-collection-image {
+    border-radius: 1rem;
+  }
+
+  .padding-adjustment {
+    padding-bottom: 5.7rem;
+  }
+
+  .status-container {
+    transform: translate(9rem, 50%);
+  }
 }
 
 @media only screen and (max-width: 71.25em) {
@@ -173,12 +239,36 @@
   .year-psudo::before {
     font-size: 8rem;
   }
+
+  .padding-adjustment {
+    padding-bottom: 5.1rem;
+  }
+
+  .shirt-collection-image {
+    border-radius: 0.75rem;
+  }
+
+  .status-container {
+    gap: 2.5rem;
+    padding: 3rem 0;
+    transform: translate(8rem, 50%);
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
 }
 
 @media only screen and (max-width: 64em) {
   .decorateive-star::before {
     height: 6rem;
     width: 6rem;
+  }
+
+  .padding-adjustment {
+    padding-bottom: 4.75rem;
+  }
+
+  .status-container {
+    transform: translate(7rem, 50%);
   }
 }
 
@@ -206,6 +296,10 @@
     width: 1.5px;
     top: -90%;
   }
+
+  .status-container {
+    transform: translate(6rem, 50%);
+  }
 }
 
 @media only screen and (max-width: 55em) {
@@ -225,6 +319,20 @@
 
   .history-text {
     font-size: 1.3rem;
+  }
+
+  .padding-adjustment {
+    padding-bottom: 4.25rem;
+  }
+
+  .shirt-collection-image {
+    border-radius: 0.5rem;
+  }
+
+  .status-container {
+    gap: 2rem;
+    padding: 2.5rem 0;
+    transform: translate(3rem, 50%);
   }
 }
 
@@ -256,6 +364,27 @@
   .active-time::before {
     top: -100%;
   }
+
+  .shirt-collection-image {
+    border-radius: 0.25rem;
+  }
+
+  .padding-adjustment {
+    padding-bottom: 3.25rem;
+  }
+
+  .status-container {
+    min-width: 39rem;
+    gap: 1rem;
+    padding: 2rem 0;
+    transform: translate(2.5rem, 50%);
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+
+  .status-container h2 {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (max-width: 27.5em) {
@@ -272,11 +401,51 @@
   .year-psudo::before {
     font-size: 4.5rem;
   }
+
+  .padding-adjustment {
+    padding-bottom: 4.1rem;
+  }
+
+  .status-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .status-container {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    width: 95%;
+    max-width: 95%;
+    min-width: auto;
+    padding: 1.5rem 1rem;
+    transform: translate(2rem, 50%);
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .status-container > * {
+    flex-basis: 48%;
+  }
 }
 
 @media only screen and (max-width: 20em) {
   .year-psudo::before {
     font-size: 4rem;
     transform: translate(10%, -50%);
+  }
+
+  .padding-adjustment {
+    padding-bottom: 3.475rem;
+  }
+
+  .status-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .status-container {
+    gap: 0.5rem;
+    padding: 1rem;
+    transform: translate(1.5rem, 50%);
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
   }
 }
