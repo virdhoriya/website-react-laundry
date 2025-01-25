@@ -12,12 +12,13 @@ const Footer = () => {
       <div className="footer-space">
         <div className="secondary-container">
           <div className="flex justify-between tab-s:grid tab-s:grid-cols-2 tab-s:grid-rows-2 tab-s:gap-x-10 gap-y-20 tab:gap-x-8 tab:gap-y-16 mb-l:grid-cols-1 mb-l:gap-12 mb-l:justify-center mobile-footer">
-            <div className="basis-[22%] flex flex-col justify-center items-start gap-12 laptop-l:basis-1/5 laptop-l:gap-10 laptop-m:gap-8 laptop-s:gap-6 tab-s:px-10 tab:px-0">
+            <div className="basis-[22%] flex flex-col justify-center items-start gap-12 laptop-l:basis-1/5 laptop-l:gap-10 laptop-m:gap-8 laptop-s:gap-6 tab-s:px-10 tab:px-0 mb-l:items-center">
               <img
                 src="footer-logo.png"
                 alt="Logo"
                 className="footer-logo"
                 loading="lazy"
+                title="sikka cleaners"
               />
               <div className="flex items-center gap-10 laptop-l:gap-8 laptop-m:gap-6 laptop-s:gap-4">
                 <a
@@ -25,6 +26,7 @@ const Footer = () => {
                   target="__blank"
                   rel="noopener noreferrer"
                   className="social-link"
+                  title="Follow on facebook"
                 >
                   <FaFacebookF className="social-icon" />
                 </a>
@@ -32,6 +34,7 @@ const Footer = () => {
                   href="https://www.instagram.com/sikka_cleaners/"
                   target="__blank"
                   className="social-link"
+                  title="Follow on instagram"
                   rel="noopener noreferrer"
                 >
                   <RiInstagramFill className="social-icon" />
@@ -96,7 +99,7 @@ const Footer = () => {
 
             <div className="basis-[30%] text-[1.8rem] leading-[2.2rem] laptop-l:basis-1/4 laptop-m:text-[1.6rem] laptop-m:leading-normal laptop-m:tracking-[1px] tab-s:px-10 tab:px-0">
               <h4 className="sitemap-title">contact</h4>
-              <div className="contact flex flex-col gap-9 laptop-m:gap-6">
+              <div className="contact flex flex-col gap-9 laptop-m:gap-6 mb-l:max-w-[22rem] mb-l:mx-auto">
                 <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:gap-3 laptop-s:text-[1.25rem] laptop-s:gap-2">
                   <FiPhoneCall className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2rem] laptop-l:w-[2rem] laptop-m:h-[1.8rem] laptop-m:w-[1.8rem] laptop-s:h-6 laptop-s:w-6" />
                   <a
@@ -122,11 +125,15 @@ const Footer = () => {
                   </a>
                 </div>
 
-                <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-s:text-[1.25rem]">
+                <div className="flex items-center gap-4 laptop-l:text-[1.6rem] laptop-m:text-[1.4rem] laptop-m:tracking-normal laptop-s:text-[1.25rem] mb-l:order-1">
                   <span className="block">
                     <FiClock className="block h-[2.4rem] w-[2.4rem] laptop-l:h-[2rem] laptop-l:w-[2rem] laptop-m:h-[1.8rem] laptop-m:w-[1.8rem] laptop-s:h-6 laptop-s:w-6" />
                   </span>
-                  <p>Mon to Sat: 9.00am - 9.00pm, Sun: 9.00am - 12.00pm</p>
+                  <p>
+                    Mon to Sat: 9.00am - 9.00pm,
+                    <br className="hidden mb-l:block" />
+                    Sun: 9.00am - 12.00pm
+                  </p>
                 </div>
               </div>
             </div>

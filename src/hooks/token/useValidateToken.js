@@ -30,7 +30,7 @@ const useValidateToken = () => {
         const data = await response.json();
 
         if (response.ok) {
-          dispatch(addUser(data?.data));
+          dispatch(addUser(data?.data?.user));
           dispatch(setAuthStatus(true));
         } else {
           toast.error(data?.message || "Token validation failed!");
