@@ -100,7 +100,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-8">
+      <div className="max-w-full flex flex-col gap-8">
         <div className="flex gap-14">
           <div className="status-card flex gap-8 items-center">
             <span className="bg-[#FFE0EB] inline-block h-[6rem] w-[6rem] rounded-full">
