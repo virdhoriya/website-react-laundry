@@ -298,8 +298,8 @@
 .profile-img-container {
   position: relative;
   display: inline-block;
-  max-height: 12rem;
-  max-width: 12rem;
+  height: 12rem;
+  width: 12rem;
 }
 
 .edit-profile-img {
@@ -646,8 +646,8 @@
   }
 
   .profile-img-container {
-    max-height: 10.5rem;
-    max-width: 10.5rem;
+    height: 10.5rem;
+    width: 10.5rem;
   }
 
   .edit-profile-img {
@@ -731,8 +731,8 @@
   }
 
   .profile-img-container {
-    max-width: 8.5rem;
-    max-width: 8.5rem;
+    width: 8.5rem;
+    width: 8.5rem;
   }
 
   .edit-profile-img {
@@ -868,8 +868,8 @@
   }
 
   .profile-img-container {
-    max-height: 7.5rem;
-    max-width: 7.5rem;
+    height: 7.5rem;
+    width: 7.5rem;
   }
 
   .edit-profile-img {
@@ -1047,8 +1047,8 @@
   }
 
   .profile-img-container {
-    max-width: 6rem;
-    max-height: 6rem;
+    width: 6rem;
+    height: 6rem;
   }
 
   .edit-profile-img {
